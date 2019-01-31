@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "nodejs",
+  "alias": "mindfully.now.sh",
   "builds": [
     { "src": "api/*.js", "use": "@now/node" },
     { "src": "package.json", "use": "@now/static-build" }

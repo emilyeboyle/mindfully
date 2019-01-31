@@ -1,3 +1,8 @@
 module.exports = (req, res) => {
-  res.end(`Hello from Node.js on Now 2.0!`);
+  var body = 'Hello from Node.js on Now 2.0!';
+  res.writeHead(200, {
+     'Access-Control-Allow-Origin': '*',
+     'Access-Control-Allow-Credentials': true,
+  });
+  res.end(body);
 };
