@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.png';
 import axios from 'axios';
 import Bubble from './Components/Bubble';
-import Slider from './Components/Slider';
+import EmotionSlider from './Components/EmotionSlider';
 import styled from 'styled-components';
+import './styles/styles.scss';
 
 const BubbleContainer = styled.div`
   height: 100vh;
@@ -44,7 +45,7 @@ class App extends Component {
           <Bubble emotion="afraid"></Bubble>
           <Bubble emotion="disgust"></Bubble>
         </BubbleContainer>*/}
-        <Slider/>
+        <EmotionSlider/>
       </div>
     );
   }
