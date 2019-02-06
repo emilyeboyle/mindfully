@@ -10,10 +10,10 @@ import afraid from '../static/images/bunnies/scared/scared.png';
 const StyledBubble = styled.div`
   background: ${props => props.theme.brandPrimary};
   border-radius: 121% 128% 125% 124%/125% 120% 127% 125%;
-  position: relative;
+  position: ${(props) => props.selected ? "absolute" : "relative"};
   transition: 0.2s opacity ease-in-out, 0.2s display ease-in-out .2s;
-  width: ${(props) => props.selected ? "500px" : "300px"};
-  height: ${(props) => props.selected ? "500px" : "300px"};
+  width: ${(props) => props.selected ? "70vh" : "300px"};
+  height: ${(props) => props.selected ? "70vh" : "300px"};
   float: left;
   display: flex;
   flex-direction: column;
@@ -21,6 +21,10 @@ const StyledBubble = styled.div`
   text-align: center;
   text-transform: capitalize;
   font-family: 'Poppins';
+  z-index: ${(props) => props.selected ? "1" : "0"};
+  margin: ${(props) => props.selected ? "0 auto" : "0"};
+  left: 0;
+  right: 0;
 `
 const StyledBubbleAngry = styled(StyledBubble)`
   background: ${props => props.theme.angryPrimary};
