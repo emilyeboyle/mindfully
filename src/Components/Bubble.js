@@ -38,8 +38,6 @@ const StyledBubbleAfraid = styled(StyledBubble)`
   background: ${props => props.theme.afraidPrimary};
 `
 const StyledLink = styled.a`
-//STYLE YOUR LINK HERE!
-//(The color change is just an example)
   color: black;
   background-color: ${props => props.theme.brandPrimary};
   border-radius: 38.5px;
