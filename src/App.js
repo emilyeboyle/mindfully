@@ -10,10 +10,7 @@ const BubbleContainer = styled.div`
   text-align: center;
 `
 
-class App extends Component {
-  state = {
-    message:''
-  }
+
 
   componentDidMount() {
     axios.get('https://mindfully.now.sh/api/index.js',{
