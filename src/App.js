@@ -9,8 +9,6 @@ const BubbleContainer = styled.div`
   width: 100%;
   text-align: center;
 `
-const StyledLink = styled.a`
-`
 
 class App extends Component {
   state = {

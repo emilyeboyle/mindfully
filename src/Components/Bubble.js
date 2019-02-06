@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import angry from '../static/images/bunnies/angry/angry.png';
+import joyful from '../static/images/bunnies/happy/happy.png';
+import sad from '../static/images/bunnies/sad/sad.png';
+import disgust from '../static/images/bunnies/disgust/disgust.png';
+import afraid from '../static/images/bunnies/scared/scared.png';
 
 const StyledBubble = styled.div`
   background: ${props => props.theme.brandPrimary};
@@ -37,6 +42,10 @@ const StyledLink = styled.a`
 //(The color change is just an example)
   color: white;
 `
+const StyledImg = styled.img`
+  height: 50%;
+  margin: 0 auto;
+`
 
 class Bubble extends Component {
   constructor(props) {
@@ -58,15 +67,15 @@ class Bubble extends Component {
   render() {
     const emotion = this.props.emotion;
     if (emotion === 'angry') {
-      return (<StyledBubbleAngry onClick={this.resize} selected={this.state.selected}><p>{this.props.emotion}</p><StyledLink>Continue</StyledLink></StyledBubbleAngry>);
+      return (<StyledBubbleAngry onClick={this.resize} selected={this.state.selected}><StyledImg src={angry}/><p>{this.props.emotion}</p><StyledLink>Continue</StyledLink></StyledBubbleAngry>);
     } else if (emotion === 'joyful') {
-      return (<StyledBubbleJoyful onClick={this.resize} selected={this.state.selected}><p>{this.props.emotion}</p></StyledBubbleJoyful>);
+      return (<StyledBubbleJoyful onClick={this.resize} selected={this.state.selected}><StyledImg src={joyful}/><p>{this.props.emotion}</p></StyledBubbleJoyful>);
     } else if (emotion === 'sad') {
-      return (<StyledBubbleSad onClick={this.resize} selected={this.state.selected}><p>{this.props.emotion}</p></StyledBubbleSad>);
+      return (<StyledBubbleSad onClick={this.resize} selected={this.state.selected}><StyledImg src={sad}/><p>{this.props.emotion}</p></StyledBubbleSad>);
     } else if (emotion === 'disgust') {
-      return (<StyledBubbleDisgust onClick={this.resize} selected={this.state.selected}><p>{this.props.emotion}</p></StyledBubbleDisgust>);
+      return (<StyledBubbleDisgust onClick={this.resize} selected={this.state.selected}><StyledImg src={disgust}/><p>{this.props.emotion}</p></StyledBubbleDisgust>);
     } else if (emotion === 'afraid') {
-      return (<StyledBubbleAfraid onClick={this.resize} selected={this.state.selected}><p>{this.props.emotion}</p></StyledBubbleAfraid>);
+      return (<StyledBubbleAfraid onClick={this.resize} selected={this.state.selected}><StyledImg src={afraid}/><p>{this.props.emotion}</p></StyledBubbleAfraid>);
     } else {
       return (<StyledBubble onClick={this.resize} selected={this.state.selected}><p>{this.props.emotion}</p></StyledBubble>);
     }
