@@ -7,7 +7,6 @@ import styled from 'styled-components';
 const BubbleContainer = styled.div`
   height: 100vh;
   width: 100%;
-  text-align: center;
 `
 
 class App extends Component {
