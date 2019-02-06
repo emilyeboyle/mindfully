@@ -35,7 +35,15 @@ const StyledBubbleAfraid = styled(StyledBubble)`
 const StyledLink = styled.a`
 //STYLE YOUR LINK HERE!
 //(The color change is just an example)
-  color: white;
+  color: black;
+  background-color: ${props => props.theme.brandPrimary};
+  border-radius: 38.5px;
+  padding: 14px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, .2);
+  font-size: 20px;
+  width: 130px;
+  //28px of padding left and right
+
 `
 
 class Bubble extends Component {
