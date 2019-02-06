@@ -33,9 +33,9 @@ const StyledBubbleAfraid = styled(StyledBubble)`
   background: ${props => props.theme.afraidPrimary};
 `
 const StyledLink = styled.a`
-  position: fixed;
-  height: 50px;
-  background: red;
+//STYLE YOUR LINK HERE!
+//(The color change is just an example)
+  color: white;
 `
 
 class Bubble extends Component {
@@ -58,7 +58,7 @@ class Bubble extends Component {
   render() {
     const emotion = this.props.emotion;
     if (emotion === 'angry') {
-      return (<StyledBubbleAngry onClick={this.resize} selected={this.state.selected}><p>{this.props.emotion}</p></StyledBubbleAngry>);
+      return (<StyledBubbleAngry onClick={this.resize} selected={this.state.selected}><p>{this.props.emotion}</p><StyledLink>Continue</StyledLink></StyledBubbleAngry>);
     } else if (emotion === 'joyful') {
       return (<StyledBubbleJoyful onClick={this.resize} selected={this.state.selected}><p>{this.props.emotion}</p></StyledBubbleJoyful>);
     } else if (emotion === 'sad') {
@@ -70,7 +70,6 @@ class Bubble extends Component {
     } else {
       return (<StyledBubble onClick={this.resize} selected={this.state.selected}><p>{this.props.emotion}</p></StyledBubble>);
     }
-    //<StyledLink>Continue</StyledLink>
   }
 }
 

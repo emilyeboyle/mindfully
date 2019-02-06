@@ -9,10 +9,13 @@ const BubbleContainer = styled.div`
   width: 100%;
   text-align: center;
 `
+const StyledLink = styled.a`
+`
 
 class App extends Component {
   state = {
-    message:''
+    message:'',
+    selected : false,
   }
 
   componentDidMount() {
@@ -34,7 +37,7 @@ class App extends Component {
         <p>{ this.state.message } </p>
         <BubbleContainer>
           <h2>How are you feeling right now?</h2>
-          <Bubble emotion="joyful"></Bubble>
+          <Bubble onClick={this.setSelected} emotion="joyful"></Bubble>
           <Bubble emotion="angry"></Bubble>
           <Bubble emotion="sad"></Bubble>
           <Bubble emotion="afraid"></Bubble>
