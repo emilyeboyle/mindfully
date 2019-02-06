@@ -1,3 +1,5 @@
+@import './colors.scss';
+
 .slider {
   display: flex;
   justify-content: center;
@@ -10,15 +12,44 @@
   border-radius: 1.25rem;
   touch-action: none;
   box-sizing: border-box;
+
+  &.happy {
+    .rc-slider-rail {
+      background: linear-gradient(to right, #FAF09A, $joyfulPrimary);
+    }
+  }
+
+  &.sad {
+    .rc-slider-rail {
+      background: linear-gradient(to right, #AECDE6, $sadPrimary);
+    }
+  }
+
+  &.afraid {
+    .rc-slider-rail {
+      background: linear-gradient(to right, #A794F8, $afraidPrimary);
+    }
+  }
+
+  &.angry {
+    .rc-slider-rail {
+      background: linear-gradient(to right, #FF9755, $angryPrimary);
+    }
+  }
+
+  &.disgust {
+    .rc-slider-rail {
+      background: linear-gradient(to right, #7FEFA3, $disgustPrimary);
+    }
+  }
 }
 
 .rc-slider-rail {
   position: absolute;
   width: 100%;
-  // background-color: black;
-  background: linear-gradient(to right, #FAF09A, #F8B032);
   height: 1.25rem;
   border-radius: 10px;
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
 }
 
 .rc-slider-track {
@@ -27,19 +58,11 @@
   height: 1.25rem;
   border-radius: 10px;
   background-color: transparent;
-  box-shadow: 0px 1px 2px rgba(0,0,0,0.2)
-}
-
-.rc-slider-step {
-  position: absolute;
-  width: 100%;
-  height: 4px;
-  background: transparent;
 }
 
 .rc-slider-handle {
   position: absolute;
-  margin: -0.5rem 0 0 -0.25rem;
+  margin: -0.4rem 0 0 -1rem;
   width: 2rem;
   height: 2rem;
   cursor: pointer;
@@ -53,12 +76,4 @@
   &:focus {
     outline: none;
   }
-}
-
-.rc-slider-mark {
-  position: absolute;
-  top: 18px;
-  left: 0;
-  width: 100%;
-  font-size: 12px;
 }

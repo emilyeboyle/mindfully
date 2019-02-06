@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.png';
 import axios from 'axios';
 import Bubble from './Components/Bubble';
-import EmotionSlider from './Components/EmotionSlider';
 import styled from 'styled-components';
 import './styles/styles.scss';
 
@@ -37,15 +36,14 @@ class App extends Component {
     return (
       <div className="App">
         <p>{ this.state.message } </p>
-        {/*<BubbleContainer>
+        <BubbleContainer>
           <h2>How are you feeling right now?</h2>
           <Bubble onClick={this.setSelected} emotion="joyful"></Bubble>
           <Bubble emotion="angry"></Bubble>
           <Bubble emotion="sad"></Bubble>
           <Bubble emotion="afraid"></Bubble>
           <Bubble emotion="disgust"></Bubble>
-        </BubbleContainer>*/}
-        <EmotionSlider/>
+        </BubbleContainer>
       </div>
     );
   }
