@@ -25,6 +25,7 @@ const StyledBubble = styled.div`
   margin: ${(props) => props.selected ? "0 auto" : "0"};
   left: 0;
   right: 0;
+  cursor: pointer;
 `
 const StyledBubbleAngry = styled(StyledBubble)`
   background: ${props => props.theme.angryPrimary};
@@ -40,17 +41,6 @@ const StyledBubbleDisgust = styled(StyledBubble)`
 `
 const StyledBubbleAfraid = styled(StyledBubble)`
   background: ${props => props.theme.afraidPrimary};
-`
-const StyledLink = styled.a`
-  color: black;
-  background-color: ${props => props.theme.brandPrimary};
-  border-radius: 38.5px;
-  padding: 14px;
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, .2);
-  font-size: 20px;
-  width: 130px;
-  //28px of padding left and right
-
 `
 const StyledImg = styled.img`
   height: 50%;
@@ -77,7 +67,7 @@ class Bubble extends Component {
   render() {
     const emotion = this.props.emotion;
     if (emotion === 'angry') {
-      return (<StyledBubbleAngry onClick={this.resize} selected={this.state.selected}><StyledImg src={angry}/><p>{this.props.emotion}</p><StyledLink>Continue</StyledLink></StyledBubbleAngry>);
+      return (<StyledBubbleAngry onClick={this.resize} selected={this.state.selected}><StyledImg src={angry}/><p>{this.props.emotion}</p></StyledBubbleAngry>);
     } else if (emotion === 'joyful') {
       return (<StyledBubbleJoyful onClick={this.resize} selected={this.state.selected}><StyledImg src={joyful}/><p>{this.props.emotion}</p></StyledBubbleJoyful>);
     } else if (emotion === 'sad') {
