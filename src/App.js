@@ -4,6 +4,7 @@ import axios from 'axios';
 import Bubble from './Components/Bubble';
 import Button from './Components/Button';
 import styled from 'styled-components';
+import './styles/styles.scss';
 
 const StyledApp = styled.div`
   background: ${props => props.theme.background};

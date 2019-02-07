@@ -1,0 +1,77 @@
+@import './colors.scss';
+
+.slider {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.rc-slider {
+  position: relative;
+  height: 1.25rem;
+  border-radius: 1.25rem;
+  touch-action: none;
+  box-sizing: border-box;
+
+  &.happy {
+    .rc-slider-rail {
+      background: linear-gradient(to right, #FAF09A, $joyfulPrimary);
+    }
+  }
+
+  &.sad {
+    .rc-slider-rail {
+      background: linear-gradient(to right, #AECDE6, $sadPrimary);
+    }
+  }
+
+  &.afraid {
+    .rc-slider-rail {
+      background: linear-gradient(to right, #A794F8, $afraidPrimary);
+    }
+  }
+
+  &.angry {
+    .rc-slider-rail {
+      background: linear-gradient(to right, #FF9755, $angryPrimary);
+    }
+  }
+
+  &.disgust {
+    .rc-slider-rail {
+      background: linear-gradient(to right, #7FEFA3, $disgustPrimary);
+    }
+  }
+}
+
+.rc-slider-rail, .rc-slider-track {
+  position: absolute;
+  height: 1.25rem;
+  border-radius: 10px;
+}
+
+.rc-slider-rail {
+  width: 100%;
+  box-shadow: 0px 1px 2px $shadow;
+}
+
+.rc-slider-track {
+  left: 0;
+}
+
+.rc-slider-handle {
+  position: absolute;
+  margin: -0.4rem 0 0 -1rem;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  cursor: grab;
+  cursor: -webkit-grab;
+  border-radius: 50%;
+  box-shadow: 0px 2px 5px $shadow;
+  background-color: #fff;
+  touch-action: pan-x;
+
+  &:focus {
+    outline: none;
+  }
+}
