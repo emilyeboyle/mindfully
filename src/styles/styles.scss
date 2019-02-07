@@ -1,14 +1,13 @@
 @import './colors.scss';
 
 .slider {
-  display: flex;
-  justify-content: center;
+  width: 85%;
+  margin: 0 auto;
 }
 
 .rc-slider {
   position: relative;
   height: 1.25rem;
-  width: 85%;
   border-radius: 1.25rem;
   touch-action: none;
   box-sizing: border-box;
@@ -44,20 +43,19 @@
   }
 }
 
-.rc-slider-rail {
+.rc-slider-rail, .rc-slider-track {
   position: absolute;
-  width: 100%;
   height: 1.25rem;
   border-radius: 10px;
-  box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+}
+
+.rc-slider-rail {
+  width: 100%;
+  box-shadow: 0px 1px 2px $shadow;
 }
 
 .rc-slider-track {
-  position: absolute;
   left: 0;
-  height: 1.25rem;
-  border-radius: 10px;
-  background-color: transparent;
 }
 
 .rc-slider-handle {
@@ -66,10 +64,10 @@
   width: 2rem;
   height: 2rem;
   cursor: pointer;
-  cursor: -webkit-grab;
   cursor: grab;
+  cursor: -webkit-grab;
   border-radius: 50%;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 5px $shadow;
   background-color: #fff;
   touch-action: pan-x;
 
