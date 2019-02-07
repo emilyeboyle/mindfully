@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import {ThemeProvider} from 'styled-components';
 
 const styleGuide = {
+  background: '#F5F6F6',
   brandPrimary : '#90D2D5',
   brandSecondary: '#C8FFFF',
   angryPrimary: '#E93054',

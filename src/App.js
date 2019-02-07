@@ -2,15 +2,20 @@ import React, { Component } from 'react';
 import logo from './logo.png';
 import axios from 'axios';
 import Bubble from './Components/Bubble';
+import Button from './Components/Button';
 import styled from 'styled-components';
 import './styles/styles.scss';
 
-const BubbleContainer = styled.div`
+const StyledApp = styled.div`
+  background: ${props => props.theme.background};
+  position: fixed;
   height: 100vh;
   width: 100%;
-  text-align: center;
 `
-const StyledLink = styled.a`
+
+const BubbleContainer = styled.div`
+  text-align: center;
+  overflow: auto;
 `
 
 class App extends Component {
@@ -34,7 +39,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <StyledApp className="App">
         <p>{ this.state.message } </p>
         <BubbleContainer>
           <h2>How are you feeling right now?</h2>
@@ -44,7 +49,8 @@ class App extends Component {
           <Bubble emotion="afraid"></Bubble>
           <Bubble emotion="disgust"></Bubble>
         </BubbleContainer>
-      </div>
+        <Button text='Continue'></Button>
+      </StyledApp>
     );
   }
 }
