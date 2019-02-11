@@ -13,10 +13,10 @@ h2 {
 
 @font-face {
   font-family: Poppins;
-  src: url(/static/fonts/Poppins-Regular.ttf);
+  src: url(/src/static/fonts/Poppins-Regular.ttf);
 }
 
 @font-face {
   font-family: Poppins Extra Light;
-  src: url(/static/fonts/Poppins-ExtraLight.ttf);
+  src: url(/src/static/fonts/Poppins-ExtraLight.ttf);
 }

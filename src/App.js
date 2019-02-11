@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.png';
-import axios from 'axios';
+//import axios from 'axios';
 import Bubble from './Components/Bubble';
 import Button from './Components/Button';
 import styled from 'styled-components';
@@ -19,23 +18,40 @@ const BubbleContainer = styled.div`
 `
 
 class App extends Component {
-  state = {
-    message:'',
-    selected : false,
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      selected : false,
+      selectedEmotion : '',
+      message : '',
+    };
   }
 
+  handleClick(emotion, evt) {
+    console.log(emotion);
+    console.log(evt);
+    if (!this.state.selected) {
+      this.setState({ selected: true, selectedEmotion: emotion });
+    }
+    //} else {
+      //this.setState({ selected: false, selectedEmotion: '' });
+    //}
+  }
+
+
   componentDidMount() {
-    axios.get('https://mindfully.now.sh/api/index.js',{
-      method: 'GET',
-      mode: 'no-cors',
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      }
-    })
-      .then(res => {
-        const message = res.data;
-        this.setState({ message });
-      })
+    //axios.get('https://mindfully.now.sh/api/index.js',{
+    //method: 'GET',
+    //mode: 'no-cors',
+    //headers: {
+    //'Access-Control-Allow-Origin': '*',
+    //}
+    //})
+    //.then(res => {
+    //const message = res.data;
+    //this.setState({ message });
+    //})
   }
   render() {
     return (
@@ -43,13 +59,13 @@ class App extends Component {
         <p>{ this.state.message } </p>
         <BubbleContainer>
           <h2>How are you feeling right now?</h2>
-          <Bubble onClick={this.setSelected} emotion="joyful"></Bubble>
-          <Bubble emotion="angry"></Bubble>
-          <Bubble emotion="sad"></Bubble>
-          <Bubble emotion="afraid"></Bubble>
-          <Bubble emotion="disgust"></Bubble>
+          <Bubble selected= {this.state.selectedEmotion} handleClick={this.handleClick} emotion="joyful"></Bubble>
+          <Bubble selected= {this.state.selectedEmotion} handleClick={this.handleClick} emotion="angry"></Bubble>
+          <Bubble selected= {this.state.selectedEmotion} handleClick={this.handleClick} emotion="sad"></Bubble>
+          <Bubble selected= {this.state.selectedEmotion} handleClick={this.handleClick} emotion="afraid"></Bubble>
+          <Bubble selected= {this.state.selectedEmotion} handleClick={this.handleClick} emotion="disgust"></Bubble>
         </BubbleContainer>
-        <Button text='Continue'></Button>
+        <Button show={this.state.selected} text='Continue'></Button>
       </StyledApp>
     );
   }

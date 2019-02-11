@@ -11,7 +11,6 @@ const StyledBubble = styled.div`
   background: ${props => props.theme.brandPrimary};
   border-radius: 121% 128% 125% 124%/125% 120% 127% 125%;
   position: ${(props) => props.selected ? "absolute" : "relative"};
-  transition: 0.2s opacity ease-in-out, 0.2s display ease-in-out .2s;
   width: ${(props) => props.selected ? "70vh" : "300px"};
   height: ${(props) => props.selected ? "70vh" : "300px"};
   float: left;
@@ -53,38 +52,69 @@ class Bubble extends Component {
     this.state = {
       selected : false,
     };
-    this.resize = this.resize.bind(this);
   }
 
-  resize() {
-    const isSelected = !this.state.selected;
-    this.setState({
-      selected : isSelected
-    })
-  }
 
-  //conditional rendering based on prop
-  render() {
+    renderBubble() {
     const emotion = this.props.emotion;
     if (emotion === 'angry') {
-      return (<StyledBubbleAngry onClick={this.resize} selected={this.state.selected}><StyledImg src={angry}/><p>{this.props.emotion}</p></StyledBubbleAngry>);
+      return (
+        <StyledBubbleAngry
+          onClick={(evt) => {this.props.handleClick(this.props.emotion, evt)}}
+          selected={this.props.selected === this.props.emotion}>
+          <StyledImg src={angry}/>
+          <p>{this.props.emotion}</p>
+        </StyledBubbleAngry>
+      );
     } else if (emotion === 'joyful') {
-      return (<StyledBubbleJoyful onClick={this.resize} selected={this.state.selected}><StyledImg src={joyful}/><p>{this.props.emotion}</p></StyledBubbleJoyful>);
+      return (
+        <StyledBubbleJoyful onClick={() => {this.props.handleClick(this.props.emotion)}}
+          selected={this.props.selected === this.props.emotion}>
+          <StyledImg src={joyful}/>
+          <p>{this.props.emotion}</p>
+        </StyledBubbleJoyful>);
     } else if (emotion === 'sad') {
-      return (<StyledBubbleSad onClick={this.resize} selected={this.state.selected}><StyledImg src={sad}/><p>{this.props.emotion}</p></StyledBubbleSad>);
-    } else if (emotion === 'disgust') {
-      return (<StyledBubbleDisgust onClick={this.resize} selected={this.state.selected}><StyledImg src={disgust}/><p>{this.props.emotion}</p></StyledBubbleDisgust>);
-    } else if (emotion === 'afraid') {
-      return (<StyledBubbleAfraid onClick={this.resize} selected={this.state.selected}><StyledImg src={afraid}/><p>{this.props.emotion}</p></StyledBubbleAfraid>);
-    } else {
-      return (<StyledBubble onClick={this.resize} selected={this.state.selected}><p>{this.props.emotion}</p></StyledBubble>);
+      return (
+        <StyledBubbleSad onClick={() => {this.props.handleClick(this.props.emotion)}}
+          selected={this.props.selected === this.props.emotion}>
+          <StyledImg src={sad}/>
+          <p>{this.props.emotion}</p>
+        </StyledBubbleSad>);
+        } else if (emotion === 'disgust') {
+          return (
+            <StyledBubbleDisgust onClick={() => {this.props.handleClick(this.props.emotion)}}
+              selected={this.props.selected === this.props.emotion}>
+              <StyledImg src={disgust}/>
+              <p>{this.props.emotion}</p>
+            </StyledBubbleDisgust>);
+            } else if (emotion === 'afraid') {
+              return (
+                <StyledBubbleAfraid onClick={() => {this.props.handleClick(this.props.emotion)}}
+                  selected={this.props.selected === this.props.emotion}>
+                  <StyledImg src={afraid}/>
+                  <p>{this.props.emotion}</p>
+                </StyledBubbleAfraid>);
+            } else {
+              return (
+                <StyledBubble onClick={() => {this.props.handleClick(this.props.emotion)}}
+                  selected={this.props.selected === this.props.emotion}>
+                  <p>{this.props.emotion}</p>
+                </StyledBubble>);
+            }
     }
-  }
-}
 
-Bubble.propTypes = {
-  emotion: PropTypes.oneOf(['angry', 'joyful', 'sad', 'disgust', 'afraid'])
-}
+  render() {
+    return (
+      <div>
+      { this.renderBubble() }
+    </div>
+    )
+        }
+    }
+
+    Bubble.propTypes = {
+      emotion: PropTypes.oneOf(['angry', 'joyful', 'sad', 'disgust', 'afraid'])
+    }
 
 
-export default Bubble;
+    export default Bubble;

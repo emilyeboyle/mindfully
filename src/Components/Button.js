@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const StyledLink = styled.a`
+  display: ${(props) => props.selected ? "block" : "none"};
   color: black;
   background-color: ${props => props.theme.brandPrimary};
   border-radius: 38.5px;
@@ -14,11 +15,6 @@ const StyledLink = styled.a`
 `
 
 class Button extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-
   render() {
     return(
       <StyledLink>
