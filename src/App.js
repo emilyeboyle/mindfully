@@ -91,7 +91,7 @@ class App extends Component {
             emotion="disgust">
           </Bubble>
         </BubbleContainer>
-        <Button show={this.state.selected} text='Continue'></Button>
+        <Button show={this.state.selected} emotion={this.state.selectedEmotion} text='Continue'></Button>
       </StyledApp>
     );
   }
