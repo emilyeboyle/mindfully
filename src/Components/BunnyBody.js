@@ -8,6 +8,12 @@ const StyledEllipse = styled.ellipse`
   opacity: 0.5;
 `
 
+const StyledBunnyContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 345px;
+`
+
 class BunnyBody extends Component {
   render() {
     const emotion = this.props.emotion;
@@ -16,14 +22,15 @@ class BunnyBody extends Component {
     const themeColor = theme[emotionString];
 
     return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 239 223.86"
-        width="345px"
-      >
-        <g id="Layer_2" data-name="Layer 2">
-          <g id="Layer_1-2" data-name="Layer 1">
-            <path className="cls-1" d="M134.22,50.51s9-46,21.7-48.83C172.46-2,166.9,51,154.5,60.51"/>
+      <StyledBunnyContainer>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 239 223.86"
+          width="345px"
+        >
+          <g id="Layer_2" data-name="Layer 2">
+            <g id="Layer_1-2" data-name="Layer 1">
+              <path className="cls-1" d="M134.22,50.51s9-46,21.7-48.83C172.46-2,166.9,51,154.5,60.51"/>
               <StyledEllipse color={themeColor} cx="119.5" cy="198.51" rx="119.5" ry="25.35"/>
               <path className="cls-3" d="M72.5,178.51s-29.34,18,15,13.85"/>
               <path className="cls-3" d="M167,180.51s29.34,18-15,13.85"/>
@@ -45,6 +52,7 @@ class BunnyBody extends Component {
             </g>
           </g>
         </svg>
+      </StyledBunnyContainer>
     );
   }
 }
