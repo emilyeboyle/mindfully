@@ -5,6 +5,7 @@ import Button from './Components/Button';
 import styled from 'styled-components';
 import './styles/styles.scss';
 import { withTheme } from 'styled-components'
+import Link from "next/link";
 
 const StyledApp = styled.div`
   background: ${props => props.theme.background};
@@ -91,7 +92,9 @@ class App extends Component {
             emotion="disgust">
           </Bubble>
         </BubbleContainer>
-        <Button show={this.state.selected} emotion={this.state.selectedEmotion} text='Continue'></Button>
+        <Link href={'/emotion'}>
+          <Button show={this.state.selected} emotion={this.state.selectedEmotion} text='Continue'></Button>
+        </Link>
       </StyledApp>
     );
   }

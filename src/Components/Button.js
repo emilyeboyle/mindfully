@@ -30,7 +30,7 @@ class Button extends Component {
     const themeColor = theme[emotionString];
     return(
       <StyledLink color={themeColor} emotion= {this.props.selectedEmotion} show={this.props.show}>
-        {this.props.text}
+          {this.props.text}
       </StyledLink>
     );
   }
