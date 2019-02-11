@@ -5,6 +5,7 @@ import Button from './Components/Button';
 import ItsOk from './ItsOk.js';
 import styled from 'styled-components';
 import './styles/styles.scss';
+import './styles/bunnyBodyStyles.scss'
 import { withTheme } from 'styled-components'
 
 const StyledApp = styled.div`
@@ -58,6 +59,7 @@ class App extends Component {
   render() {
     return (
       <StyledApp className="App">
+        <ItsOk emotion="joyful"/>
         {/*<p>{ this.state.message } </p>
         <BubbleContainer>
           <h2>How are you feeling right now?</h2>
@@ -92,7 +94,7 @@ class App extends Component {
             emotion="disgust">
           </Bubble>
         </BubbleContainer>
-        <Button show={this.state.selected} emotion={this.state.selectedEmotion} text='Continue'></Button>
+        <Button show={this.state.selected} emotion={this.state.selectedEmotion} text='Continue'></Button>*/}
       </StyledApp>
     );
   }

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
+import { withTheme } from 'styled-components'
 import PropTypes from 'prop-types';
 import Button from './Components/Button';
 import BunnyBody from './static/images/bunnies/BunnyBody';
 
 const StyledHeader = styled.h1`
-  color: ${props => props.theme.brandPrimary};
+  color: ${props => props.color};
   font-family: 'Poppins';
   font-size: 4.25rem;
   font-weight: 600;
@@ -19,10 +20,14 @@ const StyledText = styled.p`
 
 class ItsOk extends Component {
   render() {
+    const emotion = this.props.emotion;
+    const emotionString = (emotion + 'Primary').toString();
+    const theme = this.props.theme;
+    const themeColor = theme[emotionString];
     return (
       <div>
-        <BunnyBody/>
-        <StyledHeader>
+        <BunnyBody emotion={emotion}/>
+        <StyledHeader color={themeColor}>
           It's great that you feel peaceful.
         </StyledHeader>
         <StyledText>
@@ -35,4 +40,8 @@ class ItsOk extends Component {
   }
 }
 
-export default ItsOk;
+ItsOk.propTypes = {
+  emotion: PropTypes.oneOf(['angry', 'joyful', 'sad', 'disgust', 'afraid'])
+}
+
+export default withTheme(ItsOk);

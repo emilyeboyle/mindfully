@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { withTheme } from 'styled-components'
 import PropTypes from 'prop-types';
 
 const StyledEllipse = styled.ellipse`
-  fill: ${props => props.theme.brandPrimary};
+  fill:  ${props => props.color};
   opacity: 0.5;
-
 `
 
 class BunnyBody extends Component {
   render() {
+    const emotion = this.props.emotion;
+    const emotionString = (emotion + 'Primary').toString();
+    const theme = this.props.theme;
+    const themeColor = theme[emotionString];
+
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +24,7 @@ class BunnyBody extends Component {
         <g id="Layer_2" data-name="Layer 2">
           <g id="Layer_1-2" data-name="Layer 1">
             <path className="cls-1" d="M134.22,50.51s9-46,21.7-48.83C172.46-2,166.9,51,154.5,60.51"/>
-              <StyledEllipse cx="119.5" cy="198.51" rx="119.5" ry="25.35"/>
+              <StyledEllipse color={themeColor} cx="119.5" cy="198.51" rx="119.5" ry="25.35"/>
               <path className="cls-3" d="M72.5,178.51s-29.34,18,15,13.85"/>
               <path className="cls-3" d="M167,180.51s29.34,18-15,13.85"/>
               <path className="cls-1" d="M100.5,50.51s-9-46-21.7-48.83C62.26-2,70.1,51,82.5,60.51"/>
@@ -48,4 +53,4 @@ BunnyBody.propTypes = {
   emotion: PropTypes.oneOf(['angry', 'joyful', 'sad', 'disgust', 'afraid'])
 }
 
-export default BunnyBody;
+export default withTheme(BunnyBody);
