@@ -21,6 +21,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.state = {
       selected : false,
       selectedEmotion : '',
@@ -29,14 +30,19 @@ class App extends Component {
   }
 
   handleClick(emotion, evt) {
-    console.log(emotion);
-    console.log(evt);
     if (!this.state.selected) {
       this.setState({ selected: true, selectedEmotion: emotion });
     }
     //} else {
       //this.setState({ selected: false, selectedEmotion: '' });
     //}
+  }
+
+  handleClose() {
+    console.log('close');
+    if (this.state.selected) {
+      this.setState({ selected: false, selectedEmotion: '' });
+    }
   }
 
 
@@ -59,11 +65,11 @@ class App extends Component {
         <p>{ this.state.message } </p>
         <BubbleContainer>
           <h2>How are you feeling right now?</h2>
-          <Bubble selected= {this.state.selectedEmotion} handleClick={this.handleClick} emotion="joyful"></Bubble>
-          <Bubble selected= {this.state.selectedEmotion} handleClick={this.handleClick} emotion="angry"></Bubble>
-          <Bubble selected= {this.state.selectedEmotion} handleClick={this.handleClick} emotion="sad"></Bubble>
-          <Bubble selected= {this.state.selectedEmotion} handleClick={this.handleClick} emotion="afraid"></Bubble>
-          <Bubble selected= {this.state.selectedEmotion} handleClick={this.handleClick} emotion="disgust"></Bubble>
+          <Bubble selected= {this.state.selectedEmotion} handleClose={this.handleClose} handleClick={this.handleClick} emotion="joyful"></Bubble>
+          <Bubble selected= {this.state.selectedEmotion} handleClose={this.handleClose} handleClick={this.handleClick} emotion="angry"></Bubble>
+          <Bubble selected= {this.state.selectedEmotion} handleClose={this.handleClose} handleClick={this.handleClick} emotion="sad"></Bubble>
+          <Bubble selected= {this.state.selectedEmotion} handleClose={this.handleClose} handleClick={this.handleClick} emotion="afraid"></Bubble>
+          <Bubble selected= {this.state.selectedEmotion} handleClose={this.handleClose} handleClick={this.handleClick} emotion="disgust"></Bubble>
         </BubbleContainer>
         <Button show={this.state.selected} text='Continue'></Button>
       </StyledApp>
