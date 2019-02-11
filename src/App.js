@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 //import axios from 'axios';
 import Bubble from './Components/Bubble';
 import Button from './Components/Button';
+import ItsOk from './ItsOk.js';
 import styled from 'styled-components';
 import './styles/styles.scss';
 import { withTheme } from 'styled-components'
@@ -57,7 +58,7 @@ class App extends Component {
   render() {
     return (
       <StyledApp className="App">
-        <p>{ this.state.message } </p>
+        {/*<p>{ this.state.message } </p>
         <BubbleContainer>
           <h2>How are you feeling right now?</h2>
           <Bubble
