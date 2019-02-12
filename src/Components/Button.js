@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components'
 
-const StyledLink = styled.a`
+const StyledLink = styled.p`
   display: ${(props) => props.show ? "block" : "none"};
   background: ${props => props.color};
   position: absolute;
