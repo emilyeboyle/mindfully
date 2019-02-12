@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components'
 
-const StyledLink = styled.a`
+const StyledLink = styled.p`
   display: ${(props) => props.show ? "block" : "none"};
   background: ${props => props.color};
   position: absolute;
@@ -30,7 +30,7 @@ class Button extends Component {
     const themeColor = theme[emotionString];
     return(
       <StyledLink color={themeColor} emotion= {this.props.selectedEmotion} show={this.props.show}>
-        {this.props.text}
+          {this.props.text}
       </StyledLink>
     );
   }

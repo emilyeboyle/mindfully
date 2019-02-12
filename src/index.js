@@ -6,6 +6,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {ThemeProvider} from 'styled-components';
+import { createBrowserNavigation } from 'navi'
+import pages from './pages'
 
 const styleGuide = {
   background: '#F5F6F6',
@@ -23,10 +25,21 @@ const styleGuide = {
   afraidSecondary: '#626DAA'
 }
 
-ReactDOM.render(
+async function main() {
+  let navigation = createBrowserNavigation({ pages })
+
+  // Wait until async content is ready.
+  await navigation.steady()
+
+  ReactDOM.render(
     <ThemeProvider theme={styleGuide}>
-      <App/>
-    </ThemeProvider>,document.getElementById('root'));
+      <App navigation={navigation}/>
+    </ThemeProvider>,document.getElementById('root')
+  );
+}
+
+//Start the app
+main()
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
