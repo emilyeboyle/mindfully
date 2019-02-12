@@ -39,7 +39,7 @@ class App extends Component {
         <StyledApp className="App">
           <p>{ this.state.message } </p>
           <NavNotFoundBoundary render={renderNotFound}>
-              <NavContent />
+              <NavContent/>
             </NavNotFoundBoundary>
         </StyledApp>
       </NavProvider>

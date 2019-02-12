@@ -19,6 +19,7 @@ const StyledBubble = styled.div`
   margin: ${(props) => props.selected ? "0 auto" : "0"};
   left: 0;
   right: 0;
+  top: ${(props) => props.selected ? "100px" : "0"};
   cursor: pointer;
 `
 const StyledImg = styled.img`

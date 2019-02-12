@@ -16,10 +16,10 @@ export default createSwitch({
       getContent: () => import('./SubEmotion')
     }),
 
-    // Create the about route
-    '/about': createPage({
-      title: "About",
-      getContent: () => import('./About')
+    // Create the itsok route
+    '/:emotion/itsOkay': createPage({
+      title: "It's Okay",
+      getContent: () => import('./ItsOk')
     }),
   }
 })
