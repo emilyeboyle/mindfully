@@ -10,7 +10,7 @@ export default {
     joyful: ['compassionate', 'peaceful', 'proud', 'excited', 'amused', 'relieved', 'wonder', 'ecstatic'],
     angry: ['annoyed', 'frustrated', 'furious', 'exasperated', 'argumentative', 'vengeful'],
     afraid: ['nervous', 'dread', 'panicked', 'terrified', 'anxious', 'desperate'],
-    disgust: ['dislike', 'repulsed', 'distate', 'loathing', 'aversion', 'revulsed'],
+    disgust: ['dislike', 'repulsed', 'distaste', 'loathing', 'aversion', 'revulsed'],
     sad: ['disappointed', 'discouraged', 'miserable', 'sorrowful', 'hopeless', 'melancholy']
   }
 }

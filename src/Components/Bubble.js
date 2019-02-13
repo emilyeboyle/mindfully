@@ -48,8 +48,9 @@ class Bubble extends Component {
 
 
   render() {
+    const baseEmotion = this.props.baseEmotion;
     const emotion = this.props.emotion;
-    const emotionString = (emotion + 'Primary').toString();
+    const emotionString = (baseEmotion + 'Primary').toString();
     const theme = this.props.theme;
     const themeColor = theme[emotionString];
     return (
@@ -57,7 +58,7 @@ class Bubble extends Component {
         onClick={(evt) => {this.props.handleClick(emotion, evt)}}
         color={themeColor}
         selected={this.props.selected === emotion}>
-        <StyledImg src={require(`../static/images/bunnies/${emotion}/${emotion}.png`)}/>
+        <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
         <p>{emotion}</p>
         <StyledX onClick={() => {this.props.handleClose()}}
           selected={this.props.selected === emotion}>
@@ -70,9 +71,9 @@ class Bubble extends Component {
 
 }
 
-Bubble.propTypes = {
-  emotion: PropTypes.oneOf(['angry', 'joyful', 'sad', 'disgust', 'afraid'])
-}
+//Bubble.propTypes = {
+  //emotion: PropTypes.oneOf(['angry', 'joyful', 'sad', 'disgust', 'afraid'])
+//}
 
 
 export default withTheme(Bubble);

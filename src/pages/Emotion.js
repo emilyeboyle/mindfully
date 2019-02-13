@@ -41,31 +41,36 @@ class Emotion extends Component {
             selected= {this.state.selectedEmotion}
             handleClose={this.handleClose}
             handleClick={this.handleClick}
-            emotion="joyful">
+            emotion="joyful"
+            baseEmotion="joyful">
           </Bubble>
           <Bubble
             selected= {this.state.selectedEmotion}
             handleClose={this.handleClose}
             handleClick={this.handleClick}
-            emotion="angry">
+            emotion="angry"
+            baseEmotion="angry">
           </Bubble>
           <Bubble
             selected= {this.state.selectedEmotion}
             handleClose={this.handleClose}
             handleClick={this.handleClick}
-            emotion="sad">
+            emotion="sad"
+            baseEmotion="sad">
           </Bubble>
           <Bubble
             selected= {this.state.selectedEmotion}
             handleClose={this.handleClose}
             handleClick={this.handleClick}
-            emotion="afraid">
+            emotion="afraid"
+            baseEmotion="afraid">
           </Bubble>
           <Bubble
             selected= {this.state.selectedEmotion}
             handleClose={this.handleClose}
             handleClick={this.handleClick}
-            emotion="disgust">
+            emotion="disgust"
+            baseEmotion="disgust">
           </Bubble>
         </BubbleContainer>
         <div>{this.props.selectedEmotion}</div>

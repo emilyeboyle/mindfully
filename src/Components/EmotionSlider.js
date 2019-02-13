@@ -32,8 +32,8 @@ class EmotionSlider extends Component {
   }
 }
 
-//EmotionSlider.propTypes = {
-  //emotion: PropTypes.string.isRequired
-//}
+EmotionSlider.propTypes = {
+  emotion: PropTypes.string.isRequired
+}
 
 export default EmotionSlider;

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-navi';
 import Bubble from '../Components/Bubble';
-import Button from '../Components/Button';
-import EmotionSlider from '../Components/EmotionSlider';
+import Button from '../Components/Button'; import EmotionSlider from '../Components/EmotionSlider';
 import styled from 'styled-components';
+import EmotionsList from '../constants/EmotionsList';
 
 const BubbleContainer = styled.div`
   text-align: center;
@@ -18,16 +18,26 @@ class SubEmotion extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleValue = this.handleValue.bind(this);
+    this.createEmotionList = this.createEmotionList.bind(this);
     //console.log(navigation);
     this.state = {
-      baseEmotion: 'angry',
+      baseEmotion: 'afraid',
       selected : false,
       selectedEmotion : '',
       message : '',
-      level: '3',
+      level: 'level2',
       value: ''
     };
   }
+
+  createEmotionList() {
+    const level = this.state.level;
+    const baseEmotion = this.state.baseEmotion;
+    let emotionLevel = EmotionsList[level];
+    let emotionList = emotionLevel[baseEmotion];
+    console.log(emotionList);
+  }
+
   handleClick(emotion, evt) {
     if (!this.state.selected) {
       this.setState({ selected: true, selectedEmotion: emotion });
@@ -47,46 +57,32 @@ class SubEmotion extends Component {
   }
 
   render() {
+    const level = this.state.level;
+    const baseEmotion = this.state.baseEmotion;
+    let emotionLevel = EmotionsList[level];
+    let emotionList = emotionLevel[baseEmotion];
+    console.log(emotionList);
     return (
       <div>
         <BubbleContainer>
           <h2>How are you feeling right now?</h2>
           <SliderContainer>
-          <EmotionSlider emotion={this.state.baseEmotion} value={this.handleValue}></EmotionSlider>
-        </SliderContainer>
-          <Bubble
-            selected= {this.state.selectedEmotion}
-            handleClose={this.handleClose}
-            handleClick={this.handleClick}
-            emotion="joyful">
-          </Bubble>
-          <Bubble
-            selected= {this.state.selectedEmotion}
-            handleClose={this.handleClose}
-            handleClick={this.handleClick}
-            emotion="angry">
-          </Bubble>
-          <Bubble
-            selected= {this.state.selectedEmotion}
-            handleClose={this.handleClose}
-            handleClick={this.handleClick}
-            emotion="sad">
-          </Bubble>
-          <Bubble
-            selected= {this.state.selectedEmotion}
-            handleClose={this.handleClose}
-            handleClick={this.handleClick}
-            emotion="afraid">
-          </Bubble>
-          <Bubble
-            selected= {this.state.selectedEmotion}
-            handleClose={this.handleClose}
-            handleClick={this.handleClick}
-            emotion="disgust">
-          </Bubble>
+            <EmotionSlider emotion={this.state.baseEmotion} value={this.handleValue}></EmotionSlider>
+          </SliderContainer>
+          {emotionList.map((emotion, i) => {
+            console.log("Entered");
+            return(<Bubble
+              key={i}
+              selected= {this.state.selectedEmotion}
+              handleClose={this.handleClose}
+              handleClick={this.handleClick}
+              emotion={emotion}
+              baseEmotion={this.state.baseEmotion}>
+            </Bubble>)
+          })}
         </BubbleContainer>
         <nav><NavLink href={`/${this.state.selectedEmotion}/itsOkay`}>
-        <Button show={this.state.selected} emotion={this.state.selectedEmotion} text='Continue'></Button>
+            <Button show={this.state.selected} emotion={this.state.baseEmotion} text='Continue'></Button>
         </NavLink></nav>
       </div>
     )
