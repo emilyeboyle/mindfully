@@ -20,6 +20,7 @@ const StyledLink = styled.p`
   font-size: 20px;
   width: 130px;
   cursor: pointer;
+  z-index: 1;
 `
 
 class Button extends Component {
