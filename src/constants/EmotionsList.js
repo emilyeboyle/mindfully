@@ -60,7 +60,7 @@ export default {
     disgust: [
       {emotion: 'dislike', min: 0, max: 50},
       {emotion: 'repulsed', min: 10, max: 90},
-      {emotion: 'distate', min: 10, max: 70},
+      {emotion: 'distaste', min: 10, max: 70},
       {emotion: 'loathing', min: 80, max: 100},
       {emotion: 'aversion', min: 10, max: 70},
       {emotion: 'revulsed', min: 70, max: 100}

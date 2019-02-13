@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
-import { withTheme } from 'styled-components'
 import PropTypes from 'prop-types';
-import Button from './Components/Button';
-import BunnyBody from './Components/BunnyBody';
-import ItsOkText from './constants/ItsOkText';
+import Button from '../Components/Button';
+import BunnyBody from '../Components/BunnyBody';
+import ItsOkText from '../constants/ItsOkText';
+import { withTheme } from 'styled-components'
 
 const StyledItsOkContainer = styled.div`
   display: flex;
