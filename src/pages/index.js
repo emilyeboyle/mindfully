@@ -17,9 +17,9 @@ export default createSwitch({
     }),
 
     // Create the itsok route
-    '/:emotion/itsOkay': createPage({
+    '/:emotion/:subemotion/itsOkay': createPage({
       title: "It's Okay",
-      getContent: () => import('./ItsOk')
+      getContent: () => import('./Okay')
     }),
   }
 })

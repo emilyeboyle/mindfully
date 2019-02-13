@@ -61,7 +61,6 @@ class SubEmotion extends Component {
     const baseEmotion = this.state.baseEmotion;
     let emotionLevel = EmotionsList[level];
     let emotionList = emotionLevel[baseEmotion];
-    console.log(emotionList);
     return (
       <div>
         <BubbleContainer>
@@ -70,7 +69,6 @@ class SubEmotion extends Component {
             <EmotionSlider emotion={this.state.baseEmotion} value={this.handleValue}></EmotionSlider>
           </SliderContainer>
           {emotionList.map((emotion, i) => {
-            console.log("Entered");
             return(<Bubble
               key={i}
               selected= {this.state.selectedEmotion}
@@ -81,7 +79,7 @@ class SubEmotion extends Component {
             </Bubble>)
           })}
         </BubbleContainer>
-        <nav><NavLink href={`/${this.state.selectedEmotion}/itsOkay`}>
+        <nav><NavLink href={`/${this.state.baseEmotion}/${this.state.selectedEmotion}/itsOkay`}>
             <Button show={this.state.selected} emotion={this.state.baseEmotion} text='Continue'></Button>
         </NavLink></nav>
       </div>
