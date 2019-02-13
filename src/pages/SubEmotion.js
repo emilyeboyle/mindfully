@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-navi';
-import Bubble from '../Components/Bubble';
-import Button from '../Components/Button'; import EmotionSlider from '../Components/EmotionSlider';
+import Bubble from '../Components/Bubble'; import Button from '../Components/Button'; import EmotionSlider from '../Components/EmotionSlider';
 import styled from 'styled-components';
 import EmotionsList from '../constants/EmotionsList';
 const BubbleContainer = styled.div`
@@ -18,7 +17,6 @@ class SubEmotion extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleValue = this.handleValue.bind(this);
     this.createEmotionList = this.createEmotionList.bind(this);
-    //console.log(navigation);
     this.state = {
       baseEmotion: 'afraid',
       selected : false,
@@ -44,14 +42,12 @@ class SubEmotion extends Component {
   }
 
   handleClose() {
-    console.log('close');
     if (this.state.selected) {
       this.setState({ selected: false, selectedEmotion: '' });
     }
   }
 
   handleValue(val) {
-    console.log(val);
     this.setState({ value: val });
   }
 
@@ -69,12 +65,17 @@ class SubEmotion extends Component {
           </SliderContainer>
           {emotionList.map((emotion, i) => {
             let emo = emotion["emotion"];
+            let maxVal = emotion["max"]
+            let minVal = emotion["min"];
             return(<Bubble
               key={i}
               selected= {this.state.selectedEmotion}
               handleClose={this.handleClose}
               handleClick={this.handleClick}
               emotion={emo}
+              maxVal={maxVal}
+              minVal={minVal}
+              shown={this.state.value >= minVal && this.state.value <= maxVal}
               baseEmotion={this.state.baseEmotion}>
             </Bubble>)
           })}

@@ -26,7 +26,6 @@ class Emotion extends Component {
   }
 
   handleClose() {
-    console.log('close');
     if (this.state.selected) {
       this.setState({ selected: false, selectedEmotion: '' });
     }
