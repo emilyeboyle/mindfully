@@ -19,12 +19,14 @@ const BubbleContainer = styled.div`
 `
 const StyledH2 = styled.h2`
   font-size: 2rem;
-  margin: 0.25rem 0 0 1rem;;
+  margin: 0.25rem 0 0 1rem;
+  text-align: center;
 `
 const StyledH2Light = styled.h2`
   font-size: 2rem;
   margin: 2rem 0 0 0;
   font-weight: 300;
+  text-align: center;
 
   .base-emotion {
     //need to make this change color based on emotion
@@ -102,6 +104,7 @@ class SubEmotion extends Component {
           {this.state.selected &&
               <TransparentDiv/>
           }
+          {/*TODO: change 'disgust' to 'disgusted'*/}
           <StyledH2Light>So you are feeling <span className="base-emotion">{baseEmotion}</span>.</StyledH2Light>
           <StyledH2>How {baseEmotion} are you?</StyledH2>
           <SliderContainer>

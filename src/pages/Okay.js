@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ItsOk from '../Components/ItsOk';
+import PageContainer from '../Components/PageContainer';
 
 class Okay extends Component {
   constructor(props) {
@@ -17,7 +18,9 @@ class Okay extends Component {
   render() {
     return (
       <div>
-        <ItsOk specificEmotion={this.state.subEmotion} emotion={this.state.baseEmotion}></ItsOk>
+        <PageContainer baseEmotion={this.state.baseEmotion}>
+          <ItsOk specificEmotion={this.state.subEmotion} emotion={this.state.baseEmotion}></ItsOk>
+        </PageContainer>
       </div>
     );
   }

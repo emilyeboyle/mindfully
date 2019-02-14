@@ -14,6 +14,7 @@ const StyledBubble = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-transform: capitalize;
   font-family: 'Poppins';
   z-index: ${(props) => props.selected ? "1" : "0"};
