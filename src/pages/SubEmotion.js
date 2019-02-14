@@ -56,7 +56,6 @@ class SubEmotion extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleValue = this.handleValue.bind(this);
     this.createEmotionList = this.createEmotionList.bind(this);
-    //console.log(navigation);
     this.state = {
       baseEmotion: 'afraid',
       selected : false,
@@ -82,14 +81,12 @@ class SubEmotion extends Component {
   }
 
   handleClose() {
-    console.log('close');
     if (this.state.selected) {
       this.setState({ selected: false, selectedEmotion: '' });
     }
   }
 
   handleValue(val) {
-    console.log(val);
     this.setState({ value: val });
   }
 
@@ -113,14 +110,18 @@ class SubEmotion extends Component {
           <BubbleContainer>
             {emotionList.map((emotion, i) => {
               let emo = emotion["emotion"];
+              let maxVal = emotion["max"]
+              let minVal = emotion["min"];
               return(<Bubble
                 key={i}
                 selected= {this.state.selectedEmotion}
                 handleClose={this.handleClose}
                 handleClick={this.handleClick}
                 emotion={emo}
-                baseEmotion={this.state.baseEmotion}
-                subEmotion={true}>
+                maxVal={maxVal}
+                minVal={minVal}
+                shown={this.state.value >= minVal && this.state.value <= maxVal}
+                baseEmotion={this.state.baseEmotion}>
               </Bubble>)
             })}
           </BubbleContainer>

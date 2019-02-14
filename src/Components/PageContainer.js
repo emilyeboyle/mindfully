@@ -5,7 +5,6 @@ import { withTheme } from 'styled-components';
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* text-align: center; */
   background: ${props => props.color};
   height: 100vh;
   margin-top: -1rem;

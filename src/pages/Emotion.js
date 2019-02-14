@@ -53,7 +53,6 @@ class Emotion extends Component {
   }
 
   handleClose() {
-    console.log('close');
     if (this.state.selected) {
       this.setState({ selected: false, selectedEmotion: '' });
     }
@@ -74,7 +73,8 @@ class Emotion extends Component {
               handleClick={this.handleClick}
               emotion="joyful"
               baseEmotion="joyful"
-              subEmotion={false}>
+              subEmotion={false}
+              shown={true}>
             </Bubble>
             <Bubble
               selected= {this.state.selectedEmotion}
@@ -82,7 +82,8 @@ class Emotion extends Component {
               handleClick={this.handleClick}
               emotion="angry"
               baseEmotion="angry"
-              subEmotion={false}>
+              subEmotion={false}
+              shown={true}>
             </Bubble>
             <Bubble
               selected= {this.state.selectedEmotion}
@@ -90,7 +91,8 @@ class Emotion extends Component {
               handleClick={this.handleClick}
               emotion="sad"
               baseEmotion="sad"
-              subEmotion={false}>
+              subEmotion={false}
+              shown={true}>
             </Bubble>
             <Bubble
               selected= {this.state.selectedEmotion}
@@ -98,7 +100,8 @@ class Emotion extends Component {
               handleClick={this.handleClick}
               emotion="afraid"
               baseEmotion="afraid"
-              subEmotion={false}>
+              subEmotion={false}
+              shown={true}>
             </Bubble>
             <Bubble
               selected= {this.state.selectedEmotion}
@@ -106,7 +109,8 @@ class Emotion extends Component {
               handleClick={this.handleClick}
               emotion="disgust"
               baseEmotion="disgust"
-              subEmotion={false}>
+              subEmotion={false}
+              shown={true}>
             </Bubble>
           </BubbleContainer>
         </Container>
