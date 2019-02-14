@@ -7,11 +7,6 @@ import PageContainer from '../Components/PageContainer';
 import styled from 'styled-components';
 import EmotionsList from '../constants/EmotionsList';
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-`
 const BubbleContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
