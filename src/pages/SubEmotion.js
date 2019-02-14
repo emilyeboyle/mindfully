@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-navi';
 import Bubble from '../Components/Bubble';
-import Button from '../Components/Button'; import EmotionSlider from '../Components/EmotionSlider';
+import Button from '../Components/Button';
+import EmotionSlider from '../Components/EmotionSlider';
+import PageContainer from '../Components/PageContainer';
 import styled from 'styled-components';
 import EmotionsList from '../constants/EmotionsList';
 
@@ -21,7 +23,7 @@ const StyledH2 = styled.h2`
 `
 const StyledH2Light = styled.h2`
   font-size: 2rem;
-  margin: 0;
+  margin: 2rem 0 0 0;
   font-weight: 300;
 
   .base-emotion {
@@ -96,7 +98,7 @@ class SubEmotion extends Component {
     let emotionList = emotionLevel[baseEmotion];
     return (
       <div>
-        <Container>
+        <PageContainer baseEmotion={baseEmotion}>
           {this.state.selected &&
               <TransparentDiv/>
           }
@@ -119,7 +121,7 @@ class SubEmotion extends Component {
               </Bubble>)
             })}
           </BubbleContainer>
-        </Container>
+        </PageContainer>
         <nav><NavLink href={`/${this.state.baseEmotion}/${this.state.selectedEmotion}/itsOkay`}>
             <Button show={this.state.selected} emotion={this.state.baseEmotion} text='Continue'></Button>
         </NavLink></nav>

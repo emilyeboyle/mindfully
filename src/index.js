@@ -15,14 +15,19 @@ const styleGuide = {
   brandSecondary: '#C8FFFF',
   angryPrimary: '#E93054',
   angrySecondary: '#E86282',
+  angryBackground: 'rgba(231, 48, 84, 0.1)',
   joyfulPrimary: '#F8B034',
   joyfulSecondary: '#F8C06D',
+  joyfulBackground: 'rgba(248, 176, 50, 0.1)',
   disgustPrimary: '#1CAA81',
   disgustSecondary: '#3EBB93',
+  disgustBackground: 'rgba(28, 170, 129, 0.1)',
   sadPrimary: '#075D91',
   sadSecondary: '#277DA8',
+  sadBackground: 'rgba(38, 124, 167, 0.1)',
   afraidPrimary: '#464FA1',
-  afraidSecondary: '#626DAA'
+  afraidSecondary: '#626DAA',
+  afraidBackground: 'rgba(68, 80, 162, 0.1)'
 }
 
 async function main() {
