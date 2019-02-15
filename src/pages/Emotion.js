@@ -40,6 +40,7 @@ class Emotion extends Component {
             selected= {this.state.selectedEmotion}
             handleClose={this.handleClose}
             handleClick={this.handleClick}
+            shown={true}
             emotion="joyful"
             baseEmotion="joyful">
           </Bubble>
@@ -47,6 +48,7 @@ class Emotion extends Component {
             selected= {this.state.selectedEmotion}
             handleClose={this.handleClose}
             handleClick={this.handleClick}
+            shown={true}
             emotion="angry"
             baseEmotion="angry">
           </Bubble>
@@ -54,6 +56,7 @@ class Emotion extends Component {
             selected= {this.state.selectedEmotion}
             handleClose={this.handleClose}
             handleClick={this.handleClick}
+            shown={true}
             emotion="sad"
             baseEmotion="sad">
           </Bubble>
@@ -61,6 +64,7 @@ class Emotion extends Component {
             selected= {this.state.selectedEmotion}
             handleClose={this.handleClose}
             handleClick={this.handleClick}
+            shown={true}
             emotion="afraid"
             baseEmotion="afraid">
           </Bubble>
@@ -68,6 +72,7 @@ class Emotion extends Component {
             selected= {this.state.selectedEmotion}
             handleClose={this.handleClose}
             handleClick={this.handleClick}
+            shown={true}
             emotion="disgust"
             baseEmotion="disgust">
           </Bubble>

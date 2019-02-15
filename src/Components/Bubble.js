@@ -3,8 +3,7 @@ import styled from 'styled-components';
 //import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components'
 
-const StyledBubble = styled.div`
-  background: ${props => props.color};
+const StyledBubble = styled.div` background: ${props => props.color};
   border-radius: 121% 128% 125% 124%/125% 120% 127% 125%;
   position: ${(props) => props.selected ? "absolute" : "relative"};
   width: ${(props) => props.selected ? "70vh" : "300px"};
