@@ -52,7 +52,7 @@ class SubEmotion extends Component {
     this.handleValue = this.handleValue.bind(this);
     this.createEmotionList = this.createEmotionList.bind(this);
     this.state = {
-      baseEmotion: 'joyful',
+      baseEmotion: 'afraid',
       selected : false,
       selectedEmotion : '',
       message : '',

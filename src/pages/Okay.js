@@ -8,8 +8,8 @@ class Okay extends Component {
     //console.log(navigation);
     this.state = {
       level: 'level2',
-      baseEmotion: 'afraid',
-      subEmotion:'nervous',
+      baseEmotion: 'joyful',
+      subEmotion:'happy',
       selected : false,
       message : '',
     };
