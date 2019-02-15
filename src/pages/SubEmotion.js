@@ -115,6 +115,7 @@ class SubEmotion extends Component {
                 emotion={emo}
                 maxVal={maxVal}
                 minVal={minVal}
+                value={this.state.value}
                 shown={this.state.value >= minVal && this.state.value <= maxVal}
                 baseEmotion={this.state.baseEmotion}>
               </Bubble>)

@@ -24,6 +24,7 @@ const StyledBubble = styled.div` background: ${props => props.color};
   cursor: pointer;
   opacity: ${(props) => props.shown ? ".3" : "1"};
   pointer-events: ${(props) => props.shown ? "none" : "auto"};
+  box-shadow: inset 10000px 2px 5px rgba(255, 255, 255,${props => props.value});
 `
 const StyledImg = styled.img`
   height: 50%;
@@ -63,11 +64,19 @@ class Bubble extends Component {
     const theme = this.props.theme;
     const themeColor = theme[emotionString];
     const shown = !this.props.shown;
+    let maxVal = .5- (this.props.maxVal*.005);
+    if (this.props.shown) {
+      maxVal = .5- (this.props.value * .005);
+    } else {
+      maxVal =  .5- (this.props.maxVal*.005);
+    }
+    console.log(maxVal);
     return (
       <StyledBubble
         onClick={(evt) => {this.props.handleClick(emotion, evt)}}
         color={themeColor}
         shown={shown}
+        value={maxVal}
         selected={this.props.selected === emotion}>
         <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
         <StyledText selected={this.props.selected === emotion}>{emotion}</StyledText>
