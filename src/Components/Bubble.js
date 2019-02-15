@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import { withTheme } from 'styled-components'
 import CloseIcon from './CloseIcon';
 
-const StyledBubble = styled.div`
-  background: ${props => props.color};
+const StyledBubble = styled.div` background: ${props => props.color};
   border-radius: 121% 128% 125% 124%/125% 120% 127% 125%;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, .2);
   position: ${(props) => props.selected ? "absolute" : "relative"};
