@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import styled from 'styled-components';
-// import PropTypes from 'prop-types';
+import styled from 'styled-components'; // import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components'
 import CloseIcon from './CloseIcon';
 
@@ -96,5 +95,8 @@ class Bubble extends Component {
 //   emotion: PropTypes.oneOf(['angry', 'joyful', 'sad', 'disgust', 'afraid'])
 // }
 
+Bubble.defaultProps = {
+  value: 100
+}
 
 export default withTheme(Bubble);

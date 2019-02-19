@@ -8,8 +8,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-`
-
+` 
 const BubbleContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -68,8 +67,7 @@ class Emotion extends Component {
           <StyledH2>How are you feeling right now?</StyledH2>
           <BubbleContainer>
             <Bubble
-              selected= {this.state.selectedEmotion}
-              handleClose={this.handleClose}
+              selected= {this.state.selectedEmotion} handleClose={this.handleClose}
               handleClick={this.handleClick}
               emotion="joyful"
               baseEmotion="joyful"

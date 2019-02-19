@@ -1,5 +1,6 @@
 // Import dependencies from navi and react
 import { createPage, createSwitch } from 'navi'
+import * as Navi from 'navi'
 
 // Create the switch
 export default createSwitch({
