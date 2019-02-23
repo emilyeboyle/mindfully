@@ -5,7 +5,7 @@ class Meditation extends Component {
   render() {
     return (
       <div>
-        <MeditationBubble/>
+        <MeditationBubble />
       </div>
     );
   }

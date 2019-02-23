@@ -23,10 +23,16 @@ export default createSwitch({
       getContent: () => import('./Okay')
     }),
 
-    // Create the itsok route
+    // Create the meditation route
     '/meditation': createPage({
       title: "Calm Breathing",
       getContent: () => import('./Meditation')
+    }),
+
+    // Create the thankyou route
+    '/thankYou': createPage({
+      title: "Calm Thank You",
+      getContent: () => import('./ThankYou')
     }),
   }
 })

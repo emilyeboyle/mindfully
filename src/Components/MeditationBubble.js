@@ -62,7 +62,7 @@ const StyledBubble = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ${grow} 9s linear 1, ${blob} 27s ease-in-out 0.25;
+  animation: ${grow} 9s linear 15, ${blob} 27s ease-in-out 5;
 `
 const TransparentStyledBubble = styled.div`
   background: ${props => props.theme.brandPrimary};
@@ -73,11 +73,11 @@ const TransparentStyledBubble = styled.div`
   position: absolute;
 
   &.first {
-    animation: ${grow} 9s linear 1, ${blob2} 18s ease-in-out alternate 0.5;
+    animation: ${grow} 9s linear 15, ${blob2} 18s ease-in-out alternate 7.5;
   }
 
   &.second {
-    animation: ${grow} 9s linear 1, ${blob3} 18s ease-in-out alternate 0.5;
+    animation: ${grow} 9s linear 15, ${blob3} 18s ease-in-out alternate 7.5;
   }
 `
 const StyledText = styled.span`
@@ -85,7 +85,7 @@ const StyledText = styled.span`
   font-weight: 300;
   font-size: 1.25rem;
   position: absolute;
-  animation: ${replaceWords} 9s ease-in 1;
+  animation: ${replaceWords} 9s ease-in 15;
   opacity: 0;
 
   &:nth-child(2) {
@@ -103,9 +103,7 @@ class MeditationBubble extends Component {
       <BubbleContainer>
         <TransparentStyledBubble opacity="0.5" size="21rem" className="first"/>
         <TransparentStyledBubble opacity="0.3" size="21.5rem" className="second"/>
-        <StyledBubble
-          onAnimationEnd={() => console.log("done")}
-        >
+        <StyledBubble>
           <StyledText>Breathe In</StyledText>
           <StyledText>Hold</StyledText>
           <StyledText>Breathe Out</StyledText>
