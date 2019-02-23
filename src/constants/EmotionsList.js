@@ -17,12 +17,11 @@ export default {
       {emotion: 'panicked', min: 90, max: 100},
       {emotion: 'terrified', min: 90, max: 100}
     ],
-    disgust: [
+    disgusted: [
       {emotion: 'dislike', min: 0, max: 50},
       {emotion: 'repulsed', min: 10, max: 90},
       {emotion: 'distate', min: 10, max: 70},
-      {emotion: 'loathing', min: 80, max: 100}
-    ],
+      {emotion: 'loathing', min: 80, max: 100} ],
     sad: [
       {emotion: 'disappointed', min: 0, max: 50},
       {emotion: 'discouraged', min: 10, max: 80},
@@ -57,7 +56,7 @@ export default {
       {emotion: 'anxious', min: 0, max: 100},
       {emotion: 'desperate', min: 80, max: 100}
     ],
-    disgust: [
+    disgusted: [
       {emotion: 'dislike', min: 0, max: 50},
       {emotion: 'repulsed', min: 10, max: 90},
       {emotion: 'distaste', min: 10, max: 70},

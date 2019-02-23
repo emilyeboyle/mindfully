@@ -36,9 +36,9 @@
     }
   }
 
-  &.disgust {
+  &.disgusted {
     .rc-slider-rail {
-      background: linear-gradient(to right, #7FEFA3, $disgustPrimary);
+      background: linear-gradient(to right, #7FEFA3, $disgustedPrimary);
     }
   }
 }

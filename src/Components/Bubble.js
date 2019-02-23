@@ -3,10 +3,11 @@ import styled from 'styled-components'; // import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components'
 import CloseIcon from './CloseIcon';
 
-const StyledBubble = styled.div` 
+const StyledBubble = styled.div`
   background: ${props => props.color};
   border-radius: 121% 128% 125% 124%/125% 120% 127% 125%;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, .2);
+  color: ${(props) => props.whiteText ? "white" : "black"};
   position: ${(props) => props.selected ? "absolute" : "relative"};
   width: ${(props) => props.selected ? "70vh" : "18.25rem"};
   height: ${(props) => props.selected ? "70vh" : "18.25rem"};
@@ -70,11 +71,13 @@ class Bubble extends Component {
     } else {
       maxVal =  .5- (this.props.maxVal*.005);
     }
-    console.log(maxVal);
+    const colors = ['afraidPrimary', 'sadPrimary', 'angryPrimary']
+    let whiteText = colors.indexOf(emotionString) > -1;
     return (
       <StyledBubble
         onClick={(evt) => {this.props.handleClick(emotion, evt)}}
         color={themeColor}
+        whiteText = {whiteText}
         shown={shown}
         value={maxVal}
         selected={this.props.selected === emotion}>

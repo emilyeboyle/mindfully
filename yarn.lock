@@ -6211,9 +6211,9 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-navi@^0.11.0-beta.0:
-  version "0.11.0-beta.0"
-  resolved "https://registry.yarnpkg.com/navi/-/navi-0.11.0-beta.0.tgz#2269975db071cea52823dc9de7f1dbb048d40000"
+navi@^0.11.5:
+  version "0.11.5"
+  resolved "https://registry.yarnpkg.com/navi/-/navi-0.11.5.tgz#9bbaacf28d414bb2dfbbbdb2a99218a80af705a0"
   dependencies:
     history "^4.7.2"
 
@@ -7875,9 +7875,9 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
-react-navi@^0.11.0-beta.0:
-  version "0.11.0-beta.0"
-  resolved "https://registry.yarnpkg.com/react-navi/-/react-navi-0.11.0-beta.0.tgz#9cefe481337c24732021a845900f35a8058f0383"
+react-navi@^0.11.6:
+  version "0.11.6"
+  resolved "https://registry.yarnpkg.com/react-navi/-/react-navi-0.11.6.tgz#43570687b1df2edbb8e93430f7dcc2bb5a4b4928"
   dependencies:
     "@types/history" "^4.6.2"
     react-helmet "^5.2.0"

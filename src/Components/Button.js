@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components'
 
 const StyledLink = styled.p`
   display: ${(props) => props.show ? "block" : "none"};
+  color: ${(props) => props.whiteText ? "white" : "black"};
   background: ${props => props.color};
   position: absolute;
   text-align: center;
@@ -12,7 +12,6 @@ const StyledLink = styled.p`
   left: 0;
   right: 0;
   margin: 0 auto;
-  color: black;
   border-radius: 38.5px;
   padding: 14px;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, .2);
@@ -29,16 +28,14 @@ class Button extends Component {
     const emotionString = (emotion + 'Primary').toString();
     const theme = this.props.theme;
     const themeColor = theme[emotionString];
+    const colors = ['afraidPrimary', 'sadPrimary', 'angryPrimary'];
+    let whiteText = colors.indexOf(emotionString) > -1;
     return(
-      <StyledLink color={themeColor} emotion= {this.props.selectedEmotion} show={this.props.show}>
+      <StyledLink color={themeColor} whiteText={whiteText} emotion= {this.props.selectedEmotion} show={this.props.show}>
           {this.props.text}
       </StyledLink>
     );
   }
 }
-
-//Button.propTypes = {
-  //emotion: PropTypes.oneOf(['', 'angry', 'joyful', 'sad', 'disgust', 'afraid'])
-//}
 
 export default withTheme(Button);

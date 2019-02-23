@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 //import axios from 'axios';
 import styled from 'styled-components';
 import './styles/styles.scss';
 import { withTheme } from 'styled-components';
-import { NavProvider, NavContent, NavNotFoundBoundary } from 'react-navi';
+import { Router, View } from 'react-navi';
+import routes from './pages/routes';
+
 
 const StyledApp = styled.div`
   background: ${props => props.theme.background};
@@ -35,24 +37,17 @@ class App extends Component {
   }
   render() {
     return (
-      <NavProvider navigation={this.props.navigation}>
-        <StyledApp className="App">
-          <p>{ this.state.message } </p>
-          <NavNotFoundBoundary render={renderNotFound}>
-              <NavContent/>
-            </NavNotFoundBoundary>
-        </StyledApp>
-      </NavProvider>
+      <Router routes={routes}>
+        <Suspense fallback={null}>
+          <StyledApp className="App">
+            <p>{ this.state.message } </p>
+            <View />
+          </StyledApp>
+        </Suspense>
+      </Router>
     );
   }
 }
 
-function renderNotFound() {
-  return (
-    <div className='App-error'>
-      <h1>404 - Not Found</h1>
-    </div>
-  )
-}
 
 export default withTheme(App);

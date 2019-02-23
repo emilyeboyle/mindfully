@@ -25,7 +25,7 @@ export default {
     anxious: 'Fear of expected danger and being unable to handle that danger',
     desperate: 'Having lost hope'
   },
-  disgust: {
+  disgusted: {
     dislike: 'Not liking or enjoying something',
     repulsed: 'Thinking something is horrible and disgusting',
     distaste: 'A mild unenjoyment towards something',
