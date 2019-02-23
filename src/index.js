@@ -6,8 +6,6 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {ThemeProvider} from 'styled-components';
-import { createBrowserNavigation } from 'navi'
-import pages from './pages'
 
 const styleGuide = {
   background: '#F5F6F6',
