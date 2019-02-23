@@ -37,8 +37,8 @@ class Button extends Component {
   }
 }
 
-Button.propTypes = {
-  emotion: PropTypes.oneOf(['', 'angry', 'joyful', 'sad', 'disgust', 'afraid'])
-}
+//Button.propTypes = {
+  //emotion: PropTypes.oneOf(['', 'angry', 'joyful', 'sad', 'disgust', 'afraid'])
+//}
 
 export default withTheme(Button);
