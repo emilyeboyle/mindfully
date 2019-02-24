@@ -19,7 +19,7 @@ class Okay extends Component {
     return (
       <div>
         <PageContainer baseEmotion={this.state.baseEmotion}>
-          <ItsOk specificEmotion={this.state.subEmotion} emotion={this.state.baseEmotion}></ItsOk>
+            <ItsOk specificEmotion={this.state.subEmotion} emotion={this.state.baseEmotion}></ItsOk>
         </PageContainer>
       </div>
     );

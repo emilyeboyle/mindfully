@@ -20,3 +20,9 @@ h2 {
   font-family: Poppins Extra Light;
   src: url(/src/static/fonts/Poppins-ExtraLight.ttf);
 }
+
+.okay-appear{
+  opacity: 0;
+  transform: scale(4);
+  transition: all 300ms ease-in;
+}

@@ -96,7 +96,6 @@ class SubEmotion extends Component {
           {this.state.selected &&
               <TransparentDiv/>
           }
-          {/*TODO: change 'disgust' to 'disgusted'*/}
           <StyledH2Light>So you are feeling <span className="base-emotion">{baseEmotion}</span>.</StyledH2Light>
           <StyledH2>How {baseEmotion} are you?</StyledH2>
           <SliderContainer>

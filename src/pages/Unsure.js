@@ -13,9 +13,9 @@ class Unsure extends Component {
   render() {
     return(
       <PageContainer baseEmotion='brandPrimary'>
-        <ButtonContainer>
-        <Button show='true' emotion='brand' text='Continue'></Button>
-      </ButtonContainer>
+          <ButtonContainer>
+            <Button show='true' emotion='brand' text='Continue'></Button>
+          </ButtonContainer>
       </PageContainer>
     )
   }

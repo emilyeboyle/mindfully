@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import styled from 'styled-components'; // import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components'
 import CloseIcon from './CloseIcon';
+import { keyframes } from 'styled-components';
+import { bounceIn, fadeIn } from 'react-animations';
+
+const fadeAnimation = keyframes`${bounceIn}`;
 
 const StyledBubble = styled.div`
   background: ${props => props.color};
@@ -26,7 +30,10 @@ const StyledBubble = styled.div`
   opacity: ${(props) => props.shown ? ".3" : "1"};
   pointer-events: ${(props) => props.shown ? "none" : "auto"};
   box-shadow: inset 10000px 2px 5px rgba(255, 255, 255,${props => props.value});
+  transition: opacity .3s ease-in;
+  animation: .3s ${fadeAnimation};
 `
+
 const StyledImg = styled.img`
   height: 50%;
   margin: 0 auto;
