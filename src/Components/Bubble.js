@@ -59,10 +59,10 @@ const StyledText = styled.p`
   margin: 0.5rem 0 0 0;
 `
 
-function randomIntFromInterval(min,max) // min and max included
-{
-  return Math.floor(Math.random()*(max-min+1)+min);
-}
+//function randomIntFromInterval(min,max) // min and max included
+//{
+  //return Math.floor(Math.random()*(max-min+1)+min);
+//}
 
 class Bubble extends Component {
   constructor(props) {
@@ -121,9 +121,6 @@ class Bubble extends Component {
 
 }
 
-// Bubble.propTypes = {
-//   emotion: PropTypes.oneOf(['angry', 'joyful', 'sad', 'disgust', 'afraid'])
-// }
 
 Bubble.defaultProps = {
   value: 100
