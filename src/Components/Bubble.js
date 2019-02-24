@@ -4,6 +4,9 @@ import { withTheme } from 'styled-components'
 import CloseIcon from './CloseIcon';
 import { keyframes } from 'styled-components';
 import { bounceIn, fadeIn } from 'react-animations';
+import TweenOne from 'rc-tween-one';
+import PathPlugin from 'rc-tween-one/lib/plugin/PathPlugin';
+TweenOne.plugins.push(PathPlugin);
 
 const fadeAnimation = keyframes`${bounceIn}`;
 
@@ -21,7 +24,7 @@ const StyledBubble = styled.div`
   align-items: center;
   text-transform: capitalize;
   font-family: 'Poppins';
-  z-index: ${(props) => props.selected ? "1" : "0"};
+  z-index: ${(props) => props.selected ? "100" : "0"};
   margin: ${(props) => props.selected ? "0 auto" : "1rem"};
   left: 0;
   right: 0;
@@ -31,7 +34,7 @@ const StyledBubble = styled.div`
   pointer-events: ${(props) => props.shown ? "none" : "auto"};
   box-shadow: inset 10000px 2px 5px rgba(255, 255, 255,${props => props.value});
   transition: opacity .3s ease-in;
-  animation: .3s ${fadeAnimation};
+  animation: .5s ${fadeAnimation};
 `
 
 const StyledImg = styled.img`
@@ -56,16 +59,26 @@ const StyledText = styled.p`
   margin: 0.5rem 0 0 0;
 `
 
+function randomIntFromInterval(min,max) // min and max included
+{
+  return Math.floor(Math.random()*(max-min+1)+min);
+}
+
 class Bubble extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected : this.props.selected === this.props.emotion,
+      selected : this.props.selected === this.props.emotion
     };
+    //this.animation = [
+      //{ x: randomIntFromInterval(-20, 20), y: randomIntFromInterval(-20, 20), duration: randomIntFromInterval(4000, 5000), paused:this.state.selected }
+    //];
   }
 
 
   render() {
+
+
     const baseEmotion = this.props.baseEmotion;
     const emotion = this.props.emotion;
     const emotionString = (baseEmotion + 'Primary').toString();
@@ -81,22 +94,28 @@ class Bubble extends Component {
     const colors = ['afraidPrimary', 'sadPrimary', 'angryPrimary']
     let whiteText = colors.indexOf(emotionString) > -1;
     return (
-      <StyledBubble
-        onClick={(evt) => {this.props.handleClick(emotion, evt)}}
-        color={themeColor}
-        whiteText = {whiteText}
-        shown={shown}
-        value={maxVal}
-        selected={this.props.selected === emotion}>
-        <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
-        <StyledText selected={this.props.selected === emotion}>{emotion}</StyledText>
-        <StyledX
-          onClick={() => {this.props.handleClose()}}
-          selected={this.props.selected === emotion}
-        >
-          <CloseIcon/>
-        </StyledX>
-      </StyledBubble>
+      //<TweenOne
+        //animation= {this.animation}
+        //yoyo={true}
+        //paused={this.state.paused}
+        //repeat={-1}>
+        <StyledBubble
+          onClick={(evt) => {this.props.handleClick(emotion, evt)}}
+          color={themeColor}
+          whiteText = {whiteText}
+          shown={shown}
+          value={maxVal}
+          selected={this.props.selected === emotion}>
+          <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
+          <StyledText selected={this.props.selected === emotion}>{emotion}</StyledText>
+          <StyledX
+            onClick={() => {this.props.handleClose()}}
+            selected={this.props.selected === emotion}
+          >
+            <CloseIcon/>
+          </StyledX>
+        </StyledBubble>
+      //</TweenOne>
     );
   }
 
