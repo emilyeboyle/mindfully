@@ -10,6 +10,7 @@ const StyledContainer = styled.div`
   justify-content: center;
   margin: 2rem auto;
   width: 85%;
+  height: 75vh;
 `
 const StyledHeader = styled.h1`
   color: ${props => props.color};

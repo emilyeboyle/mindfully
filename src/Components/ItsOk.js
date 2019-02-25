@@ -7,7 +7,9 @@ import { withTheme } from 'styled-components'
 
 const StyledItsOkContainer = styled.div`
   display: flex;
+  align-items: center;
   margin: 2rem auto;
+  height: 75vh;
   width: 85%;
 `
 
