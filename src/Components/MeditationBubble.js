@@ -4,16 +4,15 @@ import { withTheme, keyframes } from 'styled-components';
 
 const grow = keyframes`
   0% { transform: scale(1.0); }
-  5% { transform: scale(1.0); }
-  33% { transform: scale(1.5); }
-  66% { transform: scale(1.5); }
-  95% { transform: scale(1.0); }
+  10% { transform: scale(1.0); }
+  40% { transform: scale(1.5); }
+  70% { transform: scale(1.5); }
   100% { transform: scale(1.0); }
 `
 const replaceWords = keyframes`
   0% { opacity: 0; }
-  5% { opacity: 1; }
-  28% { opacity: 1; }
+  10% { opacity: 1; }
+  27% { opacity: 1; }
 	33% { opacity: 0; }
   100% { opacity: 0; }
 `
@@ -64,7 +63,7 @@ const StyledBubble = styled.div`
   justify-content: center;
 
   &.animate {
-    animation: ${grow} 9s linear 15, ${blob} 27s ease-in-out 5;
+    animation: ${grow} 10s linear 6, ${blob} 30s ease-in-out 2;
   }
 `
 const TransparentStyledBubble = styled.div`
@@ -76,11 +75,11 @@ const TransparentStyledBubble = styled.div`
   position: absolute;
 
   &.first {
-    animation: ${grow} 9s linear 15, ${blob2} 18s ease-in-out alternate 7.5;
+    animation: ${grow} 10s linear 6, ${blob2} 20s ease-in-out alternate 3;
   }
 
   &.second {
-    animation: ${grow} 9s linear 15, ${blob3} 18s ease-in-out alternate 7.5;
+    animation: ${grow} 10s linear 6, ${blob3} 20s ease-in-out alternate 3;
   }
 `
 const StyledText = styled.span`
@@ -91,15 +90,19 @@ const StyledText = styled.span`
   opacity: 0;
 
   &.animate {
-    animation: ${replaceWords} 9s ease-in 15;
+    animation: ${replaceWords} 10s ease-in 6;
+  }
+
+  &:nth-child(1) {
+    animation-delay: 1s;
   }
 
   &:nth-child(2) {
-    animation-delay: 3s;
+    animation-delay: 4s;
   }
 
   &:nth-child(3) {
-    animation-delay: 6s;
+    animation-delay: 7s;
   }
 `
 
