@@ -16,6 +16,7 @@ class PageContainer extends Component {
     const theme = this.props.theme;
     const themeColor = theme[emotionString];
 
+
     return (
       <StyledContainer color={themeColor}>
         {this.props.children}
