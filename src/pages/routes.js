@@ -3,6 +3,7 @@ import React from 'react';
 import Emotion from './Emotion'
 import SubEmotion from './SubEmotion'
 import Okay from './Okay'
+import Unsure from './Unsure'
 
 const routes =
   mount({
@@ -26,6 +27,12 @@ const routes =
       return{
       view: <Okay baseEmotion={emotion} subEmotion={subemotion}/>,
       }
+    }),
+    
+    // Create the unsure route
+    '/unsure': route({
+      title: "Unsure",
+      view: <Unsure />,
     }),
   })
 
