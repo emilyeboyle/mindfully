@@ -40,4 +40,9 @@ class Button extends Component {
   }
 }
 
+Button.defaultProps = {
+  emotion: 'brand',
+  show: 'true'
+}
+
 export default withTheme(Button);
