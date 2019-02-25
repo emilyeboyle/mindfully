@@ -5,6 +5,7 @@ import SubEmotion from './SubEmotion';
 import Okay from './Okay';
 import Meditation from './Meditation';
 import ThankYou from './ThankYou';
+import Unsure from './Unsure'
 
 const routes =
   mount({
@@ -40,7 +41,13 @@ const routes =
     '/thankYou': route({
       title: "Thank You",
       view: <ThankYou />,
+    
+    // Create the unsure route
+    '/unsure': route({
+      title: "Unsure",
+      view: <Unsure />,
     }),
   })
+  });
 
 export default routes

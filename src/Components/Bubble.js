@@ -3,7 +3,7 @@ import styled from 'styled-components'; // import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components'
 import CloseIcon from './CloseIcon';
 import { keyframes } from 'styled-components';
-import { bounceIn, fadeIn } from 'react-animations';
+import { bounceIn } from 'react-animations';
 import TweenOne from 'rc-tween-one';
 import PathPlugin from 'rc-tween-one/lib/plugin/PathPlugin';
 TweenOne.plugins.push(PathPlugin);
@@ -36,6 +36,10 @@ const StyledBubble = styled.div`
   transition: opacity .3s ease-in;
   animation: .5s ${fadeAnimation};
 `
+const StyledBubbleSmall = styled(StyledBubble)`
+  width: ${(props) => props.selected ? "70vh" : "15.25rem"};
+  height: ${(props) => props.selected ? "70vh" : "15.25rem"};
+`
 
 const StyledImg = styled.img`
   height: 50%;
@@ -59,20 +63,12 @@ const StyledText = styled.p`
   margin: 0.5rem 0 0 0;
 `
 
-//function randomIntFromInterval(min,max) // min and max included
-//{
-  //return Math.floor(Math.random()*(max-min+1)+min);
-//}
-
 class Bubble extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selected : this.props.selected === this.props.emotion
     };
-    //this.animation = [
-      //{ x: randomIntFromInterval(-20, 20), y: randomIntFromInterval(-20, 20), duration: randomIntFromInterval(4000, 5000), paused:this.state.selected }
-    //];
   }
 
 
@@ -93,12 +89,30 @@ class Bubble extends Component {
     }
     const colors = ['afraidPrimary', 'sadPrimary', 'angryPrimary']
     let whiteText = colors.indexOf(emotionString) > -1;
-    return (
-      //<TweenOne
-        //animation= {this.animation}
-        //yoyo={true}
-        //paused={this.state.paused}
-        //repeat={-1}>
+    let smallBubble = this.props.smallBubble;
+    let bubble;
+    console.log(smallBubble);
+    if (smallBubble) {
+      console.log("here");
+      bubble=
+        <StyledBubbleSmall
+          onClick={(evt) => {this.props.handleClick(emotion, evt)}}
+          color={themeColor}
+          whiteText = {whiteText}
+          shown={shown}
+          value={maxVal}
+          selected={this.props.selected === emotion}>
+          <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
+          <StyledText selected={this.props.selected === emotion}>{emotion}</StyledText>
+          <StyledX
+            onClick={() => {this.props.handleClose()}}
+            selected={this.props.selected === emotion}
+          >
+            <CloseIcon/>
+          </StyledX>
+        </StyledBubbleSmall>
+    } else {
+      bubble=
         <StyledBubble
           onClick={(evt) => {this.props.handleClick(emotion, evt)}}
           color={themeColor}
@@ -115,15 +129,16 @@ class Bubble extends Component {
             <CloseIcon/>
           </StyledX>
         </StyledBubble>
-      //</TweenOne>
-    );
+    }
+    return (bubble);
   }
 
 }
 
 
 Bubble.defaultProps = {
-  value: 100
+  value: 100,
+  smallBubble: false
 }
 
 export default withTheme(Bubble);

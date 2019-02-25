@@ -40,7 +40,7 @@ class App extends Component {
       <Router routes={routes}>
         <Suspense fallback={null}>
           <StyledApp className="App">
-            <p>{ this.state.message } </p>
+{/*             <p>{ this.state.message } </p> */}
             <View />
           </StyledApp>
         </Suspense>

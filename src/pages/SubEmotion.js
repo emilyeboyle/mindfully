@@ -94,7 +94,7 @@ class SubEmotion extends Component {
       <div>
         <PageContainer baseEmotion={baseEmotion}>
           {this.state.selected &&
-              <TransparentDiv/>
+          <TransparentDiv/>
           }
           <StyledH2Light>So you are feeling <span className="base-emotion">{baseEmotion}</span>.</StyledH2Light>
           <StyledH2>How {baseEmotion} are you?</StyledH2>
@@ -111,6 +111,7 @@ class SubEmotion extends Component {
                 selected= {this.state.selectedEmotion}
                 handleClose={this.handleClose}
                 handleClick={this.handleClick}
+                smallBubble={true}
                 emotion={emo}
                 maxVal={maxVal}
                 minVal={minVal}
