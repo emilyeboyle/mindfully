@@ -62,7 +62,10 @@ const StyledBubble = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ${grow} 9s linear 15, ${blob} 27s ease-in-out 5;
+
+  &.animate {
+    animation: ${grow} 9s linear 15, ${blob} 27s ease-in-out 5;
+  }
 `
 const TransparentStyledBubble = styled.div`
   background: ${props => props.theme.brandPrimary};
@@ -85,8 +88,11 @@ const StyledText = styled.span`
   font-weight: 300;
   font-size: 1.25rem;
   position: absolute;
-  animation: ${replaceWords} 9s ease-in 15;
   opacity: 0;
+
+  &.animate {
+    animation: ${replaceWords} 9s ease-in 15;
+  }
 
   &:nth-child(2) {
     animation-delay: 3s;
@@ -101,12 +107,17 @@ class MeditationBubble extends Component {
   render() {
     return (
       <BubbleContainer>
-        <TransparentStyledBubble opacity="0.5" size="21rem" className="first"/>
-        <TransparentStyledBubble opacity="0.3" size="21.5rem" className="second"/>
-        <StyledBubble>
-          <StyledText>Breathe In</StyledText>
-          <StyledText>Hold</StyledText>
-          <StyledText>Breathe Out</StyledText>
+        <TransparentStyledBubble opacity="0.5" size="21rem" className={this.props.animate ? "first" : ""}/>
+        <TransparentStyledBubble opacity="0.3" size="21.5rem" className={this.props.animate ? "second" : ""}/>
+        <StyledBubble
+          className={this.props.animate ? "animate" : ""}
+          onAnimationEnd={(evt) => {this.props.handleAnimation(evt)}}
+        >
+          <StyledText className={this.props.animate ? "animate" : ""}>Breathe In</StyledText>
+          <StyledText className={this.props.animate ? "animate" : ""}>Hold</StyledText>
+          <StyledText className={this.props.animate ? "animate" : ""}>
+            Breathe Out
+          </StyledText>
         </StyledBubble>
       </BubbleContainer>
     );
