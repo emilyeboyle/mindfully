@@ -22,7 +22,7 @@ class Meditation extends Component {
 
   handleAnimation(evt) {
     this.animateBubble();
-    console.log("done");
+    window.location.assign("/thankYou");
   }
 
   render() {

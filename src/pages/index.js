@@ -29,9 +29,9 @@ export default createSwitch({
       getContent: () => import('./Meditation')
     }),
 
-    // Create the thankyou route
+    // Create the thank you route
     '/thankYou': createPage({
-      title: "Calm Thank You",
+      title: "Thank You",
       getContent: () => import('./ThankYou')
     }),
   }

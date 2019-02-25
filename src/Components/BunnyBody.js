@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { withTheme } from 'styled-components'
-import PropTypes from 'prop-types';
+import { withTheme } from 'styled-components';
 
 const StyledEllipse = styled.ellipse`
   fill:  ${props => props.color};
@@ -55,10 +54,6 @@ class BunnyBody extends Component {
       </StyledBunnyContainer>
     );
   }
-}
-
-BunnyBody.propTypes = {
-  emotion: PropTypes.oneOf(['angry', 'joyful', 'sad', 'disgust', 'afraid'])
 }
 
 export default withTheme(BunnyBody);

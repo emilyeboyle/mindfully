@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styled from 'styled-components';
 import Button from '../Components/Button';
 import BunnyBody from '../Components/BunnyBody';
-import { withTheme } from 'styled-components'
 
 const StyledContainer = styled.div`
   display: flex;
