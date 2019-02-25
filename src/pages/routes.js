@@ -1,8 +1,10 @@
-import { mount, route } from 'navi'
+import { mount, route } from 'navi';
 import React from 'react';
-import Emotion from './Emotion'
-import SubEmotion from './SubEmotion'
-import Okay from './Okay'
+import Emotion from './Emotion';
+import SubEmotion from './SubEmotion';
+import Okay from './Okay';
+import Meditation from './Meditation';
+import ThankYou from './ThankYou';
 import Unsure from './Unsure'
 
 const routes =
@@ -28,6 +30,17 @@ const routes =
       view: <Okay baseEmotion={emotion} subEmotion={subemotion}/>,
       }
     }),
+
+    // Create the meditation route
+    '/meditation': route({
+      title: "Calm Breathing",
+      view: <Meditation />,
+    }),
+
+    // Create the meditation route
+    '/thankYou': route({
+      title: "Thank You",
+      view: <ThankYou />,
     
     // Create the unsure route
     '/unsure': route({
@@ -35,5 +48,6 @@ const routes =
       view: <Unsure />,
     }),
   })
+  });
 
 export default routes

@@ -3,7 +3,7 @@ import styled from 'styled-components'; // import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components'
 import CloseIcon from './CloseIcon';
 import { keyframes } from 'styled-components';
-import { bounceIn, fadeIn } from 'react-animations';
+import { bounceIn } from 'react-animations';
 import TweenOne from 'rc-tween-one';
 import PathPlugin from 'rc-tween-one/lib/plugin/PathPlugin';
 TweenOne.plugins.push(PathPlugin);

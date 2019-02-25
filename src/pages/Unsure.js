@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../Components/Button';
 import PageContainer from '../Components/PageContainer';
-import styled from 'styled-components';
 import UnsureEmotionList from '../constants/UnsureEmotionList';
 
 class Unsure extends Component {

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Button from '../Components/Button';
 import BunnyBody from '../Components/BunnyBody';
 import ItsOkText from '../constants/ItsOkText';
 import { withTheme } from 'styled-components'
@@ -55,11 +54,10 @@ class ItsOk extends Component {
               It's {text} that you feel {this.props.specificEmotion}.
             </StyledHeader>
             <StyledText>
-              {ItsOkText[emotion]} Why don’t we do an activity to help you reflect on this feeling?
+              {ItsOkText[emotion]} Here's a meditation activity to help you reflect on this feeling.
             </StyledText>
           </StyledTextContainer>
         </StyledItsOkContainer>
-        <Button text='Continue' emotion={emotion} show={true}/>
       </div>
     );
   }
