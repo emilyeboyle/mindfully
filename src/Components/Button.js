@@ -30,12 +30,19 @@ class Button extends Component {
     const themeColor = theme[emotionString];
     const colors = ['afraidPrimary', 'sadPrimary', 'angryPrimary'];
     let whiteText = colors.indexOf(emotionString) > -1;
+    const absolute = this.props.absolute;
+    console.log(absolute);
     return(
       <StyledLink color={themeColor} whiteText={whiteText} emotion= {this.props.selectedEmotion} show={this.props.show}>
           {this.props.text}
       </StyledLink>
     );
   }
+}
+
+Button.defaultProps = {
+  emotion: 'brand',
+  show: 'true'
 }
 
 export default withTheme(Button);
