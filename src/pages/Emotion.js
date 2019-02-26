@@ -17,7 +17,7 @@ const BubbleContainer = styled.div`
 
 const StyledH2 = styled.h2`
   font-size: 2rem;
-  margin: 1rem;
+  margin: 2rem 1rem 1rem;
 `
 
 const TransparentDiv = styled.div`

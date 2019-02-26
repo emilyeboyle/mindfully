@@ -6,6 +6,7 @@ import EmotionSlider from '../Components/EmotionSlider';
 import PageContainer from '../Components/PageContainer';
 import styled from 'styled-components';
 import EmotionsList from '../constants/EmotionsList';
+import EmotionDefinitions from '../constants/EmotionDefinitions';
 
 const BubbleContainer = styled.div`
   display: flex;
@@ -90,6 +91,8 @@ class SubEmotion extends Component {
     const baseEmotion = this.state.baseEmotion;
     let emotionLevel = EmotionsList[level];
     let emotionList = emotionLevel[baseEmotion];
+    let emotionCategory = EmotionDefinitions[baseEmotion];
+
     return (
       <div>
         <PageContainer baseEmotion={baseEmotion}>
@@ -108,7 +111,7 @@ class SubEmotion extends Component {
               let minVal = emotion["min"];
               return(<Bubble
                 key={i}
-                selected= {this.state.selectedEmotion}
+                selected={this.state.selectedEmotion}
                 handleClose={this.handleClose}
                 handleClick={this.handleClick}
                 smallBubble={true}
@@ -117,7 +120,8 @@ class SubEmotion extends Component {
                 minVal={minVal}
                 value={this.state.value}
                 shown={this.state.value >= minVal && this.state.value <= maxVal}
-                baseEmotion={this.state.baseEmotion}>
+                baseEmotion={this.state.baseEmotion}
+                definition={emotionCategory[emo]}>
               </Bubble>)
             })}
           </BubbleContainer>

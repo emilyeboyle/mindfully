@@ -55,12 +55,21 @@ const StyledX = styled.div`
   box-shadow: 0px 2px 5px rgba(0, 0, 0, .2);
   width: 3rem;
   height: 3rem;
-  top: 3rem;
-  right: 4rem;
+  top: 15%;
+  left: 85%;
 `
 const StyledText = styled.p`
   font-size: ${(props) => props.selected ? "2rem" : "1.375rem"};
   margin: 0.5rem 0 0 0;
+`
+const StyledDefinition = styled.p`
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: none;
+  margin: 0.5rem 6rem;
+  text-align: center;
+  line-height: 2rem;
+  display: ${(props) => props.selected ? "block" : "none"};
 `
 
 class Bubble extends Component {
@@ -73,10 +82,9 @@ class Bubble extends Component {
 
 
   render() {
-
-
     const baseEmotion = this.props.baseEmotion;
     const emotion = this.props.emotion;
+    const definition = this.props.definition;
     const emotionString = (baseEmotion + 'Primary').toString();
     const theme = this.props.theme;
     const themeColor = theme[emotionString];
@@ -92,6 +100,7 @@ class Bubble extends Component {
     let smallBubble = this.props.smallBubble;
     let bubble;
     console.log(smallBubble);
+    console.log(this.props.definition);
     if (smallBubble) {
       console.log("here");
       bubble=
@@ -104,6 +113,7 @@ class Bubble extends Component {
           selected={this.props.selected === emotion}>
           <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
           <StyledText selected={this.props.selected === emotion}>{emotion}</StyledText>
+          <StyledDefinition selected={this.props.selected === emotion}>{definition}</StyledDefinition>
           <StyledX
             onClick={() => {this.props.handleClose()}}
             selected={this.props.selected === emotion}
@@ -119,9 +129,11 @@ class Bubble extends Component {
           whiteText = {whiteText}
           shown={shown}
           value={maxVal}
-          selected={this.props.selected === emotion}>
+          selected={this.props.selected === emotion}
+        >
           <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
           <StyledText selected={this.props.selected === emotion}>{emotion}</StyledText>
+          <StyledDefinition selected={this.props.selected === emotion}>{definition}</StyledDefinition>
           <StyledX
             onClick={() => {this.props.handleClose()}}
             selected={this.props.selected === emotion}
