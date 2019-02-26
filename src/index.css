@@ -11,15 +11,15 @@ h2 {
   font-weight: inherit;
 }
 
-@font-face {
-  font-family: Poppins;
-  src: url(/src/static/fonts/Poppins-Regular.ttf);
-}
+/*@font-face {*/
+  /*font-family: Poppins;*/
+  /*src: url(/src/static/fonts/Poppins-Regular.ttf);*/
+/*}*/
 
-@font-face {
-  font-family: Poppins Extra Light;
-  src: url(/src/static/fonts/Poppins-ExtraLight.ttf);
-}
+/*@font-face {*/
+  /*font-family: Poppins Extra Light;*/
+  /*src: url(/src/static/fonts/Poppins-ExtraLight.ttf);*/
+/*}*/
 
 .okay-appear{
   opacity: 0;
