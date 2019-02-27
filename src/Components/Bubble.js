@@ -16,8 +16,8 @@ const StyledBubble = styled.div`
   box-shadow: 0px 2px 5px rgba(0, 0, 0, .2);
   color: ${(props) => props.whiteText ? "white" : "black"};
   position: ${(props) => props.selected ? "absolute" : "relative"};
-  width: ${(props) => props.selected ? "70vh" : "18.25rem"};
-  height: ${(props) => props.selected ? "70vh" : "18.25rem"};
+  width: ${(props) => props.selected ? "70vh" : "16.25rem"};
+  height: ${(props) => props.selected ? "70vh" : "16.25rem"};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,8 +37,8 @@ const StyledBubble = styled.div`
   animation: .5s ${fadeAnimation};
 `
 const StyledBubbleSmall = styled(StyledBubble)`
-  width: ${(props) => props.selected ? "70vh" : "15.25rem"};
-  height: ${(props) => props.selected ? "70vh" : "15.25rem"};
+  width: ${(props) => props.selected ? "70vh" : "13.25rem"};
+  height: ${(props) => props.selected ? "70vh" : "13.25rem"};
 `
 
 const StyledImg = styled.img`
