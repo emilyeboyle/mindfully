@@ -34,5 +34,11 @@ export default createSwitch({
       title: "Thank You",
       getContent: () => import('./ThankYou')
     }),
+
+    // Create the unsure route
+    '/unsure': createPage({
+      title: "Unsure",
+      getContent: () => import('./Unsure')
+    }),
   }
 })
