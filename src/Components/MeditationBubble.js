@@ -45,11 +45,14 @@ const blob3 = keyframes`
   65% { border-radius: 58% 50% 34% 66% / 56% 68% 32% 44%; }
   88% { border-radius: 61% 39% 67% 33% / 70% 50% 57% 30%; }
 `
+const progress = keyframes`
+  0% { width: 0; }
+`
 const BubbleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 85vh;
 `
 const StyledBubble = styled.div`
   background: ${props => props.theme.brandPrimary};
@@ -105,24 +108,46 @@ const StyledText = styled.span`
     animation-delay: 7s;
   }
 `
+const ProgressBar = styled.div`
+  width: 42rem;
+  height: 1rem;
+  border-radius: 15px;
+  border: 1px solid;
+  border-color: ${props => props.theme.brandPrimary};
+  margin: 0 auto;
+`
+const ProgressBarFill = styled.span`
+  width: 42rem;
+  height: 100%;
+  border-radius: 15px;
+  background: ${props => props.theme.brandPrimary};
+  position: relative;
+  display: block;
+  animation: ${progress} 60s linear;
+`
 
 class MeditationBubble extends Component {
   render() {
     return (
-      <BubbleContainer>
-        <TransparentStyledBubble opacity="0.5" size="21rem" className={this.props.animate ? "first" : ""}/>
-        <TransparentStyledBubble opacity="0.3" size="21.5rem" className={this.props.animate ? "second" : ""}/>
-        <StyledBubble
-          className={this.props.animate ? "animate" : ""}
-          onAnimationEnd={(evt) => {this.props.handleAnimation(evt)}}
-        >
-          <StyledText className={this.props.animate ? "animate" : ""}>Breathe In</StyledText>
-          <StyledText className={this.props.animate ? "animate" : ""}>Hold</StyledText>
-          <StyledText className={this.props.animate ? "animate" : ""}>
-            Breathe Out
-          </StyledText>
-        </StyledBubble>
-      </BubbleContainer>
+      <div>
+        <BubbleContainer>
+          <TransparentStyledBubble opacity="0.5" size="21rem" className={this.props.animate ? "first" : ""}/>
+          <TransparentStyledBubble opacity="0.3" size="21.5rem" className={this.props.animate ? "second" : ""}/>
+          <StyledBubble
+            className={this.props.animate ? "animate" : ""}
+            onAnimationEnd={(evt) => {this.props.handleAnimation(evt)}}
+          >
+            <StyledText className={this.props.animate ? "animate" : ""}>Breathe In</StyledText>
+            <StyledText className={this.props.animate ? "animate" : ""}>Hold</StyledText>
+            <StyledText className={this.props.animate ? "animate" : ""}>
+              Breathe Out
+            </StyledText>
+          </StyledBubble>
+        </BubbleContainer>
+        <ProgressBar>
+          <ProgressBarFill/>
+        </ProgressBar>
+      </div>
     );
   }
 
