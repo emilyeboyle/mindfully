@@ -1,6 +1,13 @@
 export default {
 feelings:  [
-    "Breathing fast",
-    "Tired"
+    "Heart pounding",
+    "Relaxed",
+    "Tired",
+    "Upset stomach",
+    "Tense",
+    "Weak",
+    "Hot",
+    "High energy",
+    "Shaking",
   ]
 }
