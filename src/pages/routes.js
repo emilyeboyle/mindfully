@@ -7,6 +7,7 @@ import Meditation from './Meditation';
 import ThankYou from './ThankYou';
 import Unsure from './Unsure';
 import DrawArea from './DrawArea';
+import BubblePop from './BubblePop';
 
 const routes =
   mount({
@@ -50,10 +51,15 @@ const routes =
       view: <Unsure />,
     }),
 
-    // Create the unsure route
+    // Create the draw route
     '/draw': route({
       title: "Draw",
       view: <DrawArea />,
+    }),
+    // Create the bubblepop route
+    '/bubblepop': route({
+      title: "Bubble Pop",
+      view: <BubblePop/>,
     }),
   });
 

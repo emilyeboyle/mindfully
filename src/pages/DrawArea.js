@@ -1,7 +1,6 @@
 import React from "react";
 import styled from 'styled-components'; // import PropTypes from 'prop-types';
 import Immutable from "immutable";
-import ReactDOM from 'react-dom';
 import Color from '../Components/Color.js';
 import Colors from '../constants/Colors.js';
 import Brush from '../Components/Brush.js';
@@ -68,7 +67,7 @@ class DrawArea extends React.Component {
     document.removeEventListener("mouseup", this.handleMouseUp);
   } 
   handleMouseDown(mouseEvent) {
-    if (mouseEvent.button != 0) {
+    if (mouseEvent.button !== 0) {
       return;
     } 
     const point = this.relativeCoordinatesForEvent(mouseEvent);

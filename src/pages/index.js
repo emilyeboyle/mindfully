@@ -45,5 +45,11 @@ export default createSwitch({
       title: "Draw",
       view: <DrawArea />,
     }),
+    
+    // Create the bubblepop route
+    '/bubblepop': route({
+      title: "Bubble Pop",
+      view: <BubblePop/>,
+    }),
   }
 })

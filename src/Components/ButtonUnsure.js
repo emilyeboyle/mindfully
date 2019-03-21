@@ -34,7 +34,6 @@ class ButtonUnsure extends Component {
     const emotionString = (emotion + 'Primary').toString();
     const theme = this.props.theme;
     const themeColor = theme[emotionString];
-    const colors = ['afraidPrimary', 'sadPrimary', 'angryPrimary'];
     return(
       <StyledLink color={themeColor} emotion={this.props.selectedEmotion} show={this.props.show} selected={this.state.selected} onClick={this.handleClick}>
           {this.props.text}
