@@ -24,8 +24,7 @@ export default createSwitch({
     }),
 
     // Create the meditation route
-    '/meditation': createPage({
-      title: "Calm Breathing",
+    '/meditation': createPage({ title: "Calm Breathing",
       getContent: () => import('./Meditation')
     }),
 
@@ -39,6 +38,12 @@ export default createSwitch({
     '/unsure': createPage({
       title: "Unsure",
       getContent: () => import('./Unsure')
+    }),
+
+    // Create the unsure route
+    '/draw': route({
+      title: "Draw",
+      view: <DrawArea />,
     }),
   }
 })
