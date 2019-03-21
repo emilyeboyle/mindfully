@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "immutable": "^4.0.0-rc.12",
     "navi": "^0.11.5",
     "next": "^8.0.0",
     "node-sass": "^4.11.0",
