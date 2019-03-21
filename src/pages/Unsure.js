@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Button from '../Components/Button';
+import ButtonUnsure from '../Components/ButtonUnsure'
 import UnsureEmotionList from '../constants/UnsureEmotionList';
 
 const Container = styled.div`
@@ -33,12 +34,12 @@ class Unsure extends Component {
         <StyledH2>How does your body feel?</StyledH2>
         <Container>
           {feelingList.map((emotion, i) => {
-            return(<Button
+            return(<ButtonUnsure
               key={i}
               text={emotion}
               absolute={false}
               unsure={true}>
-            </Button>)
+            </ButtonUnsure>)
           })}
         </Container>
         <Button text='Continue'></Button>
