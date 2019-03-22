@@ -7,6 +7,7 @@ const StyledTile = styled.div`
   border-bottom: 1px solid black;
   border-right: 1px solid black;
   background: ${(props) => props.activated ? props.color : "white"}
+  border-color: ${(props) => (props.playing && props.currentStep === props.column) ? "blue" : "black"}
 `
 
 class Tile extends Component {
@@ -15,7 +16,10 @@ class Tile extends Component {
       <StyledTile
         onClick={(evt) => this.props.handleClick(evt)}
         activated={this.props.activated}
+        currentStep={this.props.currentStep}
+        playing={this.props.playing}
         color={this.props.color}
+        column={this.props.column}
       />
     );
   }

@@ -33,35 +33,38 @@ class MusicActivity extends Component {
       sequence: initialSequence
     };
 
-    this.musicLoop = new Tone.Sequence((time, x) => {
+    this.musicLoop = new Tone.Sequence((time, i) => {
       const sequenceCopy = [...this.state.sequence];
-      for (let i = 0; i < noteNames.length; i++) {
-        const {triggered, activated, note} = sequenceCopy[x][i];
-        sequenceCopy[x][i] = {activated, triggered: x === i, note};
-        if (activated) {
-          music.triggerAttackRelease(note, '8n', time);
+        for (let j = 0; j < sequenceCopy[i].length; j++) {
+          const {triggered, activated, note} = sequenceCopy[i][j];
+          sequenceCopy[i][j] = {activated, triggered, note};
+          if (activated) {
+            music.triggerAttackRelease(note, '8n', time);
+          }
         }
-        this.setState({sequence: sequenceCopy, currentStep: i});
-        console.log(this.state.currentStep);
-      }
-    }, [...new Array(8)].map((v, i) => i), '8n');
+      this.setState({sequence: sequenceCopy, currentStep: i});
+    }, [...new Array(8)].map((v, i) => i), '4n');
 
-    {/*this.musicLoop.loop = true;*/}
     this.musicLoop.start();
   }
 
   handleClick(evt) {
+    if (!this.state.playing) {
+      Tone.Transport.start();
+    } else {
+      Tone.Transport.stop();
+    }
+
     this.setState({
       playing: !this.state.playing
     });
-    Tone.Transport.start();
   }
 
   toggleStep(sound, step) {
     const sequenceCopy = [...this.state.sequence];
-    const {triggered, activated, note} = sequenceCopy[sound][step];
+    const {triggered, activated} = sequenceCopy[sound][step];
 
-    if (!sequenceCopy[sound][step]["activated"]) {
+    if (!sequenceCopy[sound][step]["activated"] && !this.state.playing) {
       music.triggerAttackRelease(noteNames[step], '8n');
     }
 
@@ -72,20 +75,18 @@ class MusicActivity extends Component {
     }
 
     this.setState({sequence: sequenceCopy});
-    console.log(this.state.sequence)
-  }
-
-  startLoop() {
-    if (this.state.playing) {
-
-    }
   }
 
   render() {
     return (
       <div>
-        <Grid sequence={this.state.sequence} toggleStep={this.toggleStep}/>
-        <p onClick={this.handleClick}>Play</p>
+        <Grid
+          sequence={this.state.sequence}
+          toggleStep={this.toggleStep}
+          currentStep={this.state.currentStep}
+          playing={this.state.playing}
+        />
+        <p onClick={this.handleClick}>{this.state.playing ? "Stop" : "Play"}</p>
       </div>
     );
   }

@@ -17,11 +17,12 @@ class Grid extends Component {
         squares.push(
           <Tile
             key={i + j}
-            row={i}
-            column={j}
+            row={j}
+            column={i}
             color={colorsList[j]}
             activated={sequence[i][j]["activated"]}
-            triggered={sequence[i][j]["triggered"]}
+            playing={this.props.playing}
+            currentStep={this.props.currentStep}
             handleClick={() => toggleStep(i, j)}
           />
         );
