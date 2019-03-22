@@ -9,7 +9,6 @@ const Container = styled.div`
 class Grid extends Component {
   createGrid(sequence, toggleStep) {
     let grid = [];
-    let notesList = Notes['notes'];
     let colorsList = Notes['colors'];
 
     {sequence.map((sound, i) => {
@@ -20,10 +19,9 @@ class Grid extends Component {
             key={i + j}
             row={i}
             column={j}
-            note={notesList[j]}
             color={colorsList[j]}
             activated={sequence[i][j]["activated"]}
-            triggered={sequence[i][j]["troggered"]}
+            triggered={sequence[i][j]["triggered"]}
             handleClick={() => toggleStep(i, j)}
           />
         );

@@ -4,7 +4,14 @@ import Button from '../Components/Button';
 import Notes from './Notes';
 import Tone from 'tone';
 
-const initialCellState = { triggered: false, activated: false };
+
+const noteNames = Notes['notes'];
+let music = new Tone.Synth().toMaster();
+const initialCellState = {
+  triggered: false,
+  activated: false,
+  note: "C4"
+};
 const initialSequence = [
   new Array(14).fill(initialCellState),
   new Array(14).fill(initialCellState),
@@ -15,8 +22,6 @@ const initialSequence = [
   new Array(14).fill(initialCellState),
   new Array(14).fill(initialCellState)
 ];
-const noteNames = Notes['notes'];
-let sound = new Tone.Synth().toMaster();
 
 class MusicActivity extends Component {
   constructor(props) {
@@ -40,13 +45,19 @@ class MusicActivity extends Component {
 
   toggleStep(sound, step) {
     const sequenceCopy = [...this.state.sequence];
-    const {triggered, activated} = sequenceCopy[sound][step];
+    const {triggered, activated, note} = sequenceCopy[sound][step];
+
+    if (!sequenceCopy[sound][step]["activated"]) {
+      music.triggerAttackRelease(noteNames[step], '8n');
+    }
+
     sequenceCopy[sound][step] = {
       triggered: !triggered,
-      activated: !activated
+      activated: !activated,
+      note: noteNames[step]
     }
+
     this.setState({sequence: sequenceCopy});
-    console.log("toggled");
   }
 
   render() {
