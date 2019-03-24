@@ -14,31 +14,31 @@
 
   &.joyful {
     .rc-slider-rail {
-      background: linear-gradient(to right, #FAF09A, $joyfulPrimary);
+      background: linear-gradient(to right, #FAD7A0, $joyfulPrimary);
     }
   }
 
   &.sad {
     .rc-slider-rail {
-      background: linear-gradient(to right, #AECDE6, $sadPrimary);
+      background: linear-gradient(to right, #88AEC7, $sadPrimary);
     }
   }
 
   &.afraid {
     .rc-slider-rail {
-      background: linear-gradient(to right, #A794F8, $afraidPrimary);
+      background: linear-gradient(to right, #A3A8CF, $afraidPrimary);
     }
   }
 
   &.angry {
     .rc-slider-rail {
-      background: linear-gradient(to right, #FF9755, $angryPrimary);
+      background: linear-gradient(to right, #F299AB, $angryPrimary);
     }
   }
 
   &.disgusted {
     .rc-slider-rail {
-      background: linear-gradient(to right, #7FEFA3, $disgustedPrimary);
+      background: linear-gradient(to right, #93D4C0, $disgustedPrimary);
     }
   }
 }
