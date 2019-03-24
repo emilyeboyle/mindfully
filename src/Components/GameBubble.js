@@ -1,32 +1,53 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import {keyframes} from 'styled-components';
 
+const bubbleup = keyframes`
+   0% {
+       transform: translate(0px, 0px);
+       animation-timing-function:ease-in-out
+   }
+
+   100% {
+       transform: translate(0px, 100vh);
+       animation-timing-function:ease-in-out
+   }
+
+`
 const StyledBubbleContainer = styled.div`
   width: 100px;
   margin: 20px 20px;
+  position: absolute;
+  top: ${props => props.y};
+  left: ${props => props.x};
   transition: all 120ms ease-in-out;
   display: inline-block;
+  animation: ${bubbleup} 18s linear infinite;
+  opacity: ${props => props.clicked ? 0 : 1};
 `
 
 class GameBubble extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clicked : false
+      clicked : false,
+      x: (Math.random() * window.innerWidth) + 'px',
+      y: (Math.random() * (window.innerHeight - 100)) + 'px',
     }
     this.setClicked = this.setClicked.bind(this);
   }
 
   setClicked() {
     this.setState({
-      clicked : true
+      clicked : true,
     })
   }
+
 
   render() {
     if (this.state.clicked) {
       return (
-        <StyledBubbleContainer onClick={this.setClicked} >
+        <StyledBubbleContainer clicked={this.state.clicked} x={this.state.x} y={this.state.y} onClick={this.setClicked} >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
             <defs><style>{`.a{fill:#93c9ed;}`}</style></defs>
             <path className="a" d="M56.17,60.5a6.76,6.76,0,0,1,8.22-10.74C67.35,52,72.81,66,72.81,66S59.13,62.77,56.17,60.5Z"/>
@@ -46,7 +67,7 @@ class GameBubble extends Component {
       );
     } else {
       return (
-        <StyledBubbleContainer onClick={this.setClicked} >
+        <StyledBubbleContainer clicked={this.state.clicked} x={this.state.x} y={this.state.y} onClick={this.setClicked} >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 299.08 299.08">
             <defs><style>{`.a{ fill:#84c5e2;} .b{fill:#93c9ed;} .c{fill:#fdfefe;opacity:0.75;}`}</style></defs>
             <circle className="a" cx="149.54" cy="149.54" r="149.54"/>
