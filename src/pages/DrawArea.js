@@ -73,6 +73,7 @@ class DrawArea extends React.Component {
     const point = this.relativeCoordinatesForEvent(mouseEvent);
 
     this.setState(prevState => ({
+      //lines: {points: prevState; color: this.state.color; stroke: this.state.stroke}
       lines: prevState.lines.push(new Immutable.List([point])),
       isDrawing: true
     }));
@@ -109,7 +110,6 @@ class DrawArea extends React.Component {
   }
 
   setStroke(newStroke) {
-    console.log(newStroke);
     this.setState({
       stroke: newStroke
     });
@@ -121,9 +121,9 @@ class DrawArea extends React.Component {
       <div>
         <StyledHeading>Draw how you are feeling</StyledHeading>
         <ToolContainer>
-          <Brush stroke="3px" handleClick={this.setStroke} src={require('../static/images/drawing/colored-pencil.png')} />
-          <Brush stroke="5px"  handleClick={this.setStroke} src={require('../static/images/drawing/smaller-brush.png')} />
-          <Brush stroke="8px" handleClick={this.setStroke} src={require('../static/images/drawing/larger-painbrush.png')} />
+          <Brush selected={this.state.stroke} stroke="3px" handleClick={this.setStroke} src={require('../static/images/drawing/colored-pencil.png')} />
+          <Brush selected={this.state.stroke} stroke="5px"  handleClick={this.setStroke} src={require('../static/images/drawing/smaller-brush.png')} />
+          <Brush selected={this.state.stroke} stroke="8px" handleClick={this.setStroke} src={require('../static/images/drawing/larger-painbrush.png')} />
         </ToolContainer>
         <StyledDrawArea
           ref="drawArea"
