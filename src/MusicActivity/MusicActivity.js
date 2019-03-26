@@ -1,13 +1,23 @@
 import React, { Component } from "react";
 import Grid from './Grid';
-import Button from '../Components/Button';
+import PlayPause from './PlayPause';
 import Notes from './Notes';
 import Tone from 'tone';
 
 const noteNames = Notes['notes'];
-let music = new Tone.PolySynth(8, Tone.Synth).toMaster();
+let music = new Tone.PolySynth(8, Tone.Synth).set({
+  'volume' : -2,
+			'oscillator' : {
+				'type' : 'triangle17',
+			},
+			'envelope' : {
+				'attack' : 0.01,
+				'decay' : 0.1,
+				'sustain' : 0.2,
+				'release' : 1.7,
+			}
+}).toMaster();
 const initialCellState = {
-  triggered: false,
   activated: false,
   note: ""
 };
@@ -36,8 +46,8 @@ class MusicActivity extends Component {
     this.musicLoop = new Tone.Sequence((time, i) => {
       const sequenceCopy = [...this.state.sequence];
         for (let j = 0; j < sequenceCopy[i].length; j++) {
-          const {triggered, activated, note} = sequenceCopy[i][j];
-          sequenceCopy[i][j] = {activated, triggered, note};
+          const {activated, note} = sequenceCopy[i][j];
+          sequenceCopy[i][j] = {activated, note};
           if (activated) {
             music.triggerAttackRelease(note, '8n', time);
           }
@@ -62,14 +72,13 @@ class MusicActivity extends Component {
 
   toggleStep(sound, step) {
     const sequenceCopy = [...this.state.sequence];
-    const {triggered, activated} = sequenceCopy[sound][step];
+    const {activated} = sequenceCopy[sound][step];
 
     if (!sequenceCopy[sound][step]["activated"] && !this.state.playing) {
       music.triggerAttackRelease(noteNames[step], '8n');
     }
 
     sequenceCopy[sound][step] = {
-      triggered,
       activated: !activated,
       note: noteNames[step]
     }
@@ -86,7 +95,7 @@ class MusicActivity extends Component {
           currentStep={this.state.currentStep}
           playing={this.state.playing}
         />
-        <p onClick={this.handleClick}>{this.state.playing ? "Stop" : "Play"}</p>
+        <PlayPause playing={this.state.playing} handleClick={this.handleClick}/>
       </div>
     );
   }

@@ -4,22 +4,30 @@ import styled from 'styled-components';
 const StyledTile = styled.div`
   width: 12.5vw;
   height: 5.5vh;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-  background: ${(props) => props.activated ? props.color : "white"}
-  border-color: ${(props) => (props.playing && props.currentStep === props.column) ? "blue" : "black"}
+  border-bottom: 1px solid #C7C7C7;
+  border-right: 1px solid #C7C7C7;
+  background: ${(props) => props.color}
+  filter: ${(props) => (props.activated && props.highlight) ? "brightness(75%)" : "brightness(100%)"}
 `
 
 class Tile extends Component {
   render() {
+    let highlight = (this.props.currentStep === this.props.column && this.props.playing);
+    let fillColor;
+    if (this.props.activated) {
+      fillColor = this.props.color;
+    } else if (!this.props.activated && highlight) {
+      fillColor = "#E9F8F9";
+    } else {
+      fillColor = "white";
+    }
+
     return(
       <StyledTile
         onClick={(evt) => this.props.handleClick(evt)}
+        highlight={highlight}
         activated={this.props.activated}
-        currentStep={this.props.currentStep}
-        playing={this.props.playing}
-        color={this.props.color}
-        column={this.props.column}
+        color={fillColor}
       />
     );
   }
