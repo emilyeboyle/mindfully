@@ -1,6 +1,6 @@
 // Import dependencies from navi and react
-import { createPage, createSwitch } from 'navi'
-import * as Navi from 'navi'
+import { createPage, createSwitch } from 'navi';
+import * as Navi from 'navi';
 
 // Create the switch
 export default createSwitch({
@@ -45,11 +45,17 @@ export default createSwitch({
       title: "Draw",
       view: <DrawArea />,
     }),
-    
+
     // Create the bubblepop route
     '/bubblepop': route({
       title: "Bubble Pop",
       view: <BubblePop/>,
     }),
+
+    // Create the music activity route
+    '/music': createPage({
+      title: "Music Maker",
+      getContent: () => import('./MusicActivity')
+    })
   }
 })

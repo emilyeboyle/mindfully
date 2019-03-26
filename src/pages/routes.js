@@ -8,6 +8,7 @@ import ThankYou from './ThankYou';
 import Unsure from './Unsure';
 import DrawArea from './DrawArea';
 import BubblePop from './BubblePop';
+import MusicActivity from '../MusicActivity/MusicActivity';
 
 const routes =
   mount({
@@ -61,6 +62,10 @@ const routes =
       title: "Bubble Pop",
       view: <BubblePop/>,
     }),
+    '/music': route({
+      title: "Music Maker",
+      view: <MusicActivity />,
+    })
   });
 
 export default routes
