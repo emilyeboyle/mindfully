@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
-import { withTheme } from 'styled-components';
 
 const Circle = styled.div`
   width: 5rem;
