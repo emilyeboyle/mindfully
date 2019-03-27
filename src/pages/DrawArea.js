@@ -71,10 +71,12 @@ class DrawArea extends React.Component {
       return;
     } 
     const point = this.relativeCoordinatesForEvent(mouseEvent);
+    const  points = new Immutable.List([point]);
 
     this.setState(prevState => ({
       //lines: {points: prevState; color: this.state.color; stroke: this.state.stroke}
-      lines: prevState.lines.push(new Immutable.List([point])),
+      lines : { lines: points, color: this.state.color, stroke: this.state.stroke},
+      //lines: prevState.lines.push(new Immutable.List([point])),
       isDrawing: true
     }));
   }
@@ -87,7 +89,7 @@ class DrawArea extends React.Component {
     const point = this.relativeCoordinatesForEvent(mouseEvent);
 
     this.setState(prevState =>  ({
-      lines: prevState.lines.updateIn([prevState.lines.size - 1], line => line.push(point))
+      lines: prevState.lines.lines.updateIn([prevState.lines.size - 1], line => line.push(point))
     }));
   }
 
@@ -145,11 +147,10 @@ class DrawArea extends React.Component {
 }
 
 function Drawing({ color, lines, strokeWidth}) {
+  console.log(lines);
+  //var theLines = lines.line;
   return (
     <StyledSVG className="drawing">
-      {lines.map((line, index) => (
-        <DrawingLine strokeWidth={strokeWidth} color={color} key={index} line={line} />
-      ))}
     </StyledSVG>
   );
 }
