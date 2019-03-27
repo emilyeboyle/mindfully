@@ -24,7 +24,7 @@ class Brush extends Component {
 
   render() {
     return (
-      <StyledBrush selected={this.props.stroke == this.props.selected} src={this.props.src} onClick={this.setStroke} ></StyledBrush>
+      <StyledBrush selected={this.props.stroke === this.props.selected} src={this.props.src} onClick={this.setStroke} ></StyledBrush>
     );
   }
 }
