@@ -3,6 +3,7 @@ import ItsOk from '../Components/ItsOk';
 import PageContainer from '../Components/PageContainer';
 import { NavLink } from 'react-navi';
 import Button from '../Components/Button';
+import BackButton from '../Components/BackButton';
 
 class Okay extends Component {
   constructor(props) {
@@ -20,6 +21,11 @@ class Okay extends Component {
   render() {
     return (
       <div>
+        <nav>
+          <NavLink href={`/${this.state.baseEmotion}`}>
+            <BackButton emotion={this.state.baseEmotion}/>
+          </NavLink>
+        </nav>
         <PageContainer baseEmotion={this.state.baseEmotion}>
           <ItsOk specificEmotion={this.state.subEmotion} emotion={this.state.baseEmotion}></ItsOk>
         </PageContainer>
