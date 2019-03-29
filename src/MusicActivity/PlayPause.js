@@ -9,7 +9,7 @@ const Circle = styled.div`
   display: flex;
   align-items: center;
   justify-content: ${props => props.playing ? "center" : "flex-start"};
-  margin: 2rem auto 0;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, .2);
 `
 const Play = styled.div`
   width: 0;
