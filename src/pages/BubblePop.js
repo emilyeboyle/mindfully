@@ -17,7 +17,9 @@ class BubblePop extends React.Component {
   createBubbles() {
     let bubbles = [];
     for (let i = 0; i < this.state.bubbleNumbers; i++) {
-      bubbles.push(<GameBubble key={i} />);
+      let translateX = (Math.random()*50) - 25 + 'px';
+      let translateY = (Math.random()*50) - 25 + 'px';
+      bubbles.push(<GameBubble key={i} moveX={translateX} moveY={translateY}/>);
     }
     return bubbles;
   }

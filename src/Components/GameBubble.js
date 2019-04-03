@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import {keyframes} from 'styled-components';
 
-const bubbleup = keyframes`
+const bubbleup = (moveX, moveY) => keyframes`
    0% {
        transform: translate(0px, 0px);
        animation-timing-function:ease-in-out
    }
 
    100% {
-       transform: translate(0px, -100vh);
+       transform: translate(${moveX}, ${moveX});
        animation-timing-function:ease-in-out
    }
 
@@ -22,8 +22,13 @@ const StyledBubbleContainer = styled.div`
   left: ${props => props.x};
   transition: all 120ms ease-in-out;
   display: inline-block;
-  animation: ${bubbleup} 18s linear infinite;
+  animation: ${props => bubbleup(props.moveX, props.moveY)} 10s linear infinite alternate;
   opacity: ${props => props.clicked ? 0 : 1};
+  -webkit-tap-highlight-color: transparent;
+
+  :focus {
+    outline: none;
+  }
 `
 
 class GameBubble extends Component {
@@ -31,8 +36,8 @@ class GameBubble extends Component {
     super(props);
     this.state = {
       clicked : false,
-      x: (Math.random() * window.innerWidth) + 'px',
-      y: (Math.random() * (window.innerHeight - 100)) + 'px',
+      x: (Math.random() * (window.innerWidth - 75)) + 'px',
+      y: (Math.random() * (window.innerHeight - 75)) + 'px',
     }
     this.setClicked = this.setClicked.bind(this);
   }
@@ -47,7 +52,14 @@ class GameBubble extends Component {
   render() {
     if (this.state.clicked) {
       return (
-        <StyledBubbleContainer clicked={this.state.clicked} x={this.state.x} y={this.state.y} onClick={this.setClicked} >
+        <StyledBubbleContainer
+          clicked={this.state.clicked}
+          x={this.state.x}
+          y={this.state.y}
+          onClick={this.setClicked}
+          moveX={this.props.moveX}
+          moveY={this.props.moveY}
+        >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
             <defs><style>{`.a{fill:#93c9ed;}`}</style></defs>
             <path className="a" d="M56.17,60.5a6.76,6.76,0,0,1,8.22-10.74C67.35,52,72.81,66,72.81,66S59.13,62.77,56.17,60.5Z"/>
@@ -67,7 +79,14 @@ class GameBubble extends Component {
       );
     } else {
       return (
-        <StyledBubbleContainer clicked={this.state.clicked} x={this.state.x} y={this.state.y} onClick={this.setClicked} >
+        <StyledBubbleContainer
+          clicked={this.state.clicked}
+          x={this.state.x}
+          y={this.state.y}
+          onClick={this.setClicked}
+          moveX={this.props.moveX}
+          moveY={this.props.moveY}
+        >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 299.08 299.08">
             <defs><style>{`.a{ fill:#84c5e2;} .b{fill:#93c9ed;} .c{fill:#fdfefe;opacity:0.75;}`}</style></defs>
             <circle className="a" cx="149.54" cy="149.54" r="149.54"/>
