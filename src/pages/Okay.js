@@ -4,6 +4,7 @@ import PageContainer from '../Components/PageContainer';
 import { NavLink } from 'react-navi';
 import Button from '../Components/Button';
 import BackButton from '../Components/BackButton';
+import ActivityList from '../constants/ActivityList';
 
 class Okay extends Component {
   constructor(props) {
@@ -15,7 +16,32 @@ class Okay extends Component {
       subEmotion: this.props.subEmotion,
       selected : false,
       message : '',
+      activity: '',
     };
+    this.setActivity = this.setActivity.bind(this);
+  }
+
+ componentDidMount() {
+   this.setActivity();
+ }
+
+  setActivity() {
+      const list = ActivityList['activities'];
+    if(this.state.subEmotion) {
+      const activities = list[this.state.subEmotion];
+      const activitiesLength= activities.length;
+      const random = Math.floor(Math.random() * activitiesLength);
+      const randomActivity = activities[random];
+      console.log(randomActivity);
+       this.setState({activity: randomActivity});
+    } else {
+      const activities = list[this.state.baseEmotion];
+      const activitiesLength= activities.length;
+      const random = Math.floor(Math.random() * activitiesLength);
+      const randomActivity = activities[random];
+      console.log(randomActivity);
+       this.setState({activity: randomActivity});
+    }
   }
 
   render() {
@@ -27,10 +53,10 @@ class Okay extends Component {
           </NavLink>
         </nav>
         <PageContainer baseEmotion={this.state.baseEmotion}>
-          <ItsOk specificEmotion={this.state.subEmotion} emotion={this.state.baseEmotion}></ItsOk>
+          <ItsOk activity={this.state.activity} specificEmotion={this.state.subEmotion} emotion={this.state.baseEmotion}></ItsOk>
         </PageContainer>
         <nav>
-          <NavLink href={'/meditation'}>
+          <NavLink href={`/${this.state.activity}`}>
             <Button text='Continue' emotion={this.state.baseEmotion} show={true}/>
           </NavLink>
         </nav>

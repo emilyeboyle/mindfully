@@ -35,7 +35,7 @@ const routes =
     }),
 
     // Create the meditation route
-    '/meditation': route({
+    '/breathing': route({
       title: "Calm Breathing",
       view: <Meditation />,
     }),

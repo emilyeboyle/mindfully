@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import BunnyBody from '../Components/BunnyBody';
+import PropTypes from 'prop-types'; import BunnyBody from '../Components/BunnyBody';
 import ItsOkText from '../constants/ItsOkText';
+import ActivityText from '../constants/ActivityText';
 import { withTheme } from 'styled-components'
 
 const StyledItsOkContainer = styled.div`
@@ -36,6 +36,8 @@ const StyledText = styled.p`
 class ItsOk extends Component {
   render() {
     const emotion = this.props.emotion;
+    const activity  = this.props.activity;
+    console.log(activity);
     const emotionString = (emotion + 'Primary').toString();
     const theme = this.props.theme;
     const themeColor = theme[emotionString];
@@ -56,7 +58,7 @@ class ItsOk extends Component {
               It's {text} that you feel {this.props.specificEmotion}.
             </StyledHeader>
             <StyledText>
-              {ItsOkText[emotion]} Here's a meditation activity to help you reflect on this feeling.
+              {ItsOkText[emotion]} {ActivityText[activity]}
             </StyledText>
           </StyledTextContainer>
         </StyledItsOkContainer>
