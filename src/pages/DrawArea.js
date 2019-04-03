@@ -60,11 +60,11 @@ class DrawArea extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener("mouseup", this.handleMouseUp);
+    document.addEventListener("mouseup touchend", this.handleMouseUp);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("mouseup", this.handleMouseUp);
+    document.removeEventListener("mouseup touchend", this.handleMouseUp);
   } 
   handleMouseDown(mouseEvent) {
     if (mouseEvent.button !== 0) {
