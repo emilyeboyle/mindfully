@@ -9,7 +9,7 @@ const bubbleup = keyframes`
    }
 
    100% {
-       transform: translate(0px, 100vh);
+       transform: translate(0px, -100vh);
        animation-timing-function:ease-in-out
    }
 
