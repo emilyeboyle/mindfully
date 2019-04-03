@@ -13,10 +13,12 @@ const StyledDrawArea = styled.div`
   bottom: 0;
   margin: 100px 200px;
   background: white;
+  cursor: pointer;
 `
 const StyledSVG = styled.svg`
   width: 100%;
   height: 100%;
+  cursor: pointer;
 `
 const StyledPath = styled.path`
   fill: none;
@@ -24,6 +26,7 @@ const StyledPath = styled.path`
   stroke-width: ${props => props.strokeWidth };
   stroke-linejoin: round;
   stroke-linecap: round;
+  cursor: pointer;
 `
 const ColorContainer = styled.div`
   position: fixed;
@@ -71,6 +74,8 @@ class DrawArea extends React.Component {
       return;
     } 
     const point = this.relativeCoordinatesForEvent(mouseEvent);
+    mouseEvent.stopPropagation();
+    mouseEvent.preventDefault();
 
     this.setState(prevState => ({
       //lines: {points: prevState; color: this.state.color; stroke: this.state.stroke}
@@ -85,6 +90,8 @@ class DrawArea extends React.Component {
     }
 
     const point = this.relativeCoordinatesForEvent(mouseEvent);
+    mouseEvent.stopPropagation();
+    mouseEvent.preventDefault();
 
     this.setState(prevState =>  ({
       lines: prevState.lines.updateIn([prevState.lines.size - 1], line => line.push(point))
