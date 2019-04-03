@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-navi';
 import Bubble from '../Components/Bubble';
 import Button from '../Components/Button';
+import BackButton from '../Components/BackButton';
 import EmotionSlider from '../Components/EmotionSlider';
 import PageContainer from '../Components/PageContainer';
 import styled from 'styled-components';
@@ -99,6 +100,11 @@ class SubEmotion extends Component {
           {this.state.selected &&
           <TransparentDiv/>
           }
+          <nav>
+            <NavLink href={'/'}>
+              <BackButton emotion={baseEmotion}/>
+            </NavLink>
+          </nav>
           <StyledH2Light>So you are feeling <span className="base-emotion">{baseEmotion}</span>.</StyledH2Light>
           <StyledH2>How {baseEmotion} are you?</StyledH2>
           <SliderContainer>
