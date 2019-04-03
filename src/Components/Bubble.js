@@ -37,8 +37,8 @@ const StyledBubble = styled.div`
   animation: .5s ${fadeAnimation};
 `
 const StyledBubbleSmall = styled(StyledBubble)`
-  width: ${(props) => props.selected ? "70vh" : "13.25rem"};
-  height: ${(props) => props.selected ? "70vh" : "13.25rem"};
+  width: ${(props) => props.selected ? "70vh" : "12rem"};
+  height: ${(props) => props.selected ? "70vh" : "12rem"};
 `
 
 const StyledImg = styled.img`
@@ -61,6 +61,9 @@ const StyledX = styled.div`
 const StyledText = styled.p`
   font-size: ${(props) => props.selected ? "2rem" : "1.375rem"};
   margin: 0.5rem 0 0 0;
+`
+const StyledTextSmall = styled(StyledText)`
+  font-size: ${(props) => props.selected ? "2rem" : "1rem"};
 `
 const StyledDefinition = styled.p`
   font-size: 1.5rem;
@@ -112,7 +115,7 @@ class Bubble extends Component {
           value={maxVal}
           selected={this.props.selected === emotion}>
           <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
-          <StyledText selected={this.props.selected === emotion}>{emotion}</StyledText>
+          <StyledTextSmall selected={this.props.selected === emotion}>{emotion}</StyledTextSmall>
           <StyledDefinition selected={this.props.selected === emotion}>{definition}</StyledDefinition>
           <StyledX
             onClick={() => {this.props.handleClose()}}
