@@ -24,6 +24,7 @@ const StyledBubbleContainer = styled.div`
   display: inline-block;
   animation: ${props => bubbleup(props.moveX, props.moveY)} 10s linear infinite alternate;
   opacity: ${props => props.clicked ? 0 : 1};
+  -webkit-tap-highlight-color: transparent;
 
   :focus {
     outline: none;
@@ -35,8 +36,8 @@ class GameBubble extends Component {
     super(props);
     this.state = {
       clicked : false,
-      x: (Math.random() * window.innerWidth - 100) + 'px',
-      y: (Math.random() * (window.innerHeight - 100)) + 'px',
+      x: (Math.random() * (window.innerWidth - 75)) + 'px',
+      y: (Math.random() * (window.innerHeight - 75)) + 'px',
     }
     this.setClicked = this.setClicked.bind(this);
   }
