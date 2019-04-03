@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import styled from 'styled-components';
 import Grid from './Grid';
 import PlayPause from './PlayPause';
 import Notes from './Notes';
 import Tone from 'tone';
+import Button from '../Components/Button';
+import { NavLink } from 'react-navi';
 
 const noteNames = Notes['notes'];
 let music = new Tone.PolySynth(8, Tone.Synth).set({
@@ -31,12 +34,19 @@ const initialSequence = [
   new Array(14).fill(initialCellState),
   new Array(14).fill(initialCellState)
 ];
+const ButtonsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 2rem;
+`
 
 class MusicActivity extends Component {
   constructor(props) {
     super(props);
     this.toggleStep = this.toggleStep.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleClear = this.handleClear.bind(this);
     this.state = {
       playing: false,
       currentStep: 0,
@@ -86,6 +96,23 @@ class MusicActivity extends Component {
     this.setState({sequence: sequenceCopy});
   }
 
+  handleClear(evt) {
+    const sequenceCopy = [...this.state.sequence];
+    for (let i = 0; i < sequenceCopy.length; i++) {
+      for (let j = 0; j < sequenceCopy[i].length; j++) {
+        if (sequenceCopy[i][j]["activated"]) {
+          sequenceCopy[i][j] = {
+            activated: false,
+            note: ""
+          }
+        }
+      }
+    }
+    this.setState({
+      sequence: sequenceCopy
+    });
+  }
+
   render() {
     return (
       <div>
@@ -95,7 +122,21 @@ class MusicActivity extends Component {
           currentStep={this.state.currentStep}
           playing={this.state.playing}
         />
-        <PlayPause playing={this.state.playing} handleClick={this.handleClick}/>
+        <ButtonsContainer>
+          <Button
+            text="Clear"
+            absolute={false}
+            emotion="brandPink"
+            handleClick={this.handleClear}
+            clickFunction={true}
+          />
+          <PlayPause playing={this.state.playing} handleClick={this.handleClick}/>
+          <nav>
+            <NavLink href={'/thankYou'}>
+              <Button text='Done' emotion="brand" show={true} absolute={false}/>
+            </NavLink>
+          </nav>
+        </ButtonsContainer>
       </div>
     );
   }

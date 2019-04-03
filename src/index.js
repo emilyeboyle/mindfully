@@ -11,7 +11,7 @@ const styleGuide = {
   background: '#F5F6F6',
   brandPrimary : '#90D2D5',
   brandSecondary: '#C8FFFF',
-  brandPink: '#E55C7D',
+  brandPinkPrimary: '#E55C7D',
   angryPrimary: '#E93054',
   angrySecondary: '#E86282',
   angryBackground: 'rgba(231, 48, 84, 0.1)',

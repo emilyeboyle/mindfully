@@ -11,7 +11,7 @@ class Grid extends Component {
     let grid = [];
     let colorsList = Notes['colors'];
 
-    {sequence.map((sound, i) => {
+    sequence.map((sound, i) => {
       let squares = [];
       sound.map((time, j) => {
         squares.push(
@@ -28,8 +28,7 @@ class Grid extends Component {
         );
       })
       grid.push(<div key={i}>{squares}</div>)
-    })
-    }
+    });
 
     return (
       grid

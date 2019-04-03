@@ -11,7 +11,7 @@ const StyledLink = styled.p`
   bottom: 50px;
   left: 0;
   right: 0;
-  margin: ${(props) => props.unsure ? "1.5rem" : "0 auto"};
+  margin: ${(props) => props.absolute ? "0 auto" : "0"};
   border-radius: 38.5px;
   padding: 14px;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, .2);
@@ -30,20 +30,35 @@ class Button extends Component {
     const themeColor = theme[emotionString];
     const colors = ['afraidPrimary', 'sadPrimary', 'angryPrimary'];
     let whiteText = colors.indexOf(emotionString) > -1;
-    const absolute = this.props.absolute;
-    console.log(absolute);
-    return(
-      <StyledLink
-        color={themeColor}
-        whiteText={whiteText}
-        emotion={this.props.selectedEmotion}
-        show={this.props.show}
-        unsure={this.props.unsure}
-        absolute={this.props.absolute}
-      >
-        {this.props.text}
-      </StyledLink>
-    );
+
+    if (this.props.clickFunction) {
+      return(
+        <StyledLink
+          color={themeColor}
+          whiteText={whiteText}
+          emotion={this.props.selectedEmotion}
+          show={this.props.show}
+          unsure={this.props.unsure}
+          absolute={this.props.absolute}
+          onClick={this.props.handleClick}
+        >
+          {this.props.text}
+        </StyledLink>
+      );
+    } else {
+      return(
+        <StyledLink
+          color={themeColor}
+          whiteText={whiteText}
+          emotion={this.props.selectedEmotion}
+          show={this.props.show}
+          unsure={this.props.unsure}
+          absolute={this.props.absolute}
+        >
+          {this.props.text}
+        </StyledLink>
+      );
+    }
   }
 }
 
@@ -51,7 +66,8 @@ Button.defaultProps = {
   emotion: 'brand',
   show: 'true',
   absolute: true,
-  unsure: false
+  unsure: false,
+  clickFunction: false
 }
 
 export default withTheme(Button);
