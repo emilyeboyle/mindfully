@@ -5,6 +5,7 @@ import PlayPause from './PlayPause';
 import Notes from './Notes';
 import Tone from 'tone';
 import Button from '../Components/Button';
+import Modal from '../Components/Modal';
 import { NavLink } from 'react-navi';
 
 const noteNames = Notes['notes'];
@@ -47,10 +48,13 @@ class MusicActivity extends Component {
     this.toggleStep = this.toggleStep.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleClear = this.handleClear.bind(this);
+    this.modalClose = this.modalClose.bind(this);
+    this.modalOpen = this.modalOpen.bind(this);
     this.state = {
       playing: false,
       currentStep: 0,
-      sequence: initialSequence
+      sequence: initialSequence,
+      showModal: true
     };
 
     this.musicLoop = new Tone.Sequence((time, i) => {
@@ -66,6 +70,14 @@ class MusicActivity extends Component {
     }, [...new Array(8)].map((v, i) => i), '4n');
 
     this.musicLoop.start();
+  }
+
+  modalClose() {
+    this.setState({showModal: false});
+  }
+
+  modalOpen() {
+    this.setState({showModal: true});
   }
 
   handleClick(evt) {
@@ -137,6 +149,11 @@ class MusicActivity extends Component {
             </NavLink>
           </nav>
         </ButtonsContainer>
+        <Modal
+          open={this.state.showModal}
+          handleClose={this.modalClose}
+          text="Click on different parts of the grid to make music! The activity will time out after 3 minutes."
+        />
       </div>
     );
   }
