@@ -63,52 +63,56 @@ class DrawArea extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener("mouseup touchend touchcancel", this.handleMouseUp);
+    document.addEventListener("mouseup touchend", this.handleMouseUp);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("mouseup touchend touchcancel", this.handleMouseUp);
-  } 
+    document.removeEventListener("mouseup touchend", this.handleMouseUp);
+  }
+
   handleMouseDown(mouseEvent) {
-    if (mouseEvent.button !== 0) {
-      return;
-    } 
+    //if (mouseEvent.button == 0) {
     const point = this.relativeCoordinatesForEvent(mouseEvent);
-    mouseEvent.stopPropagation();
-    mouseEvent.preventDefault();
+    //mouseEvent.stopPropagation();
+    //mouseEvent.preventDefault();
 
     this.setState(prevState => ({
       //lines: {points: prevState; color: this.state.color; stroke: this.state.stroke}
       lines: prevState.lines.push(new Immutable.List([point])),
       isDrawing: true
     }));
+    //}
   }
 
   handleMouseMove(mouseEvent) {
-    if (!this.state.isDrawing) {
-      return;
+    if (this.state.isDrawing) {
+      const point = this.relativeCoordinatesForEvent(mouseEvent);
+      //mouseEvent.stopPropagation();
+      //mouseEvent.preventDefault();
+
+      this.setState(prevState =>  ({
+        lines: prevState.lines.updateIn([prevState.lines.size - 1], line => line.push(point))
+      }));
     }
 
-    const point = this.relativeCoordinatesForEvent(mouseEvent);
-    mouseEvent.stopPropagation();
-    mouseEvent.preventDefault();
-
-    this.setState(prevState =>  ({
-      lines: prevState.lines.updateIn([prevState.lines.size - 1], line => line.push(point))
-    }));
   }
 
   handleMouseUp() {
     this.setState({ isDrawing: false });
-    console.log('mouse up');
   }
 
   relativeCoordinatesForEvent(mouseEvent) {
     const boundingRect = this.refs.drawArea.getBoundingClientRect();
-    return new Immutable.Map({
+    if (mouseEvent.touches) {
+      return new Immutable.Map({
+        x: mouseEvent.touches[0].clientX - boundingRect.left,
+        y: mouseEvent.touches[0].clientY - boundingRect.top,
+      });
+    } else { return new Immutable.Map({
       x: mouseEvent.clientX - boundingRect.left,
       y: mouseEvent.clientY - boundingRect.top,
     });
+    }
   }
 
   setColor(newColor) {
@@ -138,7 +142,7 @@ class DrawArea extends React.Component {
           onMouseDown={this.handleMouseDown}
           onMouseMove={this.handleMouseMove}
           onTouchStart={this.handleMouseDown}
-          onTouchEnd={this.handleMouseMove}
+          onTouchMove={this.handleMouseMove}
         >
           <Drawing color={this.state.color} strokeWidth={this.state.stroke} lines={this.state.lines} />
         </StyledDrawArea>
