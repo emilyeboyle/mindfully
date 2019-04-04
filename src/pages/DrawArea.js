@@ -63,11 +63,11 @@ class DrawArea extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener("mouseup touchend touchend touchcancel", this.handleMouseUp);
+    document.addEventListener("mouseup touchend touchcancel", this.handleMouseUp);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("mouseup touchend touchend touchcancel", this.handleMouseUp);
+    document.removeEventListener("mouseup touchend touchcancel", this.handleMouseUp);
   } 
   handleMouseDown(mouseEvent) {
     if (mouseEvent.button !== 0) {
@@ -100,6 +100,7 @@ class DrawArea extends React.Component {
 
   handleMouseUp() {
     this.setState({ isDrawing: false });
+    console.log('mouse up');
   }
 
   relativeCoordinatesForEvent(mouseEvent) {
@@ -136,6 +137,8 @@ class DrawArea extends React.Component {
           ref="drawArea"
           onMouseDown={this.handleMouseDown}
           onMouseMove={this.handleMouseMove}
+          onTouchStart={this.handleMouseDown}
+          onTouchEnd={this.handleMouseMove}
         >
           <Drawing color={this.state.color} strokeWidth={this.state.stroke} lines={this.state.lines} />
         </StyledDrawArea>
