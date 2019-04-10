@@ -3,9 +3,18 @@ import PropTypes from 'prop-types';
 import Slider from 'rc-slider';
 import styled from 'styled-components';
 
+const SliderContainer = styled.div`
+  width: 85%;
+  margin: 0 auto;
+`
 const StyledMarker = styled.p`
   font-family: 'Poppins';
   font-size: 20px;
+  margin: 0 0 0.75rem;
+`
+const MarkerContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
 `
 
 class EmotionSlider extends Component {
@@ -31,11 +40,13 @@ class EmotionSlider extends Component {
 
   render() {
     return (
-      <div className="slider">
-        <StyledMarker> A little </StyledMarker>
+      <SliderContainer>
+        <MarkerContainer>
+          <StyledMarker>A little</StyledMarker>
+          <StyledMarker>A lot</StyledMarker>
+        </MarkerContainer>
         <Slider className={this.props.emotion} onChange={this.log} />
-        <StyledMarker> A lot </StyledMarker>
-      </div>
+      </SliderContainer>
     );
   }
 }
