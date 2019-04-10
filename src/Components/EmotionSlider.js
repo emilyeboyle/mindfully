@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import Slider from 'rc-slider';
+import styled from 'styled-components';
 
+const StyledMarker = styled.p`
+  font-family: 'Poppins';
+  font-size: 20px;
+`
 
 class EmotionSlider extends Component {
   constructor(props) {
@@ -17,6 +22,7 @@ class EmotionSlider extends Component {
     this.setState({
       value: val,
     });
+    this.props.value(this.state.value);
   }
 
   updateValue() {
@@ -26,7 +32,9 @@ class EmotionSlider extends Component {
   render() {
     return (
       <div className="slider">
-        <Slider className={this.props.emotion} onChange={this.log} onAfterChange={this.updateValue}/>
+        <StyledMarker> A little </StyledMarker>
+        <Slider className={this.props.emotion} onChange={this.log} />
+        <StyledMarker> A lot </StyledMarker>
       </div>
     );
   }

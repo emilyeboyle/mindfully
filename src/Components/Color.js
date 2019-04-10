@@ -7,7 +7,7 @@ const StyledColor = styled.div`
   height: 50px;
   width: 50px;
   margin: 0px 10px;
-  `
+`
 
 class Color extends Component {
   constructor(props) {

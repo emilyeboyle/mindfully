@@ -4,6 +4,8 @@ import Immutable from "immutable";
 import Color from '../Components/Color.js';
 import Colors from '../constants/Colors.js';
 import Brush from '../Components/Brush.js';
+import Button from '../Components/Button';
+import { NavLink } from 'react-navi';
 
 const StyledDrawArea = styled.div`
   position: fixed;
@@ -14,6 +16,11 @@ const StyledDrawArea = styled.div`
   margin: 100px 200px;
   background: white;
   cursor: pointer;
+`
+const ButtonContainer = styled.div`
+  position: fixed;
+  bottom: -25px;
+  right: 350px;
 `
 const StyledSVG = styled.svg`
   width: 100%;
@@ -153,6 +160,11 @@ class DrawArea extends React.Component {
             )
           })}
         </ColorContainer>
+        <ButtonContainer>
+          <NavLink href={`/thankYou`}>
+            <Button text='Finish' emotion="brand" show={true}/>
+          </NavLink>
+        </ButtonContainer>
       </div>
     );
   }

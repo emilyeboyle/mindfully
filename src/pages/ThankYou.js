@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from 'styled-components';
 import Button from '../Components/Button';
 import BunnyBody from '../Components/BunnyBody';
+import { NavLink } from 'react-navi';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -34,7 +35,9 @@ class ThankYou extends Component {
         <StyledHeader>Thank you for taking this time for yourself!</StyledHeader>
         <BunnyBody emotion="brand"/>
         <StyledText>Please take a moment to reflect on how you feel.</StyledText>
-        <Button text='Finish' emotion="brand" show={true}/>
+        <NavLink href={`/`}>
+          <Button text='Finish' emotion="brand" show={true}/>
+        </NavLink>
       </StyledContainer>
     );
   }
