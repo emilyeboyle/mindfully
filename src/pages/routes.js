@@ -6,6 +6,7 @@ import Okay from './Okay';
 import Meditation from './Meditation';
 import ThankYou from './ThankYou';
 import Unsure from './Unsure';
+import UnsureEmotions from './UnsureEmotions';
 import DrawArea from './DrawArea';
 import BubblePop from './BubblePop';
 import MusicActivity from '../MusicActivity/MusicActivity';
@@ -65,6 +66,10 @@ const routes =
     '/music': route({
       title: "Music Maker",
       view: <MusicActivity />,
+    }),
+    '/unsure/:emotion+:emotion': route({
+      title: "Unsure Emotions",
+      view: <UnsureEmotions />,
     })
   });
 

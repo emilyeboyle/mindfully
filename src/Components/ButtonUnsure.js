@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import styled from 'styled-components';
 import { withTheme } from 'styled-components'
 
-
 const StyledLink = styled.p`
   display: ${(props) => props.show ? "block" : "none"};
   background: ${props => props.selected ? "#E55C7D" : "#C7C7C7"};
+  pointer-events: ${props => props.disallowSelection ? "none" : "auto"};
   text-align: center;
   margin: 1rem 1rem;
   border-radius: 38.5px;
@@ -27,16 +27,25 @@ class ButtonUnsure extends Component {
     };
   }
   handleClick() {
-    this.setState({selected : !this.state.selected})
+    this.setState({selected : !this.state.selected},
+      () => {
+        if (this.state.selected) {
+          this.props.setEmotion(this.props.text);
+        } else {
+          this.props.removeEmotion(this.props.text);
+        }
+      }
+    )
   }
   render() {
     const emotion = this.props.emotion;
     const emotionString = (emotion + 'Primary').toString();
     const theme = this.props.theme;
     const themeColor = theme[emotionString];
+    const disallowSelect = this.props.disallowSelection && !this.state.selected;
     return(
-      <StyledLink color={themeColor} emotion={this.props.selectedEmotion} show={this.props.show} selected={this.state.selected} onClick={this.handleClick}>
-          {this.props.text}
+      <StyledLink color={themeColor} emotion={this.props.selectedEmotion} show={this.props.show} selected={this.state.selected} onClick={this.handleClick} disallowSelection={disallowSelect}>
+        {this.props.text}
       </StyledLink>
     );
   }

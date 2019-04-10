@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from '../Components/Button';
 import ButtonUnsure from '../Components/ButtonUnsure'
 import UnsureEmotionList from '../constants/UnsureEmotionList';
+import { NavLink } from 'react-navi'
 
 const Container = styled.div`
   display: flex;
@@ -18,19 +19,148 @@ const StyledH2 = styled.h2`
 `
 
 class Unsure extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedEmotions : [],
+      determinedEmotions:[],
+    }
+    this.determineEmotion = this.determineEmotion.bind(this);
+    this.setEmotion = this.setEmotion.bind(this);
+    this.removeEmotion = this.removeEmotion.bind(this);
+  }
+
+  setEmotion(emotion) {
+    this.setState(prevState => ({
+      selectedEmotions: [...prevState.selectedEmotions, emotion]
+    }),() => {
+      this.determineEmotion();
+    });
+  }
+
+  removeEmotion(emotion) {
+    const index = this.state.selectedEmotions.indexOf(emotion);
+    this.setState(prevState => ({
+      selectedEmotions : this.state.selectedEmotions.filter((_, i) => i !== index)
+    }),() => {
+    });
+  }
+
+  determineEmotion() {
+    if (this.state.selectedEmotions.includes("Heart pounding")) {
+      if( this.state.selectedEmotions.includes("Upset stomach")) {
+        this.setState({
+          determinedEmotions: ['disgusted', 'afraid']
+        });
+      } else if (this.state.selectedEmotions.includes("Shaking") || this.state.selectedEmotions.includes("High energy")) {
+        this.setState({
+          determinedEmotions: ['happy', 'afraid'],
+        });
+      } else if (this.state.selectedEmotions.includes("Tense") || this.state.selectedEmotions.includes("Weak") || this.state.selectedEmotions.includes("Hot") || this.state.selectedEmotions.includes("Tired")) {
+        this.setState({
+          determinedEmotions: ['angry', 'afraid'],
+        });
+      }
+    } else if (this.state.selectedEmotions.includes("Relaxed")) {
+      if(this.state.selectedEmotions.includes("Upset stomach")) {
+        this.setState({
+          determinedEmotions: ['angry', 'afraid'],
+        });
+      } else if ( this.state.selectedEmotions.includes("Shaking")) {
+        this.setState({
+          determinedEmotions: ['sad', 'afraid'],
+        });
+      } else if (this.state.selectedEmotions.includes("Weak") || this.state.selectedEmotions.includes("Tired")) {
+        this.setState({
+          determinedEmotions: ['sad', 'happy'],
+        });
+      } else if (this.state.selectedEmotions.includes("Hot")) {
+        this.setState({
+          determinedEmotions: ['angry', 'happy'],
+        });
+      }
+    } else if (this.state.selectedEmotions.includes("Upset stomach")) {
+      if(this.state.selectedEmotions.includes("Shaking") || this.state.selectedEmotions.includes("Weak") || this.state.selectedEmotions.includes("Tired")) {
+        this.setState({
+          determinedEmotions: ['sad', 'afraid'],
+        });
+      } else if (this.state.selectedEmotions.includes("Tense")) {
+        this.setState({
+          determinedEmotions: ['afraid', 'angry']
+        });
+      } else if (this.state.selectedEmotions.includes("Hot")) {
+        this.setState({
+          determinedEmotions: ['afraid', 'disgusted']
+        });
+      } else if (this.state.selectedEmotions.includes("High energy")) {
+        this.setState({
+          determinedEmotions: ['afraid', 'happy']
+        });
+      }
+    } else if (this.state.selectedEmotions.includes("Shaking")) {
+      if(this.state.selectedEmotions.includes("Tense")) {
+        this.setState({
+          determinedEmotions: ['disgusted', 'afraid']
+        });
+      } else if (this.state.selectedEmotions.includes("Weak") || this.state.selectedEmotions.includes("Tired")) {
+        this.setState({
+          determinedEmotions: ['sad', 'afraid']
+        });
+      } else if (this.state.selectedEmotions.includes("Hot")) {
+        this.setState({
+          determinedEmotions: ['afraid', 'angry']
+        });
+      } else if (this.state.selectedEmotions.includes("High energy")) {
+        this.setState({
+          determinedEmotions: ['afraid', 'happy']
+        });
+      }
+    } else if (this.state.selectedEmotions.includes("Tense")) {
+      if(this.state.selectedEmotions.includes("Weak")) {
+        this.setState({
+          determinedEmotions: ['sad', 'angry']
+        }); } else if (this.state.selectedEmotions.includes("Hot")) {
+        this.setState({
+          determinedEmotions: ['angry', 'disgusted']
+        });
+      } else if (this.state.selectedEmotions.includes("Tired")) {
+        this.setState({
+          determinedEmotions: ['afraid', 'sad']
+        });
+      } else if (this.state.selectedEmotions.includes("High energy")) {
+        this.setState({
+          determinedEmotions: ['afraid', 'angry']
+        });
+      }
+    } else if (this.state.selectedEmotions.includes("Weak")) {
+      if(this.state.selectedEmotions.includes("Hot")) {
+        this.setState({
+          determinedEmotions: ['afraid', 'angry']
+        });
+      } else if (this.state.selectedEmotions.includes("Tired")) {
+        this.setState({
+          determinedEmotions: ['afraid', 'sad']
+        });
+      }
+    } else if (this.state.selectedEmotions.includes("Hot")) {
+      if(this.state.selectedEmotions.includes("Tired")) {
+        this.setState({
+          determinedEmotions: ['afraid', 'sad']
+        });
+      } else if (this.state.selectedEmotions.includes("High energy")) {
+        this.setState({
+          determinedEmotions: ['afraid', 'happy']
+        });
+      }
+    }
+  }
+
   render() {
     let feelingList = UnsureEmotionList['feelings'];
-    console.log(feelingList);
+    const emotion1 = this.state.determinedEmotions[0];
+    const emotion2 = this.state.determinedEmotions[1];
     return(
       <div>
-        {/*So, here we write the map function on the feelingList.
-           The (emotion,i)=> syntax is just indicating that we are making
-           a new function with the inputs emotion and i. So, for each item
-            in feelingList we want to return (or create) a Button. The key prop
-            is just something you have to have when you are writing a map.
-            The main thing we need to  worry about is setting the text={emotion}.
-            This will make the button's  text say the emotion that is in the file.
-            We are getting that emotion from the function's input, which is coming from the file.*/}
         <StyledH2>How does your body feel?</StyledH2>
         <Container>
           {feelingList.map((emotion, i) => {
@@ -38,11 +168,19 @@ class Unsure extends Component {
               key={i}
               text={emotion}
               absolute={false}
-              unsure={true}>
+              disallowSelection={this.state.selectedEmotions.length >= 2}
+              unsure={true}
+              setEmotion={this.setEmotion}
+              removeEmotion={this.removeEmotion}
+              determineEmotion={this.determineEmotion}>
             </ButtonUnsure>)
           })}
         </Container>
-        <Button text='Continue'></Button>
+          <nav>
+            <NavLink href={`/unsure/${emotion1}+${emotion2}`}>
+              <Button emotion="brand" text='Continue'></Button>
+            </NavLink>
+          </nav>
       </div>
     )
   }
