@@ -5,6 +5,7 @@ import Color from '../Components/Color.js';
 import Colors from '../constants/Colors.js';
 import Brush from '../Components/Brush.js';
 import Button from '../Components/Button';
+import Modal from '../Components/Modal';
 import { NavLink } from 'react-navi';
 
 const StyledDrawArea = styled.div`
@@ -20,7 +21,7 @@ const StyledDrawArea = styled.div`
 const ButtonContainer = styled.div`
   position: fixed;
   bottom: -25px;
-  right: 350px;
+  right: 300px;
 `
 const StyledSVG = styled.svg`
   width: 100%;
@@ -59,7 +60,8 @@ class DrawArea extends React.Component {
       lines: new Immutable.List(),
       isDrawing: false,
       color: "red",
-      stroke: "3px"
+      stroke: "3px",
+      showModal: true
     };
 
     this.handleMouseDown = this.handleMouseDown.bind(this);
@@ -67,6 +69,8 @@ class DrawArea extends React.Component {
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.setColor = this.setColor.bind(this);
     this.setStroke = this.setStroke.bind(this);
+    this.modalClose = this.modalClose.bind(this);
+    this.modalOpen = this.modalOpen.bind(this);
   }
 
   componentDidMount() {
@@ -75,6 +79,14 @@ class DrawArea extends React.Component {
 
   componentWillUnmount() {
     document.removeEventListener("mouseup touchend", this.handleMouseUp);
+  }
+
+  modalClose() {
+    this.setState({showModal: false});
+  }
+
+  modalOpen() {
+    this.setState({showModal: true});
   }
 
   handleMouseDown(mouseEvent) {
@@ -165,6 +177,11 @@ class DrawArea extends React.Component {
             <Button text='Finish' emotion="brand" show={true}/>
           </NavLink>
         </ButtonContainer>
+        <Modal
+          open={this.state.showModal}
+          handleClose={this.modalClose}
+          text="Spend the next 3 minutes drawing."
+        />
       </div>
     );
   }
@@ -192,5 +209,3 @@ function DrawingLine({ color, line, strokeWidth}) {
 }
 
 export default(DrawArea);
-
-

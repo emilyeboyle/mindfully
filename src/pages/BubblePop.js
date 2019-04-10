@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import GameBubble from '../Components/GameBubble.js';
 import Button from '../Components/Button';
+import Modal from '../Components/Modal';
 import { NavLink } from 'react-navi';
 
 const BubblesContainer = styled.div`
@@ -18,10 +19,21 @@ class BubblePop extends React.Component {
   constructor() {
     super();
     this.updateBubbleNumber = this.updateBubbleNumber.bind(this);
+    this.modalClose = this.modalClose.bind(this);
+    this.modalOpen = this.modalOpen.bind(this);
     this.state = {
       bubbleNumbers : 20,
-      currentBubbleNumber: 20
+      currentBubbleNumber: 20,
+      showModal: true
     };
+  }
+
+  modalClose() {
+    this.setState({showModal: false});
+  }
+
+  modalOpen() {
+    this.setState({showModal: true});
   }
 
   updateBubbleNumber() {
@@ -50,9 +62,16 @@ class BubblePop extends React.Component {
       );
     } else {
       return(
-        <BubblesContainer>
-          {this.createBubbles()}
-        </BubblesContainer>
+        <div>
+          <BubblesContainer>
+            {this.createBubbles()}
+          </BubblesContainer>
+          <Modal
+            open={this.state.showModal}
+            handleClose={this.modalClose}
+            text="Have some fun popping bubbles! The activity will end when all the bubbles have been popped."
+          />
+        </div>
       );
     }
   }
