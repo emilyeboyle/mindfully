@@ -110,6 +110,15 @@ class Emotion extends Component {
                   subEmotion={false}
                   shown={true}>
                 </Bubble>
+                <Bubble
+                  selected= {this.state.selectedEmotion}
+                  handleClose={this.handleClose}
+                  handleClick={this.handleClick}
+                  emotion="unsure"
+                  baseEmotion="unsure"
+                  subEmotion={false}
+                  shown={true}>
+                </Bubble>
               </BubbleContainer>
           </Container>
           <div>{this.props.selectedEmotion}</div>

@@ -27,7 +27,7 @@ class Button extends Component {
     const emotion = this.props.emotion;
     const emotionString = (emotion + 'Primary').toString();
     const theme = this.props.theme;
-    const themeColor = theme[emotionString];
+    const themeColor = (emotion === "unsure" ? theme["brandPrimary"] : theme[emotionString]);
     const colors = ['afraidPrimary', 'sadPrimary', 'angryPrimary'];
     let whiteText = colors.indexOf(emotionString) > -1;
 

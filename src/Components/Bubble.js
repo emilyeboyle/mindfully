@@ -90,7 +90,7 @@ class Bubble extends Component {
     const definition = this.props.definition;
     const emotionString = (baseEmotion + 'Primary').toString();
     const theme = this.props.theme;
-    const themeColor = theme[emotionString];
+    const themeColor = (baseEmotion === "unsure" ? theme["brandPrimary"] : theme[emotionString]);
     const shown = !this.props.shown;
     let maxVal = .5- (this.props.maxVal*.005);
     if (this.props.shown) {
