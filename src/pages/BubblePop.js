@@ -4,6 +4,7 @@ import GameBubble from '../Components/GameBubble.js';
 import Button from '../Components/Button';
 import Modal from '../Components/Modal';
 import { NavLink } from 'react-navi';
+import ReactTimeout from 'react-timeout';
 
 const BubblesContainer = styled.div`
 `
@@ -20,20 +21,44 @@ class BubblePop extends React.Component {
     super();
     this.updateBubbleNumber = this.updateBubbleNumber.bind(this);
     this.modalClose = this.modalClose.bind(this);
-    this.modalOpen = this.modalOpen.bind(this);
+    this.warning = this.warning.bind(this);
+    this.redirect = this.redirect.bind(this);
     this.state = {
       bubbleNumbers : 20,
       currentBubbleNumber: 20,
-      showModal: true
+      showModal: true,
+      modalText: "intro"
     };
   }
 
   modalClose() {
     this.setState({showModal: false});
+    if (this.state.modalText === "intro") {
+      this.setWarnTimeout();
+    } else if (this.state.modalText === "warn") {
+      this.setRedirectTimeout();
+    }
   }
 
-  modalOpen() {
-    this.setState({showModal: true});
+  setWarnTimeout() {
+    const warningTime = (1000 * 60 * 2);
+    this.warnTimeout = this.props.setTimeout(this.warning, warningTime);
+  };
+
+  setRedirectTimeout() {
+    const redirectTime = (1000 * 60);
+    this.redirectTimeout = this.props.setTimeout(this.redirect, redirectTime);
+  }
+
+  warning() {
+    this.setState({
+      modalText: "warn",
+      showModal: true
+    });
+  }
+
+  redirect() {
+    window.location.assign("/thankYou");
   }
 
   updateBubbleNumber() {
@@ -51,6 +76,12 @@ class BubblePop extends React.Component {
   }
 
   render() {
+    let modalText;
+    if (this.state.modalText === "intro") {
+      modalText = "Have some fun popping bubbles! The activity will time out after 3 minutes."
+    } else if (this.state.modalText === "warn") {
+      modalText = "You have one minute remaining."
+    }
     if (this.state.currentBubbleNumber === 0) {
       return(
         <BubbleOverlay>
@@ -69,7 +100,7 @@ class BubblePop extends React.Component {
           <Modal
             open={this.state.showModal}
             handleClose={this.modalClose}
-            text="Have some fun popping bubbles! The activity will end when all the bubbles have been popped."
+            text={modalText}
           />
         </div>
       );
@@ -77,4 +108,4 @@ class BubblePop extends React.Component {
   }
 }
 
-export default(BubblePop);
+export default ReactTimeout(BubblePop);

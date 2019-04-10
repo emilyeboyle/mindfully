@@ -7,6 +7,7 @@ import Tone from 'tone';
 import Button from '../Components/Button';
 import Modal from '../Components/Modal';
 import { NavLink } from 'react-navi';
+import ReactTimeout from 'react-timeout';
 
 const noteNames = Notes['notes'];
 let music = new Tone.PolySynth(8, Tone.Synth).set({
@@ -49,12 +50,14 @@ class MusicActivity extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleClear = this.handleClear.bind(this);
     this.modalClose = this.modalClose.bind(this);
-    this.modalOpen = this.modalOpen.bind(this);
+    this.warning = this.warning.bind(this);
+    this.redirect = this.redirect.bind(this);
     this.state = {
       playing: false,
       currentStep: 0,
       sequence: initialSequence,
-      showModal: true
+      showModal: true,
+      modalText: "intro"
     };
 
     this.musicLoop = new Tone.Sequence((time, i) => {
@@ -74,10 +77,32 @@ class MusicActivity extends Component {
 
   modalClose() {
     this.setState({showModal: false});
+    if (this.state.modalText === "intro") {
+      this.setWarnTimeout();
+    } else if (this.state.modalText === "warn") {
+      this.setRedirectTimeout();
+    }
   }
 
-  modalOpen() {
-    this.setState({showModal: true});
+  setWarnTimeout() {
+    const warningTime = (1000 * 60 * 2);
+    this.warnTimeout = this.props.setTimeout(this.warning, warningTime);
+  };
+
+  setRedirectTimeout() {
+    const redirectTime = (1000 * 60);
+    this.redirectTimeout = this.props.setTimeout(this.redirect, redirectTime);
+  }
+
+  warning() {
+    this.setState({
+      modalText: "warn",
+      showModal: true
+    });
+  }
+
+  redirect() {
+    window.location.assign("/thankYou");
   }
 
   handleClick(evt) {
@@ -126,6 +151,12 @@ class MusicActivity extends Component {
   }
 
   render() {
+    let modalText;
+    if (this.state.modalText === "intro") {
+      modalText = "Click on different parts of the grid to make music! The activity will time out after 3 minutes."
+    } else if (this.state.modalText === "warn") {
+      modalText = "You have one minute remaining."
+    }
     return (
       <div>
         <Grid
@@ -152,11 +183,11 @@ class MusicActivity extends Component {
         <Modal
           open={this.state.showModal}
           handleClose={this.modalClose}
-          text="Click on different parts of the grid to make music! The activity will time out after 3 minutes."
+          text={modalText}
         />
       </div>
     );
   }
 }
 
-export default (MusicActivity);
+export default ReactTimeout(MusicActivity);
