@@ -4,13 +4,11 @@ import Button from '../Components/Button';
 import ButtonUnsure from '../Components/ButtonUnsure'
 import UnsureEmotionList from '../constants/UnsureEmotionList';
 import { NavLink } from 'react-navi'
+import BackButton from '../Components/BackButton';
 
 const Container = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  width: 80%;
-  margin: 0 auto;
-  justify-content: center;
+  flex-wrap: wrap; width: 80%; margin: 0 auto; justify-content: center;
 `
 const StyledH2 = styled.h2`
   font-size: 2rem;
@@ -161,6 +159,11 @@ class Unsure extends Component {
     const emotion2 = this.state.determinedEmotions[1];
     return(
       <div>
+          <nav>
+            <NavLink href={'/'}>
+              <BackButton emotion='brand'/>
+            </NavLink>
+          </nav>
         <StyledH2>How does your body feel?</StyledH2>
         <Container>
           {feelingList.map((emotion, i) => {
