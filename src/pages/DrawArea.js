@@ -7,6 +7,7 @@ import Brush from '../Components/Brush.js';
 import Button from '../Components/Button';
 import Modal from '../Components/Modal';
 import { NavLink } from 'react-navi';
+import ReactTimeout from 'react-timeout';
 
 const StyledDrawArea = styled.div`
   position: fixed;
@@ -61,7 +62,8 @@ class DrawArea extends React.Component {
       isDrawing: false,
       color: "red",
       stroke: "3px",
-      showModal: true
+      showModal: true,
+      modalText: "intro"
     };
 
     this.handleMouseDown = this.handleMouseDown.bind(this);
@@ -70,7 +72,8 @@ class DrawArea extends React.Component {
     this.setColor = this.setColor.bind(this);
     this.setStroke = this.setStroke.bind(this);
     this.modalClose = this.modalClose.bind(this);
-    this.modalOpen = this.modalOpen.bind(this);
+    this.warning = this.warning.bind(this);
+    this.redirect = this.redirect.bind(this);
   }
 
   componentDidMount() {
@@ -83,10 +86,32 @@ class DrawArea extends React.Component {
 
   modalClose() {
     this.setState({showModal: false});
+    if (this.state.modalText === "intro") {
+      this.setWarnTimeout();
+    } else if (this.state.modalText === "warn") {
+      this.setRedirectTimeout();
+    }
   }
 
-  modalOpen() {
-    this.setState({showModal: true});
+  setWarnTimeout() {
+    const warningTime = (1000 * 60 * 2);
+    this.warnTimeout = this.props.setTimeout(this.warning, warningTime);
+  };
+
+  setRedirectTimeout() {
+    const redirectTime = (1000 * 60);
+    this.redirectTimeout = this.props.setTimeout(this.redirect, redirectTime);
+  }
+
+  warning() {
+    this.setState({
+      modalText: "warn",
+      showModal: true
+    });
+  }
+
+  redirect() {
+    window.location.assign("/thankYou");
   }
 
   handleMouseDown(mouseEvent) {
@@ -148,6 +173,12 @@ class DrawArea extends React.Component {
 
   render() {
     let colorList = Colors["color"];
+    let modalText;
+    if (this.state.modalText === "intro") {
+      modalText = "Spend the next 3 minutes on this drawing activity."
+    } else if (this.state.modalText === "warn") {
+      modalText = "You have one minute remaining."
+    }
     return (
       <div>
         <StyledHeading>Draw how you are feeling</StyledHeading>
@@ -180,7 +211,7 @@ class DrawArea extends React.Component {
         <Modal
           open={this.state.showModal}
           handleClose={this.modalClose}
-          text="Spend the next 3 minutes drawing."
+          text={modalText}
         />
       </div>
     );
@@ -208,4 +239,4 @@ function DrawingLine({ color, line, strokeWidth}) {
   return <StyledPath strokeWidth={strokeWidth} color={color} className="path" d={pathData} />;
 }
 
-export default(DrawArea);
+export default ReactTimeout(DrawArea);

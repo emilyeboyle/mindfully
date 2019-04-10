@@ -50,7 +50,8 @@ class MusicActivity extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleClear = this.handleClear.bind(this);
     this.modalClose = this.modalClose.bind(this);
-    this.modalOpen = this.modalOpen.bind(this);
+    this.warning = this.warning.bind(this);
+    this.redirect = this.redirect.bind(this);
     this.state = {
       playing: false,
       currentStep: 0,
@@ -83,12 +84,8 @@ class MusicActivity extends Component {
     }
   }
 
-  modalOpen() {
-    this.setState({showModal: true});
-  }
-
   setWarnTimeout() {
-    const warningTime = (1000);
+    const warningTime = (1000 * 60 * 2);
     this.warnTimeout = this.props.setTimeout(this.warning, warningTime);
   };
 
@@ -102,7 +99,6 @@ class MusicActivity extends Component {
       modalText: "warn",
       showModal: true
     });
-    console.log(this.state.showModal);
   }
 
   redirect() {
