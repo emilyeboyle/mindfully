@@ -181,7 +181,7 @@ class Unsure extends Component {
         </Container>
           <nav>
             <NavLink href={`/unsure/${emotion1}+${emotion2}`}>
-              <Button emotion="brand" text='Continue'></Button>
+              <Button greyed={this.state.selectedEmotions.length < 2}  emotion="brand" text='Continue'></Button>
             </NavLink>
           </nav>
       </div>

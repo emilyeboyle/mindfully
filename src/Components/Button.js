@@ -20,6 +20,8 @@ const StyledLink = styled.p`
   width: ${(props) => props.unsure ? "12rem" : "130px"};
   cursor: pointer;
   z-index: 1;
+  pointer-events: ${(props) => props.greyed ? "none" : "auto"};
+  opacity: ${(props) => props.greyed ? ".5" : "1"};
 `
 
 class Button extends Component {
@@ -30,6 +32,7 @@ class Button extends Component {
     const themeColor = (emotion === "unsure" ? theme["brandPrimary"] : theme[emotionString]);
     const colors = ['afraidPrimary', 'sadPrimary', 'angryPrimary'];
     let whiteText = colors.indexOf(emotionString) > -1;
+    console.log(this.props.greyed);
 
     if (this.props.clickFunction) {
       return(
@@ -41,6 +44,7 @@ class Button extends Component {
           unsure={this.props.unsure}
           absolute={this.props.absolute}
           onClick={this.props.handleClick}
+          greyed={this.props.greyed}
         >
           {this.props.text}
         </StyledLink>
@@ -54,6 +58,7 @@ class Button extends Component {
           show={this.props.show}
           unsure={this.props.unsure}
           absolute={this.props.absolute}
+          greyed={this.props.greyed}
         >
           {this.props.text}
         </StyledLink>
