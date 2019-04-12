@@ -23,6 +23,8 @@ const StyledSelect = styled.select`
   width: 15rem;
   padding: 0.5rem;
   outline: 0;
+  -webkit-appearance: none;
+   -moz-appearance: none;
   background-image:
    linear-gradient(45deg, transparent 50%, gray 50%),
    linear-gradient(135deg, gray 50%, transparent 50%),
