@@ -68,7 +68,7 @@ class ItsOk extends Component {
 }
 
 ItsOk.propTypes = {
-  emotion: PropTypes.oneOf(['angry', 'joyful', 'sad', 'disgust', 'afraid']),
+  emotion: PropTypes.oneOf(['angry', 'joyful', 'sad', 'disgusted', 'afraid']),
   specificEmotion: PropTypes.string.isRequired
 }
 
