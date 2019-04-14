@@ -37,5 +37,6 @@ export default {
     wonder: ['bubblepop', 'draw', 'music'],
     excited: ['breathing', 'bubblepop', 'music'],
     ecstatic: ['breathing', 'draw', 'music'],
+    all: ['draw', 'bubblepop', 'music', 'breathing']
   }
 }
