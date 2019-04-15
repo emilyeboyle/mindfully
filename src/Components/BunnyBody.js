@@ -18,7 +18,7 @@ class BunnyBody extends Component {
     const emotion = this.props.emotion;
     const emotionString = (emotion + 'Primary').toString();
     const theme = this.props.theme;
-    const themeColor = theme[emotionString];
+    const themeColor = (emotion === "unsure" || emotion === "notsure" ? theme["brandPrimary"] : theme[emotionString]);
 
     return (
       <StyledBunnyContainer>

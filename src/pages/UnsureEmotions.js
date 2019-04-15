@@ -15,6 +15,16 @@ const StyledContainer = styled.div`
   margin: 2rem auto;
   width: 85%;
 `
+const StyledBunnyContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 2rem auto;
+  height: 75vh;
+  width: 85%;
+`
+const StyledTextContainer = styled.div`
+  margin-left: 2rem;
+`
 const StyledHeader = styled.h1`
   color: ${props => props.color};
   font-family: 'Poppins';
@@ -22,6 +32,19 @@ const StyledHeader = styled.h1`
   font-weight: 400;
   margin: 0;
   text-align: center;
+`
+const StyledBunnyHeader = styled.h1`
+  color: ${props => props.theme.brandPrimary};
+  font-family: 'Poppins';
+  font-size: 3rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+`
+const StyledBunnyText = styled.p`
+  font-family: 'Poppins';
+  font-size: 1.75rem;
+  font-weight: 300;
+  line-height: 2.5rem;
 `
 const BubblesContainer = styled.div`
   display: flex;
@@ -46,8 +69,7 @@ const StyledLink = styled.a`
   margin-top: 2rem;
 `
 const StyledImage = styled.img`
-  width: 45vw;
-  margin-top: 2rem;
+  width: 345px;
 `
 const TransparentDiv = styled.div`
   ::after {
@@ -81,7 +103,6 @@ class UnsureEmotions extends Component {
   }
 
   componentDidMount() {
-    this.setActivity();
     this.setEmotions();
   }
 
@@ -98,7 +119,7 @@ class UnsureEmotions extends Component {
   }
 
   setActivity() {
-    const activityList = ActivityList['activities']['all'];
+    const activityList = ActivityList['activities']['unsure'];
     const activitiesLength = activityList.length;
     const random = Math.floor(Math.random() * activitiesLength);
     const randomActivity = activityList[random];
@@ -113,6 +134,10 @@ class UnsureEmotions extends Component {
       emotion1: emotion1,
       emotion2: emotion2
     });
+
+    if (emotion1 === "undefined") {
+      this.setActivity();
+    }
   }
 
   renderEmotions() {
@@ -154,7 +179,7 @@ class UnsureEmotions extends Component {
             <StyledDefinition>{emotionCategory2[this.state.emotion2]}</StyledDefinition>
           </BubbleContainer>
         </BubblesContainer>
-        <NavLink href={`/${this.state.activity}`} style={{marginTop: '3rem'}}>
+        <NavLink href='/notsure/unsure/itsOkay' style={{marginTop: '3rem'}}>
           <StyledLink>None of these describe my feelings</StyledLink>
         </NavLink>
       </StyledContainer>
@@ -163,11 +188,13 @@ class UnsureEmotions extends Component {
 
   renderBunny() {
     return (
-      <StyledContainer>
-        <StyledHeader>Hmmm...we're not quite sure what you're feeling, either.</StyledHeader>
-        <StyledHeader>{ActivityText[this.state.activity]}</StyledHeader>
+      <StyledBunnyContainer>
         <StyledImage src={Bunny}/>
-      </StyledContainer>
+        <StyledTextContainer>
+          <StyledBunnyHeader>Hmmm . . . we're not quite sure what you're feeling, either.</StyledBunnyHeader>
+          <StyledBunnyText>{ActivityText[this.state.activity]}</StyledBunnyText>
+        </StyledTextContainer>
+      </StyledBunnyContainer>
     );
   }
 
