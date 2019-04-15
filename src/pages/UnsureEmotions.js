@@ -98,7 +98,8 @@ class UnsureEmotions extends Component {
       selectedEmotion : '',
       activity: '',
       emotion1: '',
-      emotion2: ''
+      emotion2: '',
+      level: props.level,
     }
   }
 
@@ -212,7 +213,7 @@ class UnsureEmotions extends Component {
       <div>
         {emotions ? this.renderEmotions() : this.renderBunny()}
         <NavLink
-          href={emotions ? `/${this.state.selectedEmotion}/${this.state.selectedEmotion}/itsOkay` : `/${this.state.activity}`}>
+          href={emotions ? `/${this.state.level}/${this.state.selectedEmotion}/${this.state.selectedEmotion}/itsOkay` : `/${this.state.activity}`}>
           <Button
             text='Continue'
             emotion={emotions ? this.state.selectedEmotion : 'brand'}

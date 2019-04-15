@@ -77,11 +77,12 @@ const routes =
       title: "Music Maker",
       view: <MusicActivity />,
     }),
-    '/unsure/:emotions': route(async req=>{
+    '/:level/unsure/:emotions': route(async req=>{
       let {emotions} = req.params;
+      let {level} = req.params
       return {
         title: "Unsure Emotions",
-        view: <UnsureEmotions emotions={emotions}/>,
+        view: <UnsureEmotions level={level} emotions={emotions}/>,
       }
     })
   });
