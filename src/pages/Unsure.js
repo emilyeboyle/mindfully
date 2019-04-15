@@ -53,7 +53,7 @@ class Unsure extends Component {
         });
       } else if (this.state.selectedEmotions.includes("Shaking") || this.state.selectedEmotions.includes("High energy")) {
         this.setState({
-          determinedEmotions: ['happy', 'afraid'],
+          determinedEmotions: ['joyful', 'afraid'],
         });
       } else if (this.state.selectedEmotions.includes("Tense") || this.state.selectedEmotions.includes("Weak") || this.state.selectedEmotions.includes("Hot") || this.state.selectedEmotions.includes("Tired")) {
         this.setState({
@@ -71,11 +71,11 @@ class Unsure extends Component {
         });
       } else if (this.state.selectedEmotions.includes("Weak") || this.state.selectedEmotions.includes("Tired")) {
         this.setState({
-          determinedEmotions: ['sad', 'happy'],
+          determinedEmotions: ['sad', 'joyful'],
         });
       } else if (this.state.selectedEmotions.includes("Hot")) {
         this.setState({
-          determinedEmotions: ['angry', 'happy'],
+          determinedEmotions: ['angry', 'joyful'],
         });
       }
     } else if (this.state.selectedEmotions.includes("Upset stomach")) {
@@ -93,7 +93,7 @@ class Unsure extends Component {
         });
       } else if (this.state.selectedEmotions.includes("High energy")) {
         this.setState({
-          determinedEmotions: ['afraid', 'happy']
+          determinedEmotions: ['afraid', 'joyful']
         });
       }
     } else if (this.state.selectedEmotions.includes("Shaking")) {
@@ -111,7 +111,7 @@ class Unsure extends Component {
         });
       } else if (this.state.selectedEmotions.includes("High energy")) {
         this.setState({
-          determinedEmotions: ['afraid', 'happy']
+          determinedEmotions: ['afraid', 'joyful']
         });
       }
     } else if (this.state.selectedEmotions.includes("Tense")) {
@@ -148,7 +148,7 @@ class Unsure extends Component {
         });
       } else if (this.state.selectedEmotions.includes("High energy")) {
         this.setState({
-          determinedEmotions: ['afraid', 'happy']
+          determinedEmotions: ['afraid', 'joyful']
         });
       }
     }

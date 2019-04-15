@@ -48,12 +48,18 @@ class Okay extends Component {
     return (
       <div>
         <nav>
+        {this.state.baseEmotion !== this.state.subEmotion && this.state.subEmotion !== 'unsure' &&
           <NavLink href={`/${this.state.level}/${this.state.baseEmotion}`}>
             <BackButton emotion={this.state.baseEmotion}/>
           </NavLink>
+        }
         </nav>
         <PageContainer baseEmotion={this.state.baseEmotion}>
-          <ItsOk activity={this.state.activity} specificEmotion={this.state.subEmotion} emotion={this.state.baseEmotion}></ItsOk>
+          <ItsOk
+            activity={this.state.activity}
+            specificEmotion={this.state.subEmotion}
+            emotion={this.state.baseEmotion}
+          />
         </PageContainer>
         <nav>
           <NavLink href={`/${this.state.activity}`}>

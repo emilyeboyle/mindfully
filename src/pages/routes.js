@@ -9,8 +9,7 @@ import Unsure from './Unsure';
 import UnsureEmotions from './UnsureEmotions';
 import DrawArea from './DrawArea';
 import BubblePop from './BubblePop';
-import MusicActivity from '../MusicActivity/MusicActivity';
-import LevelSelection from './LevelSelection';
+import MusicActivity from '../MusicActivity/MusicActivity'; import LevelSelection from './LevelSelection';
 
 const routes =
   mount({
@@ -78,9 +77,12 @@ const routes =
       title: "Music Maker",
       view: <MusicActivity />,
     }),
-    '/unsure/:emotion+:emotion': route({
-      title: "Unsure Emotions",
-      view: <UnsureEmotions />,
-    }),
+    '/unsure/:emotions': route(async req=>{
+      let {emotions} = req.params;
+      return {
+        title: "Unsure Emotions",
+        view: <UnsureEmotions emotions={emotions}/>,
+      }
+    })
   });
 export default routes

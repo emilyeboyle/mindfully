@@ -40,7 +40,7 @@ class ItsOk extends Component {
     console.log(activity);
     const emotionString = (emotion + 'Primary').toString();
     const theme = this.props.theme;
-    const themeColor = theme[emotionString];
+    const themeColor = (emotion === "unsure" || emotion === "notsure" ? theme["brandPrimary"] : theme[emotionString]);
     let text;
 
     if (emotion === 'joyful') {
@@ -58,7 +58,7 @@ class ItsOk extends Component {
               It's {text} that you feel {this.props.specificEmotion}.
             </StyledHeader>
             <StyledText>
-              {ItsOkText[emotion]} {ActivityText[activity]}
+              {emotion === 'notsure' ? ActivityText[activity] : ItsOkText[emotion] + ActivityText[activity]}
             </StyledText>
           </StyledTextContainer>
         </StyledItsOkContainer>
@@ -68,7 +68,7 @@ class ItsOk extends Component {
 }
 
 ItsOk.propTypes = {
-  emotion: PropTypes.oneOf(['angry', 'joyful', 'sad', 'disgust', 'afraid']),
+  emotion: PropTypes.oneOf(['angry', 'joyful', 'sad', 'disgusted', 'afraid', 'notsure']),
   specificEmotion: PropTypes.string.isRequired
 }
 
