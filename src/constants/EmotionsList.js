@@ -1,5 +1,5 @@
 export default {
-  level1: {
+  2: {
     joyful: [
       {emotion: 'compassionate', min: 30, max: 70},
       {emotion: 'peaceful', min: 0, max: 100},
@@ -20,7 +20,7 @@ export default {
     disgusted: [
       {emotion: 'dislike', min: 0, max: 50},
       {emotion: 'repulsed', min: 10, max: 90},
-      {emotion: 'distate', min: 10, max: 70},
+      {emotion: 'distaste', min: 10, max: 70},
       {emotion: 'loathing', min: 80, max: 100} ],
     sad: [
       {emotion: 'disappointed', min: 0, max: 50},
@@ -29,7 +29,7 @@ export default {
       {emotion: 'sorrowful', min: 60, max: 100}
     ]
   },
-  level2: {
+  3: {
     joyful: [
       {emotion: 'compassionate', min: 30, max: 70},
       {emotion: 'peaceful', min: 0, max: 100},

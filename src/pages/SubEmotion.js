@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-navi';
 import Bubble from '../Components/Bubble';
-import Button from '../Components/Button';
-import BackButton from '../Components/BackButton';
+import Button from '../Components/Button'; import BackButton from '../Components/BackButton';
 import EmotionSlider from '../Components/EmotionSlider';
 import PageContainer from '../Components/PageContainer';
 import styled from 'styled-components';
@@ -58,7 +57,7 @@ class SubEmotion extends Component {
       selected : false,
       selectedEmotion : '',
       message : '',
-      level: 'level2',
+      level: this.props.level,
       value: ''
     };
   }
@@ -101,7 +100,7 @@ class SubEmotion extends Component {
           <TransparentDiv/>
           }
           <nav>
-            <NavLink href={'/'}>
+            <NavLink href={`/${this.state.level}`}>
               <BackButton emotion={baseEmotion}/>
             </NavLink>
           </nav>
@@ -132,7 +131,7 @@ class SubEmotion extends Component {
             })}
           </BubbleContainer>
         </PageContainer>
-        <nav><NavLink href={`/${this.state.baseEmotion}/${this.state.selectedEmotion}/itsOkay`}>
+        <nav><NavLink href={`/${this.state.level}/${this.state.baseEmotion}/${this.state.selectedEmotion}/itsOkay`}>
             <Button show={this.state.selected} emotion={this.state.baseEmotion} text='Continue'></Button>
         </NavLink></nav>
       </div>

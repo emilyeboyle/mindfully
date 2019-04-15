@@ -33,6 +33,8 @@ const TransparentDiv = styled.div`
     background-color: white;
   }
 `
+const activities = ['bubblepop', 'draw', 'music', 'breathing'];
+const activity = activities[Math.floor(Math.random()*activities.length)];
 
 class Emotion extends Component {
   constructor(props) {
@@ -43,8 +45,11 @@ class Emotion extends Component {
       selected : false,
       selectedEmotion : '',
       message : '',
+      level: this.props.level,
+      activity: activity,
     };
   }
+
   handleClick(emotion, evt) {
     if (!this.state.selected) {
       this.setState({ selected: true, selectedEmotion: emotion });
@@ -65,70 +70,80 @@ class Emotion extends Component {
           <TransparentDiv/>
           }
           <StyledH2>How are you feeling right now?</StyledH2>
-              <BubbleContainer>
-                <Bubble
-                  selected= {this.state.selectedEmotion} handleClose={this.handleClose}
-                  handleClick={this.handleClick}
-                  emotion="joyful"
-                  baseEmotion="joyful"
-                  subEmotion={false}
-                  shown={true}>
-                </Bubble>
-                <Bubble
-                  selected= {this.state.selectedEmotion}
-                  handleClose={this.handleClose}
-                  handleClick={this.handleClick}
-                  emotion="angry"
-                  baseEmotion="angry"
-                  subEmotion={false}
-                  shown={true}>
-                </Bubble>
-                <Bubble
-                  selected= {this.state.selectedEmotion}
-                  handleClose={this.handleClose}
-                  handleClick={this.handleClick}
-                  emotion="sad"
-                  baseEmotion="sad"
-                  subEmotion={false}
-                  shown={true}>
-                </Bubble>
-                <Bubble
-                  selected= {this.state.selectedEmotion}
-                  handleClose={this.handleClose}
-                  handleClick={this.handleClick}
-                  emotion="afraid"
-                  baseEmotion="afraid"
-                  subEmotion={false}
-                  shown={true}>
-                </Bubble>
-                <Bubble
-                  selected= {this.state.selectedEmotion}
-                  handleClose={this.handleClose}
-                  handleClick={this.handleClick}
-                  emotion="disgusted"
-                  baseEmotion="disgusted"
-                  subEmotion={false}
-                  shown={true}>
-                </Bubble>
-                <Bubble
-                  selected= {this.state.selectedEmotion}
-                  handleClose={this.handleClose}
-                  handleClick={this.handleClick}
-                  emotion="unsure"
-                  baseEmotion="unsure"
-                  subEmotion={false}
-                  shown={true}>
-                </Bubble>
-              </BubbleContainer>
-          </Container>
-          <div>{this.props.selectedEmotion}</div>
-          <nav>
-            <NavLink href={`/${this.state.selectedEmotion}`}>
-              <Button show={this.state.selected} emotion={this.state.selectedEmotion} text='Continue'></Button>
-            </NavLink>
-          </nav>
-        </div>
-      )
-    }
-    }
-    export default (Emotion);
+          <BubbleContainer>
+            <Bubble
+              selected= {this.state.selectedEmotion} handleClose={this.handleClose}
+              handleClick={this.handleClick}
+              emotion="joyful"
+              baseEmotion="joyful"
+              subEmotion={false}
+              shown={true}>
+            </Bubble>
+            <Bubble
+              selected= {this.state.selectedEmotion}
+              handleClose={this.handleClose}
+              handleClick={this.handleClick}
+              emotion="angry"
+              baseEmotion="angry"
+              subEmotion={false}
+              shown={true}>
+            </Bubble>
+            <Bubble
+      selected= {this.state.selectedEmotion}
+      handleClose={this.handleClose}
+      handleClick={this.handleClick}
+      emotion="sad"
+      baseEmotion="sad"
+      subEmotion={false}
+      shown={true}>
+    </Bubble>
+    <Bubble
+      selected= {this.state.selectedEmotion}
+      handleClose={this.handleClose}
+      handleClick={this.handleClick}
+      emotion="afraid"
+      baseEmotion="afraid"
+      subEmotion={false}
+      shown={true}>
+    </Bubble>
+    <Bubble
+      selected= {this.state.selectedEmotion}
+      handleClose={this.handleClose}
+      handleClick={this.handleClick}
+      emotion="disgusted"
+      baseEmotion="disgusted"
+      subEmotion={false}
+      shown={true}>
+    </Bubble>
+    {this.state.level == 3  && 
+    <Bubble
+      selected= {this.state.selectedEmotion}
+      handleClose={this.handleClose}
+      handleClick={this.handleClick}
+      emotion="unsure"
+      baseEmotion="unsure"
+      subEmotion={false}
+      shown={true}>
+    </Bubble>
+    } 
+  </BubbleContainer>
+</Container>
+<div>{this.props.selectedEmotion}</div>
+{this.state.level == 1 ? (
+  <nav>
+    <NavLink href={`/${this.state.activity}`}>
+      <Button show={this.state.selected} emotion={this.state.selectedEmotion} text='Continue'></Button>
+    </NavLink>
+  </nav>
+) :(
+  <nav>
+    <NavLink href={`/${this.state.level}/${this.state.selectedEmotion}`}>
+      <Button show={this.state.selected} emotion={this.state.selectedEmotion} text='Continue'></Button>
+    </NavLink>
+  </nav>
+)}
+    </div>
+    )
+  }
+}
+export default (Emotion);

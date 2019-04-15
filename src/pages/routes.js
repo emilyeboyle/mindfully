@@ -9,29 +9,37 @@ import Unsure from './Unsure';
 import UnsureEmotions from './UnsureEmotions';
 import DrawArea from './DrawArea';
 import BubblePop from './BubblePop';
-import MusicActivity from '../MusicActivity/MusicActivity';
+import MusicActivity from '../MusicActivity/MusicActivity'; import LevelSelection from './LevelSelection';
 
 const routes =
   mount({
     // Create the index route
     '/': route({
-      title: "Emotion",
-      view: <Emotion />,
+      title: "Level Selection",
+      view: <LevelSelection />,
+    }),
+
+    // Create the main emotion route
+    '/:level': route(async req =>{
+      let {level} = req.params
+      return {
+      view: <Emotion level={level}/>,
+      }
     }),
 
     // Create the emotion route
-    '/:emotion': route(async req =>{
-      let {emotion} = req.params
+    '/:level/:emotion': route(async req =>{
+      let {emotion, level} = req.params
       return {
-        view: <SubEmotion baseEmotion={emotion}/>,
+        view: <SubEmotion baseEmotion={emotion} level={level}/>,
       }
     }),
 
     // Create the itsok route
-    '/:emotion/:subemotion/itsOkay': route(async req=>{
-      let {emotion, subemotion} = req.params
+    '/:level/:emotion/:subemotion/itsOkay': route(async req=>{
+      let {emotion, subemotion, level} = req.params
       return{
-      view: <Okay baseEmotion={emotion} subEmotion={subemotion}/>,
+      view: <Okay level={level}  baseEmotion={emotion} subEmotion={subemotion}/>,
       }
     }),
 
@@ -48,9 +56,11 @@ const routes =
     }),
 
     // Create the unsure route
-    '/unsure': route({
-      title: "Unsure",
-      view: <Unsure />,
+    '/:level/unsure': route(async req =>{
+      let {level} = req.params
+      return {
+        view: <Unsure  level={level}/>,
+      }
     }),
 
     // Create the draw route
@@ -75,5 +85,4 @@ const routes =
       }
     })
   });
-
 export default routes
