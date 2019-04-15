@@ -24,20 +24,20 @@ const StyledSelect = styled.select`
   padding: 0.5rem;
   outline: 0;
   -webkit-appearance: none;
-   -moz-appearance: none;
+  -moz-appearance: none;
   background-image:
-   linear-gradient(45deg, transparent 50%, gray 50%),
-   linear-gradient(135deg, gray 50%, transparent 50%),
-   linear-gradient(to right, #ccc, #ccc);
- background-position:
-   calc(100% - 20px) calc(1em + 2px),
-   calc(100% - 15px) calc(1em + 2px),
-   calc(100% - 2.5em) 0.5em;
- background-size:
-   5px 5px,
-   5px 5px,
-   1px 1.5em;
- background-repeat: no-repeat;
+  linear-gradient(45deg, transparent 50%, gray 50%),
+  linear-gradient(135deg, gray 50%, transparent 50%),
+  linear-gradient(to right, #ccc, #ccc);
+  background-position:
+  calc(100% - 20px) calc(1em + 2px),
+  calc(100% - 15px) calc(1em + 2px),
+  calc(100% - 2.5em) 0.5em;
+  background-size:
+  5px 5px,
+  5px 5px,
+  1px 1.5em;
+  background-repeat: no-repeat;
 `
 
 const StyledOption = styled.option`
@@ -69,7 +69,7 @@ class LevelSelection extends Component {
           <StyledOption value="2">2–3</StyledOption>
           <StyledOption value="3">4–5</StyledOption>
         </StyledSelect>
-        <NavLink href="/">
+        <NavLink href={`/${this.state.level}`}>
           <Button show={true} text='Continue'></Button>
         </NavLink>
       </SelectContainer>

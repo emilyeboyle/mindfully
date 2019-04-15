@@ -11,7 +11,7 @@ class Okay extends Component {
     super(props);
     //console.log(navigation);
     this.state = {
-      level: 'level2',
+      level: props.level,
       baseEmotion: this.props.baseEmotion,
       subEmotion: this.props.subEmotion,
       selected : false,
@@ -48,7 +48,7 @@ class Okay extends Component {
     return (
       <div>
         <nav>
-          <NavLink href={`/${this.state.baseEmotion}`}>
+          <NavLink href={`/${this.state.level}/${this.state.baseEmotion}`}>
             <BackButton emotion={this.state.baseEmotion}/>
           </NavLink>
         </nav>

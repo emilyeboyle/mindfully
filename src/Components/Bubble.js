@@ -102,10 +102,7 @@ class Bubble extends Component {
     let whiteText = colors.indexOf(emotionString) > -1;
     let smallBubble = this.props.smallBubble;
     let bubble;
-    console.log(smallBubble);
-    console.log(this.props.definition);
     if (smallBubble) {
-      console.log("here");
       bubble=
         <StyledBubbleSmall
           onClick={(evt) => {this.props.handleClick(emotion, evt)}}

@@ -22,6 +22,7 @@ class Unsure extends Component {
     this.state = {
       selectedEmotions : [],
       determinedEmotions:[],
+      level: props.level,
     }
     this.determineEmotion = this.determineEmotion.bind(this);
     this.setEmotion = this.setEmotion.bind(this);
@@ -160,7 +161,7 @@ class Unsure extends Component {
     return(
       <div>
           <nav>
-            <NavLink href={'/'}>
+            <NavLink href={`/this.state.level`}>
               <BackButton emotion='brand'/>
             </NavLink>
           </nav>
