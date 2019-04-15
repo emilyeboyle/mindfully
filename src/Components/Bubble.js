@@ -10,6 +10,23 @@ TweenOne.plugins.push(PathPlugin);
 
 const fadeAnimation = keyframes`${bounceIn}`;
 
+
+const bubbleup = (animValue1, animValue2) => keyframes`
+   0% {
+       transform: translate(0px, 0px);
+       animation-timing-function:ease-in-out
+   }
+
+   50% {
+       transform: translate(${animValue1}, ${animValue2});
+       animation-timing-function:ease-in-out
+   }
+   100% {
+       transform: translate(0px, 0px);
+       animation-timing-function:ease-in-out
+   }
+`
+
 const StyledBubble = styled.div`
   background: ${props => props.color};
   border-radius: 121% 128% 125% 124%/125% 120% 127% 125%;
@@ -25,7 +42,7 @@ const StyledBubble = styled.div`
   text-transform: capitalize;
   font-family: 'Poppins';
   z-index: ${(props) => props.selected ? "100" : "0"};
-  margin: ${(props) => props.selected ? "0 auto" : "1rem"};
+  margin: ${(props) => props.selected ? "0 auto" : ".5rem"};
   left: 0;
   right: 0;
   top: ${(props) => props.selected ? "2rem" : "0"};
@@ -34,8 +51,39 @@ const StyledBubble = styled.div`
   pointer-events: ${(props) => props.shown ? "none" : "auto"};
   box-shadow: inset 10000px 2px 5px rgba(255, 255, 255,${props => props.value});
   transition: opacity .3s ease-in;
-  animation: .5s ${fadeAnimation};
+  transition: .3s ease-in-out;
+  animation: ${props => props.selected ? "none" : bubbleup(props.animValue1, props.animValue2)} 12s linear infinite alternate;
 `
+const JoyfulBubble = styled(StyledBubble)`
+  position: absolute;
+  left: ${(props) => props.selected ? '0px' : '75px'};
+  top: ${(props) => props.selected ? "2rem" : "100px"};
+  `
+const AngryBubble = styled(StyledBubble)`
+  position: absolute;
+  left: ${(props) => props.selected ? '0px' : '375px'};
+  top: ${(props) => props.selected ? "2rem" : "120px"};
+  `
+const SadBubble = styled(StyledBubble)`
+  position: absolute;
+  left: ${(props) => props.selected ? '0px' : '675px'};
+  top: ${(props) => props.selected ? "2rem" : "100px"};
+  `
+const AfraidBubble = styled(StyledBubble)`
+  position: absolute;
+  left: ${(props) => props.selected ? '0px' : '100px'};
+  top: ${(props) => props.selected ? "2rem" : "380px"};
+  `
+const DisgustedBubble = styled(StyledBubble)`
+  position: absolute;
+  left: ${(props) => props.selected ? '0px' : '375px'};
+  top: ${(props) => props.selected ? "2rem" : "400px"};
+  `
+const UnsureBubble = styled(StyledBubble)`
+  position: absolute;
+  left: ${(props) => props.selected ? '0px' : '650px'};
+  top: ${(props) => props.selected ? "2rem" : "380px"};
+  `
 const StyledBubbleSmall = styled(StyledBubble)`
   width: ${(props) => props.selected ? "70vh" : "12rem"};
   height: ${(props) => props.selected ? "70vh" : "12rem"};
@@ -79,7 +127,9 @@ class Bubble extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected : this.props.selected === this.props.emotion
+      selected : this.props.selected === this.props.emotion,
+    animValue1 : Math.floor(-8 + Math.random() * (8+8)) + 'px',
+    animValue2 : Math.floor(-8 + Math.random() * (8+8)) + 'px'
     };
   }
 
@@ -102,10 +152,7 @@ class Bubble extends Component {
     let whiteText = colors.indexOf(emotionString) > -1;
     let smallBubble = this.props.smallBubble;
     let bubble;
-    console.log(smallBubble);
-    console.log(this.props.definition);
     if (smallBubble) {
-      console.log("here");
       bubble=
         <StyledBubbleSmall
           onClick={(evt) => {this.props.handleClick(emotion, evt)}}
@@ -113,6 +160,8 @@ class Bubble extends Component {
           whiteText = {whiteText}
           shown={shown}
           value={maxVal}
+          animValue1={this.state.animValue1}
+          animValue2={this.state.animValue2}
           selected={this.props.selected === emotion}>
           <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
           <StyledTextSmall selected={this.props.selected === emotion}>{emotion}</StyledTextSmall>
@@ -125,6 +174,139 @@ class Bubble extends Component {
           </StyledX>
         </StyledBubbleSmall>
     } else {
+      if (emotion === 'joyful') {
+      bubble=
+      <JoyfulBubble
+          onClick={(evt) => {this.props.handleClick(emotion, evt)}}
+          color={themeColor}
+          whiteText = {whiteText}
+          shown={shown}
+          value={maxVal}
+          animValue1={this.state.animValue1}
+          animValue2={this.state.animValue2}
+          selected={this.props.selected === emotion}
+        >
+          <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
+          <StyledText selected={this.props.selected === emotion}>{emotion}</StyledText>
+          <StyledDefinition selected={this.props.selected === emotion}>{definition}</StyledDefinition>
+          <StyledX
+            onClick={() => {this.props.handleClose()}}
+            selected={this.props.selected === emotion}
+          >
+            <CloseIcon/>
+          </StyledX>
+        </JoyfulBubble>
+      } else if (emotion === 'angry') {
+      bubble=
+        <AngryBubble
+          onClick={(evt) => {this.props.handleClick(emotion, evt)}}
+          color={themeColor}
+          whiteText = {whiteText}
+          shown={shown}
+          value={maxVal}
+          animValue1={this.state.animValue1}
+          animValue2={this.state.animValue2}
+          selected={this.props.selected === emotion}
+        >
+          <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
+          <StyledText selected={this.props.selected === emotion}>{emotion}</StyledText>
+          <StyledDefinition selected={this.props.selected === emotion}>{definition}</StyledDefinition>
+          <StyledX
+            onClick={() => {this.props.handleClose()}}
+            selected={this.props.selected === emotion}
+          >
+            <CloseIcon/>
+          </StyledX>
+        </AngryBubble>
+      } else if (emotion === 'sad') {
+      bubble=
+        <SadBubble
+          onClick={(evt) => {this.props.handleClick(emotion, evt)}}
+          color={themeColor}
+          whiteText = {whiteText}
+          shown={shown}
+          value={maxVal}
+          animValue1={this.state.animValue1}
+          animValue2={this.state.animValue2}
+          selected={this.props.selected === emotion}
+        >
+          <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
+          <StyledText selected={this.props.selected === emotion}>{emotion}</StyledText>
+          <StyledDefinition selected={this.props.selected === emotion}>{definition}</StyledDefinition>
+          <StyledX
+            onClick={() => {this.props.handleClose()}}
+            selected={this.props.selected === emotion}
+          >
+            <CloseIcon/>
+          </StyledX>
+        </SadBubble>
+      } else if (emotion === 'afraid') {
+      bubble=
+        <AfraidBubble
+          onClick={(evt) => {this.props.handleClick(emotion, evt)}}
+          color={themeColor}
+          whiteText = {whiteText}
+          shown={shown}
+          value={maxVal}
+          animValue1={this.state.animValue1}
+          animValue2={this.state.animValue2}
+          selected={this.props.selected === emotion}
+        >
+          <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
+          <StyledText selected={this.props.selected === emotion}>{emotion}</StyledText>
+          <StyledDefinition selected={this.props.selected === emotion}>{definition}</StyledDefinition>
+          <StyledX
+            onClick={() => {this.props.handleClose()}}
+            selected={this.props.selected === emotion}
+          >
+            <CloseIcon/>
+          </StyledX>
+        </AfraidBubble>
+      } else if (emotion === 'disgusted') {
+      bubble=
+        <DisgustedBubble
+          onClick={(evt) => {this.props.handleClick(emotion, evt)}}
+          color={themeColor}
+          whiteText = {whiteText}
+          shown={shown}
+          value={maxVal}
+          animValue1={this.state.animValue1}
+          animValue2={this.state.animValue2}
+          selected={this.props.selected === emotion}
+        >
+          <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
+          <StyledText selected={this.props.selected === emotion}>{emotion}</StyledText>
+          <StyledDefinition selected={this.props.selected === emotion}>{definition}</StyledDefinition>
+          <StyledX
+            onClick={() => {this.props.handleClose()}}
+            selected={this.props.selected === emotion}
+          >
+            <CloseIcon/>
+          </StyledX>
+        </DisgustedBubble>
+      } else if (emotion === 'unsure') {
+      bubble=
+        <UnsureBubble
+          onClick={(evt) => {this.props.handleClick(emotion, evt)}}
+          color={themeColor}
+          whiteText = {whiteText}
+          shown={shown}
+          value={maxVal}
+          animValue1={this.state.animValue1}
+          animValue2={this.state.animValue2}
+          selected={this.props.selected === emotion}
+        >
+          <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
+          <StyledText selected={this.props.selected === emotion}>{emotion}</StyledText>
+          <StyledDefinition selected={this.props.selected === emotion}>{definition}</StyledDefinition>
+          <StyledX
+            onClick={() => {this.props.handleClose()}}
+            selected={this.props.selected === emotion}
+          >
+            <CloseIcon/>
+          </StyledX>
+        </UnsureBubble>
+      } else {
       bubble=
         <StyledBubble
           onClick={(evt) => {this.props.handleClick(emotion, evt)}}
@@ -132,6 +314,8 @@ class Bubble extends Component {
           whiteText = {whiteText}
           shown={shown}
           value={maxVal}
+          animValue1={this.state.animValue1}
+          animValue2={this.state.animValue2}
           selected={this.props.selected === emotion}
         >
           <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
@@ -144,6 +328,7 @@ class Bubble extends Component {
             <CloseIcon/>
           </StyledX>
         </StyledBubble>
+      }
     }
     return (bubble);
   }
