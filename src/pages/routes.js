@@ -10,6 +10,7 @@ import UnsureEmotions from './UnsureEmotions';
 import DrawArea from './DrawArea';
 import BubblePop from './BubblePop';
 import MusicActivity from '../MusicActivity/MusicActivity';
+import LevelSelection from './LevelSelection';
 
 const routes =
   mount({
@@ -70,7 +71,11 @@ const routes =
     '/unsure/:emotion+:emotion': route({
       title: "Unsure Emotions",
       view: <UnsureEmotions />,
-    })
+    }),
+    '/level': route({
+      title: "Select Level",
+      view: <LevelSelection/>,
+    }),
   });
 
 export default routes
