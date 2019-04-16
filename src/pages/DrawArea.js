@@ -58,7 +58,7 @@ class DrawArea extends React.Component {
   constructor() {
     super();
     this.state = {
-      lines: new Immutable.List(),
+      lines: [],
       isDrawing: false,
       color: "red",
       stroke: "3px",
@@ -115,31 +115,34 @@ class DrawArea extends React.Component {
   }
 
   handleMouseDown(mouseEvent) {
-    //if (mouseEvent.button == 0) {
     const point = this.relativeCoordinatesForEvent(mouseEvent);
-    //mouseEvent.stopPropagation();
-    //mouseEvent.preventDefault();
+    const pointList = new Immutable.List([point]);
+    const pointData = [pointList, this.state.color, this.state.stroke];
+    console.log(pointData);
 
     this.setState(prevState => ({
       //lines: {points: prevState; color: this.state.color; stroke: this.state.stroke}
       //lines: prevState.lines.
-      lines: prevState.lines.push(new Immutable.List([point])),
+      lines: [...prevState.lines, pointData],
+      //lines: prevState.lines.push(pointData),
+      //lines: prevState.lines.push(new Immutable.List([point])),
       isDrawing: true
     }),() => {
       console.log(this.state.lines);
+      console.log(this.state.lines[0][0].toJS());
     });
-    //}
   }
 
   handleMouseMove(mouseEvent) {
     if (this.state.isDrawing) {
       const point = this.relativeCoordinatesForEvent(mouseEvent);
-      //mouseEvent.stopPropagation();
-      //mouseEvent.preventDefault();
 
       this.setState(prevState =>  ({
-        lines: prevState.lines.updateIn([prevState.lines.size - 1], line => line.push(point))
-      }));
+        lines: prevState.lines[prevState.lines.length - 1][0].updateIn([prevState.lines[prevState.lines.length -1][0].size - 1], array  => array.push(point)),
+        //lines: prevState.lines.updateIn([prevState.lines.size - 1], line => line.push(point))
+      }), () => {
+        console.log(this.state.lines);
+      });
     }
 
   }
@@ -222,12 +225,14 @@ class DrawArea extends React.Component {
 }
 
 function Drawing({ color, lines, strokeWidth}) {
+  //console.log(lines);
   return (
-    <StyledSVG className="drawing">
-      {lines.map((line, index) => (
-        <DrawingLine strokeWidth={strokeWidth} color={color} key={index} line={line} />
-      ))}
-    </StyledSVG>
+    //<StyledSVG className="drawing">
+      //{lines.map((line, index) => (
+        //<DrawingLine strokeWidth={strokeWidth} color={color} key={index} line={line} />
+      //))}
+    //</StyledSVG>
+  <p>Hi</p>
   );
 }
 
