@@ -198,7 +198,7 @@ class DrawArea extends React.Component {
         <ColorContainer>
           {colorList.map((color, i) => {
             return(
-              <Color key={i} handleClick={this.setColor} color={color} />
+              <Color key={i} handleClick={this.setColor} selected={this.state.color == color} color={color} />
             )
           })}
         </ColorContainer>
