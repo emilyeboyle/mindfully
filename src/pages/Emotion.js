@@ -33,8 +33,6 @@ const TransparentDiv = styled.div`
     background-color: white;
   }
 `
-const activities = ['bubblepop', 'draw', 'music', 'breathing'];
-const activity = activities[Math.floor(Math.random()*activities.length)];
 
 class Emotion extends Component {
   constructor(props) {
@@ -46,7 +44,6 @@ class Emotion extends Component {
       selectedEmotion : '',
       message : '',
       level: this.props.level,
-      activity: activity,
     };
   }
 
@@ -131,7 +128,7 @@ class Emotion extends Component {
 <div>{this.props.selectedEmotion}</div>
 {this.state.level == 1 ? (
   <nav>
-    <NavLink href={`/${this.state.activity}`}>
+    <NavLink href={`/${this.state.level}/${this.state.selectedEmotion}/${this.state.selectedEmotion}/itsOkay`}>
       <Button show={this.state.selected} emotion={this.state.selectedEmotion} text='Continue'></Button>
     </NavLink>
   </nav>

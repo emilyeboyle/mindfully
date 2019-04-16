@@ -58,7 +58,7 @@ class ItsOk extends Component {
               It's {text} that you feel {this.props.specificEmotion}.
             </StyledHeader>
             <StyledText>
-              {emotion === 'notsure' ? ActivityText[activity] : ItsOkText[emotion] + ActivityText[activity]}
+              {emotion === 'notsure' ? ActivityText[activity] : ItsOkText[emotion] + ' ' + ActivityText[activity]}
             </StyledText>
           </StyledTextContainer>
         </StyledItsOkContainer>

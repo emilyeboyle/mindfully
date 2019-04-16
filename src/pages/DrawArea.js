@@ -122,9 +122,12 @@ class DrawArea extends React.Component {
 
     this.setState(prevState => ({
       //lines: {points: prevState; color: this.state.color; stroke: this.state.stroke}
+      //lines: prevState.lines.
       lines: prevState.lines.push(new Immutable.List([point])),
       isDrawing: true
-    }));
+    }),() => {
+      console.log(this.state.lines);
+    });
     //}
   }
 

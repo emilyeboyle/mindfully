@@ -32,7 +32,6 @@ class Button extends Component {
     const themeColor = (emotion === "unsure" || emotion === "notsure" ? theme["brandPrimary"] : theme[emotionString]);
     const colors = ['afraidPrimary', 'sadPrimary', 'angryPrimary'];
     let whiteText = colors.indexOf(emotionString) > -1;
-    console.log(this.props.greyed);
 
     if (this.props.clickFunction) {
       return(
