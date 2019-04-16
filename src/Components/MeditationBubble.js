@@ -9,11 +9,10 @@ const grow = keyframes`
   70% { transform: scale(1.5); }
   100% { transform: scale(1.0); }
 `
-const replaceWords = keyframes`
-  0% { opacity: 0; }
+const replaceWords = keyframes` 0% { opacity: 0; }
   10% { opacity: 1; }
   27% { opacity: 1; }
-	33% { opacity: 0; }
+  33% { opacity: 0; }
   100% { opacity: 0; }
 `
 const blob = keyframes`
@@ -67,90 +66,93 @@ const StyledBubble = styled.div`
 
   &.animate {
     animation: ${grow} 10s linear 6, ${blob} 30s ease-in-out 2;
-  }
-`
-const TransparentStyledBubble = styled.div`
-  background: ${props => props.theme.brandPrimary};
-  opacity: ${props => props.opacity};
-  width: ${props => props.size};
-  height: ${props => props.size};
-  border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%;
-  position: absolute;
+    }
+    `
+    const TransparentStyledBubble = styled.div`
+    background: ${props => props.theme.brandPrimary};
+    opacity: ${props => props.opacity};
+    width: ${props => props.size};
+    height: ${props => props.size};
+    border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%;
+    position: absolute;
 
-  &.first {
-    animation: ${grow} 10s linear 6, ${blob2} 20s ease-in-out alternate 3;
-  }
+    &.first {
+      animation: ${grow} 10s linear 6, ${blob2} 20s ease-in-out alternate 3;
+      }
 
-  &.second {
-    animation: ${grow} 10s linear 6, ${blob3} 20s ease-in-out alternate 3;
-  }
-`
-const StyledText = styled.span`
-  font-family: 'Poppins';
-  font-weight: 300;
-  font-size: 1.25rem;
-  position: absolute;
-  opacity: 0;
+      &.second {
+      animation: ${grow} 10s linear 6, ${blob3} 20s ease-in-out alternate 3;
+      }
+      `
+      const StyledText = styled.span`
+      font-family: 'Poppins';
+      font-weight: 300;
+      font-size: 1.25rem;
+      position: absolute;
+      opacity: 0;
 
-  &.animate {
-    animation: ${replaceWords} 10s ease-in 6;
-  }
+      &.animate {
+        animation: ${replaceWords} 10s ease-in 6;
+        }
 
-  &:nth-child(1) {
-    animation-delay: 1s;
-  }
+        &:nth-child(1) {
+          animation-delay: 1s;
+        }
 
-  &:nth-child(2) {
-    animation-delay: 4s;
-  }
+        &:nth-child(2) {
+          animation-delay: 4s;
+        }
 
-  &:nth-child(3) {
-    animation-delay: 7s;
-  }
-`
-const ProgressBar = styled.div`
-  width: 42rem;
-  height: 1rem;
-  border-radius: 15px;
-  border: 1px solid;
-  border-color: ${props => props.theme.brandPrimary};
-  margin: 0 auto;
-`
-const ProgressBarFill = styled.span`
-  width: 42rem;
-  height: 100%;
-  border-radius: 15px;
-  background: ${props => props.theme.brandPrimary};
-  position: relative;
-  display: block;
-  animation: ${progress} 60s linear;
-`
+        &:nth-child(3) {
+          animation-delay: 7s;
+        }
+      `
+      const ProgressBar = styled.div`
+      width: 42rem;
+      height: 1rem;
+      border-radius: 15px;
+      border: 1px solid;
+      border-color: ${props => props.theme.brandPrimary};
+      margin: 0 auto;
+      `
+      const ProgressBarFill = styled.span`
+      width: 42rem;
+      height: 100%;
+      border-radius: 15px;
+      background: ${props => props.theme.brandPrimary};
+      position: relative;
+      display: block;
 
-class MeditationBubble extends Component {
-  render() {
-    return (
-      <div>
-        <BubbleContainer>
+      &.animate {
+        animation: ${progress} 60s linear;
+      }
+      `
+
+      class MeditationBubble extends Component {
+        render() {
+          return (
+          <div>
+          <BubbleContainer>
           <TransparentStyledBubble opacity="0.5" size="21rem" className={this.props.animate ? "first" : ""}/>
           <TransparentStyledBubble opacity="0.3" size="21.5rem" className={this.props.animate ? "second" : ""}/>
           <StyledBubble
-            className={this.props.animate ? "animate" : ""}
-            onAnimationEnd={(evt) => {this.props.handleAnimation(evt)}}
+          className={this.props.animate ? "animate" : ""}
+          onAnimationEnd={(evt) => {this.props.handleAnimation(evt)}}
           >
-            <StyledText className={this.props.animate ? "animate" : ""}>Breathe In</StyledText>
-            <StyledText className={this.props.animate ? "animate" : ""}>Hold</StyledText>
-            <StyledText className={this.props.animate ? "animate" : ""}>
-              Breathe Out
-            </StyledText>
+          <StyledText className={this.props.animate ? "animate" : ""}>Breathe In</StyledText>
+          <StyledText className={this.props.animate ? "animate" : ""}>Hold</StyledText>
+          <StyledText className={this.props.animate ? "animate" : ""}>
+          Breathe Out
+          </StyledText>
           </StyledBubble>
-        </BubbleContainer>
-        <ProgressBar>
-          <ProgressBarFill/>
-        </ProgressBar>
-      </div>
-    );
-  }
+          </BubbleContainer>
+          <ProgressBar>
+          <ProgressBarFill className={this.props.animate ? "animate" : ""}/>
+          </ProgressBar>
+          </div>
+          );
+        }
 
-}
+      }
 
-export default withTheme(MeditationBubble);
+      export default withTheme(MeditationBubble);
