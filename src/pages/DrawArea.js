@@ -22,7 +22,12 @@ const StyledDrawArea = styled.div`
 const ButtonContainer = styled.div`
   position: fixed;
   bottom: -25px;
-  right: 300px;
+  right: 200px;
+`
+const ButtonContainer2 = styled.div`
+  position: fixed;
+  bottom: -25px;
+  left: 50px;
 `
 const StyledSVG = styled.svg`
   width: 100%;
@@ -41,8 +46,8 @@ const ColorContainer = styled.div`
   position: fixed;
   bottom: 25px;
   display: flex;
-  left: 125px;
-  right: 125px;
+  left: 50%;
+  margin-left: -280px;
 `
 const StyledHeading = styled.h2`
   margin: 30px 125px;
@@ -74,6 +79,7 @@ class DrawArea extends React.Component {
     this.modalClose = this.modalClose.bind(this);
     this.warning = this.warning.bind(this);
     this.redirect = this.redirect.bind(this);
+    this.clearLines = this.clearLines.bind(this);
   }
 
   componentDidMount() {
@@ -152,8 +158,8 @@ class DrawArea extends React.Component {
     } else { return new Immutable.Map({
       x: mouseEvent.clientX - boundingRect.left,
       y: mouseEvent.clientY - boundingRect.top,
-        color: color,
-        stroke: stroke,
+      color: color,
+      stroke: stroke,
     });
     }
   }
@@ -167,6 +173,13 @@ class DrawArea extends React.Component {
   setStroke(newStroke) {
     this.setState({
       stroke: newStroke
+    });
+  }
+
+  clearLines() {
+    this.setState({
+      lines: new Immutable.List(),
+      isDrawing: false,
     });
   }
 
@@ -195,6 +208,9 @@ class DrawArea extends React.Component {
         >
           <Drawing color={this.state.color} strokeWidth={this.state.stroke} lines={this.state.lines} />
         </StyledDrawArea>
+        <ButtonContainer2>
+          <Button clickFunction={true} handleClick={this.clearLines} text='Clear' emotion="angry" show={true} />
+        </ButtonContainer2>
         <ColorContainer>
           {colorList.map((color, i) => {
             return(
