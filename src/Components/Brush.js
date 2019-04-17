@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledBrush = styled.img`
   width: 100%;
-  margin: ${(props) => props.selected ? "20px 0px" : "20px -2px"};
+  margin: ${(props) => props.selected ? "20px -32px" : "20px -35px"};
   filter: ${(props) => props.selected ? "drop-shadow(2px 2px 25px rgba(0,0,0,0.5));" : "none"};
   transition: all 120ms ease-in-out;
 `

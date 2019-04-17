@@ -50,7 +50,7 @@ const StyledHeading = styled.h2`
 `
 const ToolContainer = styled.div`
   position: fixed;
-  width: 170px;
+  width: 200px;
   top: 30%;
 `
 
