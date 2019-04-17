@@ -9,7 +9,9 @@ import Unsure from './Unsure';
 import UnsureEmotions from './UnsureEmotions';
 import DrawArea from './DrawArea';
 import BubblePop from './BubblePop';
-import MusicActivity from '../MusicActivity/MusicActivity'; import LevelSelection from './LevelSelection';
+import MusicActivity from '../MusicActivity/MusicActivity';
+import LevelSelection from './LevelSelection';
+import Welcome from './Welcome';
 
 const routes =
   mount({
@@ -17,6 +19,12 @@ const routes =
     '/': route({
       title: "Level Selection",
       view: <LevelSelection />,
+    }),
+
+    // Create the welcome route
+    '/welcome': route({
+      title: "Welcome to Mindfully",
+      view: <Welcome />,
     }),
 
     // Create the main emotion route
