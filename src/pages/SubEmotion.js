@@ -52,13 +52,15 @@ class SubEmotion extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleValue = this.handleValue.bind(this);
     this.createEmotionList = this.createEmotionList.bind(this);
+    this.determineOverlap = this.determineOverlap.bind(this);
     this.state = {
       baseEmotion: this.props.baseEmotion,
       selected : false,
       selectedEmotion : '',
       message : '',
       level: this.props.level,
-      value: ''
+      value: '',
+      rectLocations: [[0,0]],
     };
   }
 
@@ -84,6 +86,29 @@ class SubEmotion extends Component {
 
   handleValue(val) {
     this.setState({ value: val });
+  }
+
+  determineOverlap(top, left) {
+    this.setState ({
+      rectLocations : [top, left],
+    });
+    for (var i = 0; i < this.state.rectLocations.length; i++) {
+      let rectLocation = this.state.rectLocations[i];
+      let overlapLeft =  !(rectLocation[1] > left + 50 ||
+        rectLocation[1] + 50 < left);
+      let overlapTop = !(rectLocation[0] >  top + 50 ||
+        rectLocation[0] + 50 < top);
+      console.log(overlapLeft, overlapTop);
+      if (overlapTop) {
+        let newTop  = top + 55;
+        console.log(newTop);
+        return [newTop, left];
+      } else if (overlapLeft) {
+        //return ([top, left + 55]);
+      } else {
+        //return ([top, left]);
+      }
+    }
   }
 
   render() {
@@ -114,6 +139,14 @@ class SubEmotion extends Component {
               let emo = emotion["emotion"];
               let maxVal = emotion["max"]
               let minVal = emotion["min"];
+              let top = Math.floor(Math.random() * 20) + 30;
+              let left = Math.floor(Math.random() * 70) + 10;
+              let topPos = top + '%';
+              let leftPos = left + '%';
+              let newPos = this.determineOverlap(top, left);
+              console.log(newPos);
+              let newTop = newPos[0];
+              let newLeft = newPos[1];
               return(<Bubble
                 key={i}
                 selected={this.state.selectedEmotion}
@@ -124,6 +157,8 @@ class SubEmotion extends Component {
                 maxVal={maxVal}
                 minVal={minVal}
                 value={this.state.value}
+                top={newTop}
+                left={newLeft}
                 shown={this.state.value >= minVal && this.state.value <= maxVal}
                 baseEmotion={this.state.baseEmotion}
                 definition={emotionCategory[emo]}>

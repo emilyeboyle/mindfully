@@ -60,6 +60,10 @@ class Emotion extends Component {
   }
 
   render() {
+    let top = Math.floor(Math.random() * 20) + 5;
+    let left = Math.floor(Math.random() * 80) + 10;
+    let topPos = top + '%';
+    let leftPos = left + '%';
     return (
       <div>
         <Container>
@@ -74,6 +78,8 @@ class Emotion extends Component {
               emotion="joyful"
               baseEmotion="joyful"
               subEmotion={false}
+              top={topPos}
+              left={leftPos}
               shown={true}>
             </Bubble>
             <Bubble
@@ -83,62 +89,72 @@ class Emotion extends Component {
               emotion="angry"
               baseEmotion="angry"
               subEmotion={false}
+              top={topPos}
+              left={leftPos}
               shown={true}>
             </Bubble>
             <Bubble
-      selected= {this.state.selectedEmotion}
-      handleClose={this.handleClose}
-      handleClick={this.handleClick}
-      emotion="sad"
-      baseEmotion="sad"
-      subEmotion={false}
-      shown={true}>
-    </Bubble>
-    <Bubble
-      selected= {this.state.selectedEmotion}
-      handleClose={this.handleClose}
-      handleClick={this.handleClick}
-      emotion="afraid"
-      baseEmotion="afraid"
-      subEmotion={false}
-      shown={true}>
-    </Bubble>
-    <Bubble
-      selected= {this.state.selectedEmotion}
-      handleClose={this.handleClose}
-      handleClick={this.handleClick}
-      emotion="disgusted"
-      baseEmotion="disgusted"
-      subEmotion={false}
-      shown={true}>
-    </Bubble>
-    {this.state.level == 3  && 
-    <Bubble
-      selected= {this.state.selectedEmotion}
-      handleClose={this.handleClose}
-      handleClick={this.handleClick}
-      emotion="unsure"
-      baseEmotion="unsure"
-      subEmotion={false}
-      shown={true}>
-    </Bubble>
-    } 
-  </BubbleContainer>
-</Container>
-<div>{this.props.selectedEmotion}</div>
-{this.state.level == 1 ? (
-  <nav>
-    <NavLink href={`/${this.state.level}/${this.state.selectedEmotion}/${this.state.selectedEmotion}/itsOkay`}>
-      <Button show={this.state.selected} emotion={this.state.selectedEmotion} text='Continue'></Button>
-    </NavLink>
-  </nav>
-) :(
-  <nav>
-    <NavLink href={`/${this.state.level}/${this.state.selectedEmotion}`}>
-      <Button show={this.state.selected} emotion={this.state.selectedEmotion} text='Continue'></Button>
-    </NavLink>
-  </nav>
-)}
+              selected= {this.state.selectedEmotion}
+              handleClose={this.handleClose}
+              handleClick={this.handleClick}
+              emotion="sad"
+              baseEmotion="sad"
+              subEmotion={false}
+              top={topPos}
+              left={leftPos}
+              shown={true}>
+            </Bubble>
+            <Bubble
+              selected= {this.state.selectedEmotion}
+              handleClose={this.handleClose}
+              handleClick={this.handleClick}
+              emotion="afraid"
+              baseEmotion="afraid"
+              subEmotion={false}
+              top={topPos}
+              left={leftPos}
+              shown={true}>
+            </Bubble>
+            <Bubble
+              selected= {this.state.selectedEmotion}
+              handleClose={this.handleClose}
+              handleClick={this.handleClick}
+              emotion="disgusted"
+              baseEmotion="disgusted"
+              subEmotion={false}
+              top={topPos}
+              left={leftPos}
+              shown={true}>
+            </Bubble>
+            {this.state.level == 3  && 
+            <Bubble
+              selected= {this.state.selectedEmotion}
+              handleClose={this.handleClose}
+              handleClick={this.handleClick}
+              emotion="unsure"
+              baseEmotion="unsure"
+              subEmotion={false}
+              top={topPos}
+              left={leftPos}
+              shown={true}>
+            </Bubble>
+            } 
+          </BubbleContainer>
+        </Container>
+        <div>{this.props.selectedEmotion}</div>
+      {this.state.level == 1 ? (
+        <nav>
+          <NavLink href={`/${this.state.level}/${this.state.selectedEmotion}/${this.state.selectedEmotion}/itsOkay`}>
+            <Button show={this.state.selected} emotion={this.state.selectedEmotion} text='Continue'></Button>
+          </NavLink>
+        </nav>
+      ) :(
+        <nav>
+          <NavLink href={`/${this.state.level}/${this.state.selectedEmotion}`}>
+            <Button show={this.state.selected} emotion={this.state.selectedEmotion} text='Continue'></Button>
+          </NavLink>
+        </nav>
+      )}
     </div>
     )
   }

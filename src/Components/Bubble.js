@@ -10,12 +10,18 @@ TweenOne.plugins.push(PathPlugin);
 
 const fadeAnimation = keyframes`${bounceIn}`;
 
+const StyledBubbleWrapper = styled.div`
+  float: left;
+  position: relative;
+  `
+
 const StyledBubble = styled.div`
   background: ${props => props.color};
   border-radius: 121% 128% 125% 124%/125% 120% 127% 125%;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, .2);
   color: ${(props) => props.whiteText ? "white" : "black"};
-  position: ${(props) => props.selected ? "absolute" : "relative"};
+  //position: ${(props) => props.selected ? "absolute" : "relative"};
+  position: absolute;
   width: ${(props) => props.selected ? "70vh" : "16.25rem"};
   height: ${(props) => props.selected ? "70vh" : "16.25rem"};
   display: flex;
@@ -26,9 +32,9 @@ const StyledBubble = styled.div`
   font-family: 'Poppins';
   z-index: ${(props) => props.selected ? "100" : "0"};
   margin: ${(props) => props.selected ? "0 auto" : "1rem"};
-  left: 0;
+  left: ${(props) => props.selected ? "0" : `${props.left}`};
   right: 0;
-  top: ${(props) => props.selected ? "2rem" : "0"};
+  top: ${(props) => props.selected ? "2rem" : `${props.top}`};
   cursor: pointer;
   opacity: ${(props) => props.shown ? ".3" : "1"};
   pointer-events: ${(props) => props.shown ? "none" : "auto"};
@@ -105,12 +111,15 @@ class Bubble extends Component {
     let bubble;
     if (smallBubble) {
       bubble=
+      <StyledBubbleWrapper>
         <StyledBubbleSmall
           onClick={(evt) => {this.props.handleClick(emotion, evt)}}
           color={themeColor}
           whiteText = {whiteText}
           shown={shown}
           value={maxVal}
+              top={this.props.top}
+              left={this.props.left}
           selected={this.props.selected === emotion}>
           <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
           <StyledTextSmall selected={this.props.selected === emotion}>{emotion}</StyledTextSmall>
@@ -122,8 +131,10 @@ class Bubble extends Component {
             <CloseIcon/>
           </StyledX>
         </StyledBubbleSmall>
+      </StyledBubbleWrapper>
     } else {
       bubble=
+      <StyledBubbleWrapper>
         <StyledBubble
           onClick={(evt) => {this.props.handleClick(emotion, evt)}}
           color={themeColor}
@@ -131,6 +142,8 @@ class Bubble extends Component {
           shown={shown}
           value={maxVal}
           selected={this.props.selected === emotion}
+              top={this.props.top}
+              left={this.props.left}
         >
           <StyledImg src={require(`../static/images/bunnies/${baseEmotion}/${emotion}.png`)}/>
           <StyledText selected={this.props.selected === emotion}>{emotion}</StyledText>
@@ -142,6 +155,7 @@ class Bubble extends Component {
             <CloseIcon/>
           </StyledX>
         </StyledBubble>
+      </StyledBubbleWrapper>
     }
     return (bubble);
   }
