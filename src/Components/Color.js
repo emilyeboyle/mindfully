@@ -7,6 +7,7 @@ const StyledColor = styled.div`
   height: 50px;
   width: 50px;
   margin: 0px 10px;
+  filter: ${(props) => props.selected ? "drop-shadow(2px 2px 5px rgba(0,0,0,0.5));" : "none"};
 `
 
 class Color extends Component {
@@ -21,7 +22,7 @@ class Color extends Component {
 
   render() {
     return (
-      <StyledColor onClick={this.setColor} color={this.props.color}></StyledColor>
+      <StyledColor selected={this.props.selected} onClick={this.setColor} color={this.props.color}></StyledColor>
     );
   }
 }

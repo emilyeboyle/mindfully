@@ -34,6 +34,7 @@ const StyledBubble = styled.div`
   pointer-events: ${(props) => props.shown ? "none" : "auto"};
   box-shadow: inset 10000px 2px 5px rgba(255, 255, 255,${props => props.value});
   transition: opacity .3s ease-in;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, .2);
   animation: .5s ${fadeAnimation};
 `
 const StyledBubbleSmall = styled(StyledBubble)`

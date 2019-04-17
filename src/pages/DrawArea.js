@@ -22,7 +22,12 @@ const StyledDrawArea = styled.div`
 const ButtonContainer = styled.div`
   position: fixed;
   bottom: -25px;
-  right: 300px;
+  right: 200px;
+`
+const ButtonContainer2 = styled.div`
+  position: fixed;
+  bottom: -25px;
+  left: 50px;
 `
 const StyledSVG = styled.svg`
   width: 100%;
@@ -41,8 +46,8 @@ const ColorContainer = styled.div`
   position: fixed;
   bottom: 25px;
   display: flex;
-  left: 125px;
-  right: 125px;
+  left: 50%;
+  margin-left: -280px;
 `
 const StyledHeading = styled.h2`
   margin: 30px 125px;
@@ -50,7 +55,7 @@ const StyledHeading = styled.h2`
 `
 const ToolContainer = styled.div`
   position: fixed;
-  width: 170px;
+  width: 200px;
   top: 30%;
 `
 
@@ -74,6 +79,7 @@ class DrawArea extends React.Component {
     this.modalClose = this.modalClose.bind(this);
     this.warning = this.warning.bind(this);
     this.redirect = this.redirect.bind(this);
+    this.clearLines = this.clearLines.bind(this);
   }
 
   componentDidMount() {
@@ -115,27 +121,19 @@ class DrawArea extends React.Component {
   }
 
   handleMouseDown(mouseEvent) {
-    //if (mouseEvent.button == 0) {
-    const point = this.relativeCoordinatesForEvent(mouseEvent);
-    //mouseEvent.stopPropagation();
-    //mouseEvent.preventDefault();
+    const point = this.relativeCoordinatesForEvent(mouseEvent, this.state.color, this.state.stroke);
 
     this.setState(prevState => ({
-      //lines: {points: prevState; color: this.state.color; stroke: this.state.stroke}
-      //lines: prevState.lines.
       lines: prevState.lines.push(new Immutable.List([point])),
       isDrawing: true
     }),() => {
-      console.log(this.state.lines);
     });
     //}
   }
 
   handleMouseMove(mouseEvent) {
     if (this.state.isDrawing) {
-      const point = this.relativeCoordinatesForEvent(mouseEvent);
-      //mouseEvent.stopPropagation();
-      //mouseEvent.preventDefault();
+      const point = this.relativeCoordinatesForEvent(mouseEvent, this.state.color, this.state.stroke);
 
       this.setState(prevState =>  ({
         lines: prevState.lines.updateIn([prevState.lines.size - 1], line => line.push(point))
@@ -148,16 +146,20 @@ class DrawArea extends React.Component {
     this.setState({ isDrawing: false });
   }
 
-  relativeCoordinatesForEvent(mouseEvent) {
+  relativeCoordinatesForEvent(mouseEvent, color, stroke) {
     const boundingRect = this.refs.drawArea.getBoundingClientRect();
     if (mouseEvent.touches) {
       return new Immutable.Map({
         x: mouseEvent.touches[0].clientX - boundingRect.left,
         y: mouseEvent.touches[0].clientY - boundingRect.top,
+        color: color,
+        stroke: stroke,
       });
     } else { return new Immutable.Map({
       x: mouseEvent.clientX - boundingRect.left,
       y: mouseEvent.clientY - boundingRect.top,
+      color: color,
+      stroke: stroke,
     });
     }
   }
@@ -171,6 +173,13 @@ class DrawArea extends React.Component {
   setStroke(newStroke) {
     this.setState({
       stroke: newStroke
+    });
+  }
+
+  clearLines() {
+    this.setState({
+      lines: new Immutable.List(),
+      isDrawing: false,
     });
   }
 
@@ -199,10 +208,13 @@ class DrawArea extends React.Component {
         >
           <Drawing color={this.state.color} strokeWidth={this.state.stroke} lines={this.state.lines} />
         </StyledDrawArea>
+        <ButtonContainer2>
+          <Button clickFunction={true} handleClick={this.clearLines} text='Clear' emotion="angry" show={true} />
+        </ButtonContainer2>
         <ColorContainer>
           {colorList.map((color, i) => {
             return(
-              <Color key={i} handleClick={this.setColor} color={color} />
+              <Color key={i} handleClick={this.setColor} selected={this.state.color == color} color={color} />
             )
           })}
         </ColorContainer>
@@ -221,25 +233,27 @@ class DrawArea extends React.Component {
   }
 }
 
-function Drawing({ color, lines, strokeWidth}) {
+function Drawing({lines}) {
   return (
     <StyledSVG className="drawing">
       {lines.map((line, index) => (
-        <DrawingLine strokeWidth={strokeWidth} color={color} key={index} line={line} />
+        <DrawingLine  key={index} line={line} />
       ))}
     </StyledSVG>
   );
 }
 
-function DrawingLine({ color, line, strokeWidth}) {
+function DrawingLine({ line }) {
   const pathData = "M " +
     line
     .map(p => {
       return `${p.get('x')} ${p.get('y')}`;
     })
     .join(" L ");
+  const colorData = line.get(0).get('color');
+  const strokeData = line.get(0).get('stroke');
 
-  return <StyledPath strokeWidth={strokeWidth} color={color} className="path" d={pathData} />;
+  return <StyledPath strokeWidth={strokeData} color={colorData} className="path" d={pathData} />;
 }
 
 export default ReactTimeout(DrawArea);
