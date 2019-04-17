@@ -41,7 +41,7 @@ class Welcome extends Component {
         </VideoContainer>
         <StyledHeader>Welcome to Mindfully</StyledHeader>
         <ButtonContainer>
-          <NavLink href='/'>
+          <NavLink href='/level'>
             <Button show={true} text='Enter'></Button>
           </NavLink>
         </ButtonContainer>

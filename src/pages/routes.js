@@ -15,16 +15,16 @@ import Welcome from './Welcome';
 
 const routes =
   mount({
-    // Create the index route
-    '/': route({
-      title: "Level Selection",
-      view: <LevelSelection />,
-    }),
-
     // Create the welcome route
-    '/welcome': route({
+    '/': route({
       title: "Welcome to Mindfully",
       view: <Welcome />,
+    }),
+
+    // Create the level route
+    '/level': route({
+      title: "Level Selection",
+      view: <LevelSelection />,
     }),
 
     // Create the main emotion route
