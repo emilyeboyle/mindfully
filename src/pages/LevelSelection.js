@@ -59,7 +59,6 @@ class LevelSelection extends Component {
   }
 
   render() {
-    console.log(this.state.level);
     return (
       <SelectContainer>
         <StyledLabel>Please select your students' grade level:</StyledLabel>

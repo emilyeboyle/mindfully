@@ -9,7 +9,6 @@ import ActivityList from '../constants/ActivityList';
 class Okay extends Component {
   constructor(props) {
     super(props);
-    //console.log(navigation);
     this.state = {
       level: props.level,
       baseEmotion: this.props.baseEmotion,
@@ -32,14 +31,12 @@ class Okay extends Component {
       const activitiesLength= activities.length;
       const random = Math.floor(Math.random() * activitiesLength);
       const randomActivity = activities[random];
-      console.log(randomActivity);
        this.setState({activity: randomActivity});
     } else {
       const activities = list[this.state.baseEmotion];
       const activitiesLength= activities.length;
       const random = Math.floor(Math.random() * activitiesLength);
       const randomActivity = activities[random];
-      console.log(randomActivity);
        this.setState({activity: randomActivity});
     }
   }

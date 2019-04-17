@@ -180,7 +180,7 @@ class UnsureEmotions extends Component {
             <StyledDefinition>{emotionCategory2[this.state.emotion2]}</StyledDefinition>
           </BubbleContainer>
         </BubblesContainer>
-        <NavLink href='/${this.state.level}/notsure/unsure/itsOkay' style={{marginTop: '3rem'}}>
+        <NavLink href={`/${this.state.level}/notsure/unsure/itsOkay`} style={{marginTop: '3rem'}}>
           <StyledLink>None of these describe my feelings</StyledLink>
         </NavLink>
       </StyledContainer>

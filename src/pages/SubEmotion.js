@@ -67,7 +67,6 @@ class SubEmotion extends Component {
     const baseEmotion = this.state.baseEmotion;
     let emotionLevel = EmotionsList[level];
     let emotionList = emotionLevel[baseEmotion];
-    console.log(emotionList);
   }
 
   handleClick(emotion, evt) {

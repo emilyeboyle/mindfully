@@ -37,7 +37,6 @@ class ItsOk extends Component {
   render() {
     const emotion = this.props.emotion;
     const activity  = this.props.activity;
-    console.log(activity);
     const emotionString = (emotion + 'Primary').toString();
     const theme = this.props.theme;
     const themeColor = (emotion === "unsure" || emotion === "notsure" ? theme["brandPrimary"] : theme[emotionString]);
