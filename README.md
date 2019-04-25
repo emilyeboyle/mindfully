@@ -1,3 +1,5 @@
+## Project Info
+
 This project was created for our Interaction Degree Project at Northeastern University. Team members include Emily Boyle, Maddy Sullivan, Sara Reich, and Christine Taing. 
 
 This project was optimized for **IPad**. Therefore, we have not styled or optimzied it for Desktop or Mobile. Please view either on an IPad or in a browser emulator. 
