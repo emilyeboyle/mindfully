@@ -11,7 +11,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Getting Started
 
-When you first clone the repo, run ### `yarn install` to install all project dependencies. This will take about a minute. After all dependencies are installed, run ### `yarn start` (see details below). 
+When you first clone the repo, run `yarn install` to install all project dependencies. This will take about a minute. After all dependencies are installed, run `yarn start` (see details below). 
 
 ## Available Scripts
 
