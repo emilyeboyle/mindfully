@@ -75,6 +75,10 @@ class MusicActivity extends Component {
     this.musicLoop.start();
   }
 
+  componentWillUnmount() {
+    Tone.Transport.stop();
+  }
+
   modalClose() {
     this.setState({showModal: false});
     if (this.state.modalText === "intro") {

@@ -16,7 +16,8 @@ class Meditation extends Component {
     this.modalClose = this.modalClose.bind(this);
   }
 
-  componentDidMount() {
+  componentWillUnmount() {
+    this.audio.stop();
   }
 
   modalClose() {

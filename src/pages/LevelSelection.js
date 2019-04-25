@@ -69,7 +69,7 @@ class LevelSelection extends Component {
           <StyledOption value="3">4–5</StyledOption>
         </StyledSelect>
         <NavLink href={`/${this.state.level}`}>
-          <Button show={true} text='Continue'></Button>
+          <Button greyed={this.state.level === "0"} show={true} text='Continue'></Button>
         </NavLink>
       </SelectContainer>
     );
