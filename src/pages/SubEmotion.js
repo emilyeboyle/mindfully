@@ -43,7 +43,7 @@ const TransparentDiv = styled.div`
   }
 `
 const SliderContainer = styled.div`
-  margin: 50px 0;
+  margin: 2.5rem 0;
 `
 class SubEmotion extends Component {
   constructor(props) {

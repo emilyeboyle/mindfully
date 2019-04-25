@@ -14,7 +14,7 @@ export default {
     angry: 'Feeling blocked or that something isn’t fair',
     annoyed: 'Angry because of an inconvenience',
     frustrated: 'Angry that you can’t do something you should be able to do',
-    furious: 'Strong anger that yfou can’t control',
+    furious: 'Strong anger that you can’t control',
     exasperated: 'Extremely irritated and frustrated',
     argumentative: 'Expressing disagreement in an angry way',
     vengeful: 'Desire to punish someone who hurt you'
